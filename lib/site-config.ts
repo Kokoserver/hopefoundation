@@ -16,7 +16,6 @@ export const navItems = [
   { label: "Our Work", href: "/projects" },
   { label: "Programs", href: "/programs" },
   { label: "Hope Stories", href: "/stories" },
-  { label: "Get Involved", href: "/volunteer" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -28,15 +27,6 @@ export const footerLinks = [
       { label: "Programs", href: "/programs" },
       { label: "Projects", href: "/projects" },
       { label: "Gallery", href: "/gallery" },
-    ],
-  },
-  {
-    title: "Get Involved",
-    items: [
-      { label: "Donate", href: "/donate" },
-      { label: "Volunteer", href: "/volunteer" },
-      { label: "Events", href: "/events" },
-      { label: "Contact", href: "/contact" },
     ],
   },
   {
