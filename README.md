@@ -1,36 +1,154 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Achebe Hope Foundation
+
+**Changing lives, one family at a time**
+
+The official website for Achebe Hope Foundation - a nonprofit organization dedicated to improving lives through strategic programs, community projects, and volunteer engagement. This repository contains the frontend and content management system for the foundation's web presence.
+
+## About the Project
+
+The Achebe Hope Foundation website serves as both a public-facing platform for donors and supporters, and an internal dashboard for managing foundation operations. The platform includes:
+
+- **Public Site**: Information about programs, projects, impact stories, volunteer opportunities, and donation portal
+- **Admin Dashboard**: Content management for programs, projects, stories, contacts, and volunteers
+- **Database**: PostgreSQL backend with Drizzle ORM for data persistence
+- **Responsive Design**: Mobile-first approach using Tailwind CSS
+
+## Tech Stack
+
+- **Framework**: [Next.js 16](https://nextjs.org) with App Router
+- **Language**: [TypeScript](https://www.typescriptlang.org)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com)
+- **Database**: PostgreSQL with [Drizzle ORM](https://orm.drizzle.team)
+- **UI Components**: Custom components with [Radix UI](https://www.radix-ui.com)
+- **Icons**: [Lucide React](https://lucide.dev)
+- **Carousel**: [Embla Carousel](https://www.emblacarousel.com)
+- **Package Manager**: [pnpm](https://pnpm.io)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- pnpm (or npm/yarn)
+- PostgreSQL database
+
+### Installation
+
+1. Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd hopefoundation
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Set up environment variables:
 
-## Learn More
+```bash
+# Create a .env.local file with:
+DATABASE_URL=postgresql://user:password@localhost:5432/hopefoundation
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Set up the database:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+pnpm db:generate  # Generate migrations
+pnpm db:push      # Apply migrations
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Development
 
-## Deploy on Vercel
+Run the development server:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+pnpm dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the site.
+
+The application auto-refreshes as you make edits to files.
+
+### Database Management
+
+```bash
+# Generate database migrations after schema changes
+pnpm db:generate
+
+# Push migrations to database
+pnpm db:push
+
+# Open Drizzle Studio for visual database management
+pnpm db:studio
+```
+
+## Project Structure
+
+```
+├── app/                    # Next.js app directory
+│   ├── (dashboard)        # Admin dashboard routes
+│   │   └── dashboard/     # Content management pages
+│   └── (public)           # Public-facing routes
+│       ├── about/         # About page
+│       ├── programs/      # Programs listing
+│       ├── projects/      # Projects listing
+│       ├── stories/       # Hope stories
+│       └── ...            # Other public pages
+├── components/            # React components
+│   ├── common/           # Shared components
+│   ├── home/             # Homepage sections
+│   ├── layout/           # Layout components
+│   └── ui/               # UI primitives
+├── db/                    # Database layer
+│   ├── schema.ts         # Table definitions
+│   ├── queries.ts        # Database queries
+│   └── types.ts          # TypeScript types
+├── lib/                   # Utilities and helpers
+├── public/               # Static assets
+└── components.json       # Shadcn/ui config
+```
+
+## Available Scripts
+
+```bash
+pnpm dev       # Start development server
+pnpm build     # Build for production
+pnpm start     # Start production server
+pnpm lint      # Run ESLint
+pnpm db:generate  # Generate database migrations
+pnpm db:push      # Apply migrations to database
+pnpm db:studio    # Open Drizzle Studio
+```
+
+## Build & Deployment
+
+### Build
+
+```bash
+pnpm build
+```
+
+### Production
+
+```bash
+pnpm start
+```
+
+The application is optimized for deployment on Vercel, Netlify, or any Node.js hosting platform.
+
+## Contact
+
+For more information about Achebe Hope Foundation:
+
+- **Email**: AchebeHopeFoundation@gmail.com
+- **Phone**: +234 802 058 6948
+- **Address**: No 6 Chief Obiora Achebe Close, Enugu
+- **Website**: https://achebehopefoundation.org
+
+## License
+
+This project is private and proprietary to Achebe Hope Foundation.
