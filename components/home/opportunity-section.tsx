@@ -33,10 +33,10 @@ export function OpportunitySection() {
               className="hover-lift min-h-[118px] rounded-[16px] border-0 bg-[#f7ebe8] shadow-none"
             >
               <CardContent className="p-6">
-                <h3 className="mb-3 text-[15px] font-bold leading-none text-[#1f1d1a]">
+                <h3 className="mb-3 text-[18px] font-bold leading-none text-[#1f1d1a]">
                   {opp.title}
                 </h3>
-                <p className="text-[13px] leading-[1.45] text-[#342b25]">
+                <p className="text-[15px] leading-[1.5] text-[#342b25]">
                   {opp.description}
                 </p>
               </CardContent>
@@ -44,9 +44,11 @@ export function OpportunitySection() {
           ))}
         </div>
 
-        <p className="mt-6 text-[12px] leading-normal text-[#4f4a43]">
-          These challenges are interconnected. Our work addresses them
-          together—not in isolation.
+        <p className="mt-6 text-[14px] leading-normal text-[#4f4a43]">
+          These challenges are interconnected. Our work addresses them{" "}
+          <span className="font-semibold text-primary">
+            together—not in isolation.
+          </span>
         </p>
       </div>
     </section>

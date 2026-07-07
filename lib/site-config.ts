@@ -46,8 +46,8 @@ export const contactInfo = {
 };
 
 export const socialLinks = [
-  { icon: "Facebook", href: "https://facebook.com", label: "Facebook" },
-  { icon: "Instagram", href: "https://instagram.com", label: "Instagram" },
-  { icon: "Twitter", href: "https://twitter.com", label: "Twitter" },
-  { icon: "Youtube", href: "https://youtube.com", label: "YouTube" },
+  { icon: "Globe", href: "https://facebook.com", label: "Facebook" },
+  { icon: "Camera", href: "https://instagram.com", label: "Instagram" },
+  { icon: "MessageCircle", href: "https://twitter.com", label: "Twitter" },
+  { icon: "Play", href: "https://youtube.com", label: "YouTube" },
 ];

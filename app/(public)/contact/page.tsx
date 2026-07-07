@@ -10,9 +10,9 @@ import { OptimizedImage } from "@/components/common/optimized-image";
 import { publicPages } from "@/lib/public-pages";
 
 const contactCardIcons: Record<string, React.ReactNode> = {
-  Email: <Mail className="mb-5 h-6 w-6 text-gold" />,
-  Phone: <Phone className="mb-5 h-6 w-6 text-gold" />,
-  Address: <MapPin className="mb-5 h-6 w-6 text-gold" />,
+  Email: <Mail className="mb-5 h-6 w-6 text-primary" />,
+  Phone: <Phone className="mb-5 h-6 w-6 text-primary" />,
+  Address: <MapPin className="mb-5 h-6 w-6 text-primary" />,
 };
 
 export default function ContactPage() {
@@ -98,7 +98,7 @@ export default function ContactPage() {
             <div className="rounded-[22px] border border-[#eadfcd] bg-white p-6 shadow-[0_10px_30px_rgba(105,77,32,0.06)] sm:p-8">
               {submitted ? (
                 <div className="flex flex-col items-center justify-center py-12 text-center">
-                  <CheckCircle2 className="mb-4 h-16 w-16 text-gold" />
+                  <CheckCircle2 className="mb-4 h-16 w-16 text-primary" />
                   <h3 className="mb-2 text-[22px] font-bold text-[#17191f]">
                     Message sent successfully!
                   </h3>

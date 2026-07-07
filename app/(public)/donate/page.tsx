@@ -14,15 +14,15 @@ import { OptimizedImage } from "@/components/common/optimized-image";
 import { publicPages } from "@/lib/public-pages";
 
 const cardIcons: Record<string, React.ReactNode> = {
-  "One-time gifts": <Heart className="mb-5 h-6 w-6 text-gold" />,
-  "Monthly support": <Calendar className="mb-5 h-6 w-6 text-gold" />,
-  "Corporate giving": <Building2 className="mb-5 h-6 w-6 text-gold" />,
+  "One-time gifts": <Heart className="mb-5 h-6 w-6 text-primary" />,
+  "Monthly support": <Calendar className="mb-5 h-6 w-6 text-primary" />,
+  "Corporate giving": <Building2 className="mb-5 h-6 w-6 text-primary" />,
 };
 
 const gifticons: Record<string, React.ReactNode> = {
-  "Where gifts go": <TrendingUp className="h-6 w-6 text-gold" />,
-  "Donor updates": <ShieldCheck className="h-6 w-6 text-gold" />,
-  "Corporate support": <Users className="h-6 w-6 text-gold" />,
+  "Where gifts go": <TrendingUp className="h-6 w-6 text-primary" />,
+  "Donor updates": <ShieldCheck className="h-6 w-6 text-primary" />,
+  "Corporate support": <Users className="h-6 w-6 text-primary" />,
 };
 
 export default function DonatePage() {
@@ -78,7 +78,7 @@ export default function DonatePage() {
               { value: "95%", label: "Goes to Programmes" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
-                <p className="text-[34px] font-bold text-gold sm:text-[40px]">
+                <p className="text-[34px] font-bold text-primary sm:text-[40px]">
                   {stat.value}
                 </p>
                 <p className="mt-1 text-[13px] font-medium uppercase tracking-wider text-white/72">

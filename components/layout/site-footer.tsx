@@ -53,7 +53,7 @@ export function SiteFooter() {
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className="text-[12px] text-footer-foreground/70 transition hover:text-white"
+                      className="text-[12px] text-footer-foreground/70 transition hover:text-primary"
                     >
                       {item.label}
                     </Link>
@@ -71,7 +71,7 @@ export function SiteFooter() {
               <li>
                 <a
                   href={`tel:${contactInfo.phone}`}
-                  className="transition hover:text-white"
+                  className="transition hover:text-primary"
                 >
                   {contactInfo.phone}
                 </a>
@@ -79,7 +79,7 @@ export function SiteFooter() {
               <li>
                 <a
                   href={`mailto:${contactInfo.email}`}
-                  className="transition hover:text-white"
+                  className="transition hover:text-primary"
                 >
                   {contactInfo.email}
                 </a>
@@ -119,7 +119,7 @@ export function SiteFooter() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-7 w-7 items-center justify-center rounded-full border border-white/15 text-footer-foreground/70 transition hover:text-white"
+                  className="flex h-7 w-7 items-center justify-center rounded-full border border-white/15 text-footer-foreground/70 transition hover:border-primary hover:text-primary"
                   aria-label={social.label}
                 >
                   {Icon && <Icon className="h-3.5 w-3.5" />}

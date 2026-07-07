@@ -14,15 +14,15 @@ import { OptimizedImage } from "@/components/common/optimized-image";
 import { publicPages } from "@/lib/public-pages";
 
 const projectIcons: Record<string, React.ReactNode> = {
-  "Education outreach": <BookOpen className="mb-5 h-6 w-6 text-gold" />,
-  "Family welfare": <Heart className="mb-5 h-6 w-6 text-gold" />,
-  "Community health": <Stethoscope className="mb-5 h-6 w-6 text-gold" />,
+  "Education outreach": <BookOpen className="mb-5 h-6 w-6 text-primary" />,
+  "Family welfare": <Heart className="mb-5 h-6 w-6 text-primary" />,
+  "Community health": <Stethoscope className="mb-5 h-6 w-6 text-primary" />,
 };
 
 const processIcons: Record<string, React.ReactNode> = {
-  "Needs assessment": <ClipboardList className="h-6 w-6 text-gold" />,
-  "Resource delivery": <Truck className="h-6 w-6 text-gold" />,
-  "Follow-up visits": <RefreshCw className="h-6 w-6 text-gold" />,
+  "Needs assessment": <ClipboardList className="h-6 w-6 text-primary" />,
+  "Resource delivery": <Truck className="h-6 w-6 text-primary" />,
+  "Follow-up visits": <RefreshCw className="h-6 w-6 text-primary" />,
 };
 
 const stats = [
@@ -74,7 +74,7 @@ export default function ProjectsPage() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
-                <p className="text-[34px] font-bold text-gold sm:text-[40px]">
+                <p className="text-[34px] font-bold text-primary sm:text-[40px]">
                   {stat.value}
                 </p>
                 <p className="mt-1 text-[13px] font-medium uppercase tracking-wider text-white/72">

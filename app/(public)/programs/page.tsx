@@ -15,15 +15,15 @@ import { publicPages } from "@/lib/public-pages";
 import { allPrograms } from "@/lib/programs-data";
 
 const sectionIcons: Record<string, React.ReactNode> = {
-  "Education access": <GraduationCap className="h-6 w-6 text-gold" />,
-  "Women empowerment": <StretchHorizontal className="h-6 w-6 text-gold" />,
-  "Child welfare": <Heart className="h-6 w-6 text-gold" />,
+  "Education access": <GraduationCap className="h-6 w-6 text-primary" />,
+  "Women empowerment": <StretchHorizontal className="h-6 w-6 text-primary" />,
+  "Child welfare": <Heart className="mb-5 h-6 w-6 text-primary" />,
 };
 
 const cardIcons: Record<string, React.ReactNode> = {
-  "Education Initiative": <BookOpen className="mb-5 h-6 w-6 text-gold" />,
-  "Women Rise Initiative": <Briefcase className="mb-5 h-6 w-6 text-gold" />,
-  "Children & Orphanages": <Home className="mb-5 h-6 w-6 text-gold" />,
+  "Education Initiative": <BookOpen className="mb-5 h-6 w-6 text-primary" />,
+  "Women Rise Initiative": <Briefcase className="mb-5 h-6 w-6 text-primary" />,
+  "Children & Orphanages": <Home className="mb-5 h-6 w-6 text-primary" />,
 };
 
 const stats = [
@@ -75,7 +75,7 @@ export default function ProgramsPage() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
-                <p className="text-[34px] font-bold text-gold sm:text-[40px]">
+                <p className="text-[34px] font-bold text-primary sm:text-[40px]">
                   {stat.value}
                 </p>
                 <p className="mt-1 text-[13px] font-medium uppercase tracking-wider text-white/72">

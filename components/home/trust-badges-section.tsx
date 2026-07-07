@@ -27,7 +27,7 @@ export function TrustBadgesSection() {
           <Card className="hover-lift min-h-[150px] rounded-[24px] border border-[#eadfcd] bg-white shadow-none sm:min-h-[176px]">
             <CardContent className="flex h-full flex-col items-center justify-center gap-5 p-8 text-center">
               <div className="flex h-7 w-7 items-center justify-center">
-                <BadgeCheck className="h-6 w-6 text-gold" />
+                <BadgeCheck className="h-6 w-6 text-primary" />
               </div>
               <div>
                 <p className="text-[16px] font-medium leading-[1.15] text-[#17191f]">
@@ -43,7 +43,7 @@ export function TrustBadgesSection() {
           <Card className="hover-lift min-h-[150px] rounded-[24px] border border-[#eadfcd] bg-white shadow-none sm:min-h-[176px]">
             <CardContent className="flex h-full flex-col items-center justify-center gap-5 p-8 text-center">
               <div className="flex h-7 w-7 items-center justify-center">
-                <HeartHandshake className="h-6 w-6 text-gold" />
+                <HeartHandshake className="h-6 w-6 text-primary" />
               </div>
               <div>
                 <p className="text-[16px] font-medium leading-[1.15] text-[#17191f]">

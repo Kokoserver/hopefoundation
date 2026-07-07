@@ -54,7 +54,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <Button
             asChild
-            className="h-9 rounded-full bg-gold px-4 text-[11px] font-bold text-white hover:bg-gold/90 sm:h-[40px] sm:px-[22px] sm:text-[12px]"
+            className="h-9 rounded-full bg-gold px-4 text-[11px] font-bold !text-white hover:bg-gold/90 sm:h-[40px] sm:px-[22px] sm:text-[12px]"
           >
             <Link href="/donate">Donate</Link>
           </Button>
@@ -72,7 +72,11 @@ export function SiteHeader() {
             aria-expanded={isMenuOpen}
             onClick={() => setIsMenuOpen((open) => !open)}
           >
-            {isMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            {isMenuOpen ? (
+              <X className="h-4 w-4" />
+            ) : (
+              <Menu className="h-4 w-4" />
+            )}
           </button>
         </div>
       </div>

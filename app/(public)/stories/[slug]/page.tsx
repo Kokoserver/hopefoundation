@@ -101,7 +101,7 @@ export default async function StoryPage({ params }: { params: Promise<{ slug: st
                         />
                       </div>
                       <div className="flex flex-1 flex-col px-[18px] pb-[16px] pt-[14px]">
-                        <span className="mb-2 inline-flex self-start rounded-full bg-gold/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-gold">
+                        <span className="mb-2 inline-flex self-start rounded-full bg-primary/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-primary">
                           {relatedStory.category}
                         </span>
                         <h3 className="mb-[6px] text-[14px] font-bold leading-snug text-[#17191f]">

@@ -54,7 +54,7 @@ export function PublicPage({ page }: PublicPageProps) {
 
         <div className="relative mx-auto max-w-[1280px] px-6 pb-16 pt-16 sm:px-10 sm:pb-24 sm:pt-20 lg:px-[72px]">
           <div className="max-w-3xl animate-fade-up">
-            <p className="mb-4 text-[12px] font-bold uppercase tracking-[0.22em] text-gold">
+            <p className="mb-4 text-[12px] font-bold uppercase tracking-[0.22em] text-primary">
               {page.eyebrow}
             </p>
             <h1 className="max-w-4xl text-[38px] font-bold leading-[1.08] sm:text-[56px] lg:text-[64px]">

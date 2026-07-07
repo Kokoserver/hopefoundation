@@ -17,7 +17,7 @@ export function ImpactStatsSection() {
               className="animate-fade-up text-center"
               style={{ animationDelay: `${index * 80}ms` }}
             >
-              <p className="text-[30px] font-bold text-gold sm:text-[38px]">
+              <p className="text-[30px] font-bold text-primary sm:text-[38px]">
                 {stat.value}
               </p>
               <p className="mt-2 text-[12px] text-muted-foreground sm:text-[13px]">

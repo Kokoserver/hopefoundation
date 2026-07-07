@@ -17,7 +17,7 @@ export function ClosingCtaSection() {
       <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/45">
         <div className="animate-fade-up px-6 text-center text-white">
           <h2 className="mx-auto mb-[12px] max-w-[520px] text-[30px] font-bold leading-[1.08] sm:text-[42px] sm:leading-[1.05]">
-            Hope begins with one decision
+            Hope begins with <span className="text-primary">one decision</span>
           </h2>
           <p className="mx-auto mb-[24px] max-w-[520px] text-[12px] leading-[1.45] text-white">
             Whether you choose to volunteer, donate, partner, or simply share

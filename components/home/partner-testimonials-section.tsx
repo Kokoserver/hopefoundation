@@ -42,7 +42,7 @@ export function PartnerTestimonialsSection() {
           {partners.map((partner, index) => (
             <Card key={index} className="border-0 bg-transparent shadow-none">
               <CardContent className="p-0">
-                <Quote className="mb-[18px] h-6 w-6 fill-gold text-gold" />
+                <Quote className="mb-[18px] h-6 w-6 fill-primary text-primary" />
                 <p className="mb-[14px] text-[16px] leading-[1.3] text-[#17191f] sm:text-[18px] sm:leading-[1.22]">
                   {partner.quote}
                 </p>

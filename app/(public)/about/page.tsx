@@ -17,9 +17,9 @@ import { OptimizedImage } from "@/components/common/optimized-image";
 import { publicPages } from "@/lib/public-pages";
 
 const pillarIcons: Record<string, React.ReactNode> = {
-  Compassion: <Heart className="mb-5 h-6 w-6 text-gold" />,
-  Community: <Users className="mb-5 h-6 w-6 text-gold" />,
-  Legacy: <TreePine className="mb-5 h-6 w-6 text-gold" />,
+  Compassion: <Heart className="mb-5 h-6 w-6 text-primary" />,
+  Community: <Users className="mb-5 h-6 w-6 text-primary" />,
+  Legacy: <TreePine className="mb-5 h-6 w-6 text-primary" />,
 };
 
 const stats = [
@@ -31,19 +31,19 @@ const stats = [
 
 const values = [
   {
-    icon: <GraduationCap className="h-8 w-8 text-gold" />,
+    icon: <GraduationCap className="h-8 w-8 text-primary" />,
     title: "Education",
     description:
       "Every child deserves access to quality learning. We provide scholarships, school supplies, and mentorship to help young minds thrive.",
   },
   {
-    icon: <HandHeart className="h-8 w-8 text-gold" />,
+    icon: <HandHeart className="h-8 w-8 text-primary" />,
     title: "Empowerment",
     description:
       "We equip women and youth with vocational skills, financial literacy, and enterprise support to build self-reliant futures.",
   },
   {
-    icon: <Home className="h-8 w-8 text-gold" />,
+    icon: <Home className="h-8 w-8 text-primary" />,
     title: "Family Stability",
     description:
       "Strengthening families through welfare support, healthcare access, and community networks that ensure no one is left behind.",
@@ -194,9 +194,9 @@ export default function AboutPage() {
             <div className="space-y-8">
               {page.sections.map((section, i) => (
                 <div key={section.title} className="relative md:pl-16">
-                  <div className="absolute left-[11px] top-1.5 hidden h-6 w-6 rounded-full border-2 border-gold bg-white md:block" />
+                  <div className="absolute left-[11px] top-1.5 hidden h-6 w-6 rounded-full border-2 border-primary bg-white md:block" />
                   <div className="rounded-[22px] border border-[#eadfcd] bg-white p-6 shadow-[0_10px_30px_rgba(105,77,32,0.06)] sm:p-8">
-                    <span className="mb-3 inline-flex items-center justify-center rounded-full bg-gold/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-gold">
+                    <span className="mb-3 inline-flex items-center justify-center rounded-full bg-primary/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-primary">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <h3 className="mb-3 mt-2 text-[20px] font-bold text-[#17191f]">
@@ -232,7 +232,7 @@ export default function AboutPage() {
                 key={stat.label}
                 className="rounded-[20px] border border-white/10 bg-white/5 p-6 text-center backdrop-blur-sm"
               >
-                <p className="text-[36px] font-bold text-gold sm:text-[44px]">
+                <p className="text-[36px] font-bold text-primary sm:text-[44px]">
                   {stat.value}
                 </p>
                 <p className="mt-1 text-[13px] font-medium uppercase tracking-wider text-white/72">
@@ -280,14 +280,14 @@ export default function AboutPage() {
       {/* Founder Quote */}
       <section className="py-16 sm:py-20">
         <div className="mx-auto max-w-[800px] px-6 text-center sm:px-10 lg:px-12">
-          <Quote className="mx-auto mb-6 h-10 w-10 text-gold/40" />
+          <Quote className="mx-auto mb-6 h-10 w-10 text-primary/40" />
           <blockquote className="text-[22px] leading-[1.5] font-medium italic text-[#17191f] sm:text-[28px]">
             &ldquo;We do not measure our success by what we give, but by how
             much lives change. Every family strengthened, every child educated,
             every community lifted — that is the hope we are building
             together.&rdquo;
           </blockquote>
-          <p className="mt-6 text-[14px] font-semibold text-gold">
+          <p className="mt-6 text-[14px] font-semibold text-primary">
             Chief Obiora Achebe
           </p>
           <p className="text-[12px] text-[#4f4a43]">

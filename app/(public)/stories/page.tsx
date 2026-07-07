@@ -5,7 +5,6 @@ import Link from "next/link";
 import {
   ArrowRight,
   Calendar,
-  User,
   ChevronRight,
   Mail,
 } from "lucide-react";
@@ -96,7 +95,7 @@ export default function StoriesPage() {
                           />
                         </div>
                         <div className="flex flex-1 flex-col px-[18px] pb-[16px] pt-[14px]">
-                          <span className="mb-2 inline-flex self-start rounded-full bg-gold/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-gold">
+                          <span className="mb-2 inline-flex self-start rounded-full bg-primary/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-primary">
                             {story.category}
                           </span>
                           <h3 className="mb-[6px] text-[15px] font-bold leading-snug text-[#17191f]">
@@ -112,7 +111,7 @@ export default function StoriesPage() {
                                 {story.date}
                               </span>
                             </div>
-                            <span className="flex items-center gap-0.5 text-[12px] font-semibold text-gold opacity-0 transition group-hover:opacity-100">
+                            <span className="flex items-center gap-0.5 text-[12px] font-semibold text-primary opacity-0 transition group-hover:opacity-100">
                               Read
                               <ChevronRight className="h-3.5 w-3.5" />
                             </span>
@@ -146,8 +145,8 @@ export default function StoriesPage() {
                             onClick={() => setActiveCategory(cat.key)}
                             className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-[13px] transition ${
                               activeCategory === cat.key
-                                ? "bg-gold/10 font-semibold text-gold"
-                                : "text-[#4f4a43] hover:bg-gold/5 hover:text-gold"
+? "bg-primary/10 font-semibold text-primary"
+              : "text-[#4f4a43] hover:bg-primary/5 hover:text-primary"
                             }`}
                           >
                             <span>{cat.name}</span>

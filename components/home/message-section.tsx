@@ -16,6 +16,7 @@ export function MessageSection() {
         </div>
         <div className="flex items-center bg-olive px-6 py-14 text-white sm:px-10 lg:px-[76px] lg:py-20">
           <div className="max-w-[650px]">
+            <div className="mb-5 h-1 w-10 rounded-full bg-primary" />
             <h2 className="mb-[22px] max-w-[520px] text-[30px] font-bold leading-[1.1] sm:mb-[26px] sm:text-[36px] sm:leading-[1.08]">
               A message from Achebe Hope Foundation
             </h2>

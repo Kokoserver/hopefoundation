@@ -18,14 +18,15 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/40 to-black/65" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/35 via-black/20 to-transparent" />
         <div className="absolute right-[70px] top-[230px] hidden h-[126px] w-px overflow-hidden rounded-full bg-white/80 lg:block">
-          <div className="h-[48px] w-full bg-gold" />
+          <div className="h-[48px] w-full bg-primary" />
         </div>
         <div className="absolute inset-0 flex flex-col justify-end">
           <div className="mx-auto grid w-full max-w-[1280px] gap-6 px-5 pb-12 text-white sm:gap-8 sm:px-8 sm:pb-[88px] lg:grid-cols-[1.08fr_0.92fr] lg:px-[72px]">
             <div className="max-w-xl animate-fade-up">
               <p className="mb-[18px] text-[11px] font-medium text-white">
-                Registered Humanitarian
-                Foundation&nbsp;&nbsp;•&nbsp;&nbsp;Nigeria
+                Registered Humanitarian Foundation
+                <span className="text-primary">&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+                Nigeria
               </p>
               <h1 className="text-[34px] font-bold leading-[1.12] tracking-normal sm:text-[52px] lg:text-[56px]">
                 Changing Lives,

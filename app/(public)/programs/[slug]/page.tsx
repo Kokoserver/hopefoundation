@@ -90,7 +90,7 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
 
               <div className="mt-10">
                 <div className="mb-6 flex items-center gap-3">
-                  <Target className="h-5 w-5 text-gold" />
+                  <Target className="h-5 w-5 text-primary" />
                   <h3 className="text-[18px] font-bold text-[#17191f]">
                     Goals
                   </h3>
@@ -98,7 +98,7 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
                 <ul className="space-y-3">
                   {program.goals.map((goal) => (
                     <li key={goal} className="flex items-start gap-3">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                       <span className="text-[14px] leading-[1.6] text-[#4f4a43]">
                         {goal}
                       </span>

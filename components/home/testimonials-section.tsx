@@ -128,7 +128,7 @@ export function TestimonialsSection() {
               onClick={() => api?.scrollTo(index)}
               aria-label={`Go to testimonial ${index + 1}`}
               className={`h-2.5 rounded-full transition-all ${
-                current === index ? "w-6 bg-gold" : "w-2.5 bg-border"
+                current === index ? "w-6 bg-primary" : "w-2.5 bg-border"
               }`}
             />
           ))}

@@ -2,6 +2,33 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { OptimizedImage } from "@/components/common/optimized-image";
 
+const galleryImages = [
+  {
+    src: "/images/b146d95d118b6f0b23c31c4d91959f1e86ca36fc.jpg",
+    alt: "Children learning in the classroom",
+  },
+  {
+    src: "/images/ebde0f20909875bfb504427887ada502c3c38648.jpg",
+    alt: "Women empowerment program",
+  },
+  {
+    src: "/images/a71acae314d01270a85bf4733d98aa5afb33aff4.jpg",
+    alt: "Community development program",
+  },
+  {
+    src: "/images/918104b48623a6d997a17a9a8a03567739e23fbf.jpg",
+    alt: "Women's vocational skills training",
+  },
+  {
+    src: "/images/a3ecc4c3dc7dd5d41521f02dad48e05a77067ce5.jpg",
+    alt: "Children in the community supported by Achebe Hope Foundation",
+  },
+  {
+    src: "/images/c49f4fcac50c2b6acba8314d8377904627f83cac.jpg",
+    alt: "Community gathering",
+  },
+];
+
 const programs = [
   {
     title: "Education",
@@ -30,44 +57,42 @@ export function WhatWeDoSection() {
     <section className="bg-white py-12 sm:py-[72px]">
       <div className="mx-auto max-w-[1390px] px-6 sm:px-10 lg:px-[72px]">
         <div className="mb-8 flex items-center justify-between gap-4 sm:mb-[42px]">
-          <h2 className="text-[34px] font-bold leading-none tracking-normal text-[#17191f] sm:text-[54px]">
-            What We Do
+          <h2 className="text-[38px] font-bold leading-none tracking-normal text-[#17191f] sm:text-[64px]">
+            What We Do<span className="text-primary">.</span>
           </h2>
           <Button className="hidden h-[52px] rounded-full bg-gold px-[30px] text-[16px] font-bold text-white hover:bg-gold/90 sm:inline-flex">
             Our Work
           </Button>
         </div>
 
-        <div className="mb-10 grid gap-3 sm:mb-[54px] md:grid-cols-3 md:gap-1">
-          <div className="group relative h-[210px] overflow-hidden rounded-[16px] md:h-[300px]">
-            <OptimizedImage
-              src="/images/b146d95d118b6f0b23c31c4d91959f1e86ca36fc.jpg"
-              alt="Children learning in the classroom"
-              fill
-              quality={90}
-              className="image-soft-zoom object-cover object-center"
-            />
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-[18%] bg-gradient-to-r from-white/85 to-transparent" />
+        <div className="marquee relative mb-10 overflow-hidden sm:mb-[54px]">
+          <div className="marquee-track flex w-max">
+            {[0, 1].map((copy) => (
+              <div
+                key={copy}
+                aria-hidden={copy === 1 ? true : undefined}
+                className="flex gap-3 pr-3 md:gap-1 md:pr-1"
+              >
+                {galleryImages.map((image) => (
+                  <div
+                    key={image.src}
+                    className="group relative h-[210px] w-[280px] shrink-0 overflow-hidden rounded-[16px] sm:w-[340px] md:h-[300px] md:w-[430px]"
+                  >
+                    <OptimizedImage
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      quality={90}
+                      sizes="(min-width: 768px) 430px, 340px"
+                      className="image-soft-zoom object-cover object-center"
+                    />
+                  </div>
+                ))}
+              </div>
+            ))}
           </div>
-          <div className="group relative h-[210px] overflow-hidden rounded-[16px] md:h-[300px]">
-            <OptimizedImage
-              src="/images/ebde0f20909875bfb504427887ada502c3c38648.jpg"
-              alt="Women empowerment program"
-              fill
-              quality={90}
-              className="image-soft-zoom object-cover object-center"
-            />
-          </div>
-          <div className="group relative h-[210px] overflow-hidden rounded-[16px] md:h-[300px]">
-            <OptimizedImage
-              src="/images/a71acae314d01270a85bf4733d98aa5afb33aff4.jpg"
-              alt="Community development program"
-              fill
-              quality={90}
-              className="image-soft-zoom object-cover object-center"
-            />
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-[18%] bg-gradient-to-l from-white/85 to-transparent" />
-          </div>
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-14 bg-gradient-to-r from-white to-transparent sm:w-24" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-14 bg-gradient-to-l from-white to-transparent sm:w-24" />
         </div>
 
         <div className="grid gap-x-[34px] gap-y-[34px] md:grid-cols-2">
