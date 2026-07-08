@@ -22,7 +22,7 @@ const slides = [
   },
 ];
 
-const SLIDE_INTERVAL_MS = 6000;
+const SLIDE_INTERVAL_MS = 8000;
 
 export function HeroSlideshow() {
   const [current, setCurrent] = useState(0);
@@ -33,7 +33,7 @@ export function HeroSlideshow() {
     }
     const id = setInterval(
       () => setCurrent((index) => (index + 1) % slides.length),
-      SLIDE_INTERVAL_MS
+      SLIDE_INTERVAL_MS,
     );
     return () => clearInterval(id);
   }, []);
