@@ -6,9 +6,6 @@ import {
   FolderKanban,
   Users,
   HeartHandshake,
-  Megaphone,
-  Image,
-  Newspaper,
   Menu,
 } from "lucide-react";
 
@@ -19,9 +16,6 @@ const sidebarLinks = [
   { href: "/dashboard/projects", label: "Projects", icon: FolderKanban },
   { href: "/dashboard/contact", label: "Messages", icon: MessageSquare },
   { href: "/dashboard/volunteers", label: "Volunteers", icon: Users },
-  { href: "/dashboard/gallery", label: "Gallery", icon: Image },
-  { href: "/dashboard/blog", label: "Blog", icon: Newspaper },
-  { href: "/dashboard/testimonials", label: "Testimonials", icon: Megaphone },
 ];
 
 export default function DashboardLayout({
