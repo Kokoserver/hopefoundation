@@ -1,25 +1,13 @@
 import { Button } from "@/components/ui/button";
-import { OptimizedImage } from "@/components/common/optimized-image";
+import { HeroSlideshow } from "@/components/home/hero-slideshow";
 
 export function HeroSection() {
   return (
     <section className="relative mb-8 bg-background px-2 pt-2 sm:mb-10">
       <div className="group relative min-h-[560px] w-full overflow-hidden rounded-b-[34px] sm:min-h-[680px] sm:rounded-b-[56px] lg:min-h-[760px]">
-        <OptimizedImage
-          src="/images/hero/hero-main.png"
-          alt="Adult teaching child — Achebe Hope Foundation"
-          fill
-          priority
-          quality={75}
-          sizes="(min-width: 1920px) 1920px, (min-width: 1280px) 1280px, (min-width: 768px) 768px, 100vw"
-          className="image-soft-zoom rounded-none"
-          showPlaceholder={false}
-        />
+        <HeroSlideshow />
         <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/40 to-black/65" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/35 via-black/20 to-transparent" />
-        <div className="absolute right-[70px] top-[230px] hidden h-[126px] w-px overflow-hidden rounded-full bg-white/80 lg:block">
-          <div className="h-[48px] w-full bg-primary" />
-        </div>
         <div className="absolute inset-0 flex flex-col justify-end">
           <div className="mx-auto grid w-full max-w-[1280px] gap-6 px-5 pb-12 text-white sm:gap-8 sm:px-8 sm:pb-[88px] lg:grid-cols-[1.08fr_0.92fr] lg:px-[72px]">
             <div className="max-w-xl animate-fade-up">
