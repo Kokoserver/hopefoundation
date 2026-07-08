@@ -3,15 +3,16 @@
 import * as React from "react";
 import { Play, X } from "lucide-react";
 import { OptimizedImage } from "@/components/common/optimized-image";
+import type { HomepageContent } from "@/lib/homepage-content";
 
-export function VideoSection() {
+export function VideoSection({ content }: { content: HomepageContent["video"] }) {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   return (
     <section className="relative">
       <div className="group relative h-[360px] w-full overflow-hidden sm:h-[520px] lg:h-[640px]">
         <OptimizedImage
-          src="/images/07d4e4d51d8482bb57eaa668e61381bad9aadb64.jpg"
+          src={content.poster}
           alt="Children celebrating — watch our story"
           fill
           quality={90}
@@ -27,7 +28,7 @@ export function VideoSection() {
             <Play className="ml-1 h-8 w-8 fill-white text-white sm:h-9 sm:w-9" />
           </div>
           <span className="text-[18px] font-semibold leading-none text-white">
-            Watch Video
+            {content.label}
           </span>
         </button>
       </div>
@@ -56,9 +57,9 @@ export function VideoSection() {
               controls
               autoPlay
               playsInline
-              poster="/images/07d4e4d51d8482bb57eaa668e61381bad9aadb64.jpg"
+              poster={content.poster}
             >
-              <source src="/videos/hope-story.mp4" type="video/mp4" />
+              <source src={content.url} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>

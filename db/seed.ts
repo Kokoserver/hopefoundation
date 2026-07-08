@@ -3,16 +3,53 @@ import { config } from "dotenv";
 config({ path: ".env.local" });
 config();
 
-async function main() {
+export async function seedDatabase() {
   const { db } = await import("./index");
   const {
+    adminUsers,
     contactMessages,
     galleryImages,
     programs,
+    publicContent,
     projects,
     stories,
     volunteerSubmissions,
   } = await import("./schema");
+  const { eq } = await import("drizzle-orm");
+  const { hashPassword } = await import("../lib/password");
+  const { defaultHomepageContent } = await import("../lib/homepage-content");
+
+  const defaultAdminEmail = process.env.DEFAULT_ADMIN_EMAIL?.trim().toLowerCase();
+  const defaultAdminPassword = process.env.DEFAULT_ADMIN_PASSWORD;
+
+  if (!defaultAdminEmail || !defaultAdminPassword) {
+    throw new Error(
+      "DEFAULT_ADMIN_EMAIL and DEFAULT_ADMIN_PASSWORD must be configured."
+    );
+  }
+
+  const existingDefaultAdmin = await db
+    .select({ id: adminUsers.id })
+    .from(adminUsers)
+    .where(eq(adminUsers.isDefault, true))
+    .limit(1);
+
+  if (existingDefaultAdmin.length === 0) {
+    await db.insert(adminUsers).values({
+      name: process.env.DEFAULT_ADMIN_NAME?.trim() || "Default Administrator",
+      email: defaultAdminEmail,
+      passwordHash: await hashPassword(defaultAdminPassword),
+      isDefault: true,
+    });
+    console.log("✓ admin_users: inserted default administrator");
+  } else {
+    console.log("↷ admin_users: already has data, skipping");
+  }
+
+  await db
+    .insert(publicContent)
+    .values({ key: "homepage", content: defaultHomepageContent })
+    .onConflictDoNothing({ target: publicContent.key });
 
   const seededStories: (typeof stories.$inferInsert)[] = [
     {
@@ -426,18 +463,21 @@ async function main() {
       imageUrl: "/images/918104b48623a6d997a17a9a8a03567739e23fbf.jpg",
       caption: "Back to School Drive 2025",
       category: "Education",
+      showInGallery: true,
       createdAt: new Date("2026-01-01T00:00:00Z"),
     },
     {
       imageUrl: "/images/ebde0f20909875bfb504427887ada502c3c38648.jpg",
       caption: "Women Skills Bootcamp Graduation",
       category: "Women Empowerment",
+      showInGallery: true,
       createdAt: new Date("2026-02-01T00:00:00Z"),
     },
     {
       imageUrl: "/images/b146d95d118b6f0b23c31c4d91959f1e86ca36fc.jpg",
       caption: "Orphanage Welfare Visit",
       category: "Child Welfare",
+      showInGallery: true,
       createdAt: new Date("2026-03-01T00:00:00Z"),
     },
   ];
@@ -469,10 +509,11 @@ async function main() {
   await seedIfEmpty("gallery_images", galleryImages, seededGalleryImages);
 
   console.log("Seed complete.");
-  process.exit(0);
 }
 
-main().catch((error) => {
-  console.error(error);
-  process.exit(1);
-});
+if (process.argv[1]?.endsWith("db/seed.ts")) {
+  seedDatabase().catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+}

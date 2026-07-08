@@ -1,33 +1,13 @@
 import { OptimizedImage } from "@/components/common/optimized-image";
+import type { HomepageContent } from "@/lib/homepage-content";
 
-const logos = [
-  {
-    name: "Deepalaya NGO",
-    src: "/images/logos/deepalaya_ngo_id4zTykPUQ.jpeg.png",
-  },
-  {
-    name: "Guaranty Trust Bank",
-    src: "/images/logos/guaranty_trust_bank_logo.png.png",
-  },
-  {
-    name: "Bank of America",
-    src: "/images/logos/bank_of_america_logo.png.png",
-  },
-  {
-    name: "UNICEF",
-    src: "/images/logos/unicef_logo.png.png",
-  },
-  {
-    name: "Access Bank",
-    src: "/images/logos/access_bank_logo.png.png",
-  },
-  {
-    name: "Dangote Group",
-    src: "/images/logos/dangote_group_logo.png.png",
-  },
-];
+export function PartnerLogosSection({
+  logos,
+}: {
+  logos: HomepageContent["partnerLogos"];
+}) {
+  if (logos.length === 0) return null;
 
-export function PartnerLogosSection() {
   return (
     <section className="bg-white py-10 lg:py-16">
       <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">

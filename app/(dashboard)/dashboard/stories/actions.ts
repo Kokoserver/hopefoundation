@@ -3,8 +3,11 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createStory, deleteStory, updateStory } from "@/db/queries";
+import { requireAdmin } from "@/lib/auth";
+import { withToast } from "@/lib/toast";
 
 export async function createStoryAction(formData: FormData) {
+  await requireAdmin();
   const data = {
     title: formData.get("title") as string,
     slug: formData.get("slug") as string,
@@ -18,10 +21,11 @@ export async function createStoryAction(formData: FormData) {
   };
   await createStory(data);
   revalidatePath("/dashboard/stories");
-  redirect("/dashboard/stories");
+  redirect(withToast("/dashboard/stories", "Story created successfully."));
 }
 
 export async function updateStoryAction(formData: FormData) {
+  await requireAdmin();
   const id = formData.get("id") as string;
   const data = {
     title: formData.get("title") as string,
@@ -36,11 +40,13 @@ export async function updateStoryAction(formData: FormData) {
   };
   await updateStory(id, data);
   revalidatePath("/dashboard/stories");
-  redirect("/dashboard/stories");
+  redirect(withToast("/dashboard/stories", "Story updated successfully."));
 }
 
 export async function deleteStoryAction(formData: FormData) {
+  await requireAdmin();
   const id = formData.get("id") as string;
   await deleteStory(id);
   revalidatePath("/dashboard/stories");
+  redirect(withToast("/dashboard/stories", "Story deleted."));
 }

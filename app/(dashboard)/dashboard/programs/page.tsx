@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getPrograms } from "@/db/queries";
 import { Badge } from "@/components/ui/badge";
+import { ConfirmSubmitButton } from "@/components/dashboard/confirm-submit-button";
 import { Plus, Pencil, Trash2 } from "lucide-react";
 import { deleteProgramAction } from "./actions";
 
@@ -65,12 +66,14 @@ export default async function ProgramsPage() {
                     </Link>
                     <form action={deleteProgramAction}>
                       <input type="hidden" name="id" value={p.id} />
-                      <button
-                        type="submit"
+                      <ConfirmSubmitButton
+                        title="Delete programme?"
+                        message={`Delete programme "${p.title}"? This removes it from the public programmes page.`}
+                        confirmLabel="Delete programme"
                         className="rounded-md p-1.5 text-gray-500 hover:bg-red-50 hover:text-red-600"
                       >
                         <Trash2 className="h-4 w-4" />
-                      </button>
+                      </ConfirmSubmitButton>
                     </form>
                   </div>
                 </td>

@@ -12,26 +12,29 @@ import { PartnerTestimonialsSection } from "@/components/home/partner-testimonia
 import { PartnerLogosSection } from "@/components/home/partner-logos-section";
 import { MessageSection } from "@/components/home/message-section";
 import { ClosingCtaSection } from "@/components/home/closing-cta-section";
+import { getCachedHomepageContent } from "@/db/cached-queries";
 
-export default function Home() {
+export default async function Home() {
+  const content = await getCachedHomepageContent();
+
   return (
     <>
       <div className="relative">
-        <HeroSection />
+        <HeroSection content={content.hero} />
         <TrustBadgesSection />
       </div>
-      <ImpactStatsSection />
-      <QuoteBannerSection />
+      <ImpactStatsSection content={content.impact} />
+      <QuoteBannerSection content={content.quote} />
       <HopeGrowsSection />
-      <OpportunitySection />
+      <OpportunitySection content={content.opportunity} />
       <WhatWeDoSection />
-      <VideoSection />
+      <VideoSection content={content.video} />
       <TestimonialsSection />
       <ProgramsSection />
       <PartnerTestimonialsSection />
-      <PartnerLogosSection />
-      <MessageSection />
-      <ClosingCtaSection />
+      <PartnerLogosSection logos={content.partnerLogos} />
+      <MessageSection content={content.message} />
+      <ClosingCtaSection content={content.closing} />
     </>
   );
 }

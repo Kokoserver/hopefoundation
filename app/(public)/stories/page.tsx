@@ -101,7 +101,7 @@ export default function StoriesPage() {
                           <h3 className="mb-[6px] text-[15px] font-bold leading-snug text-[#17191f]">
                             {story.title}
                           </h3>
-                          <p className="line-clamp-2 text-[13px] leading-[1.5] text-[#17191f]/70">
+                          <p className="line-clamp-2 whitespace-pre-line text-[13px] leading-[1.5] text-[#17191f]/70">
                             {story.excerpt}
                           </p>
                           <div className="mt-auto flex items-center justify-between pt-3">

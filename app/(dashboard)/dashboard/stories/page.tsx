@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getStories } from "@/db/queries";
 import { Badge } from "@/components/ui/badge";
+import { ConfirmSubmitButton } from "@/components/dashboard/confirm-submit-button";
 import { Plus, Pencil, Trash2 } from "lucide-react";
 import { deleteStoryAction } from "./actions";
 
@@ -63,12 +64,14 @@ export default async function StoriesPage() {
                     </Link>
                     <form action={deleteStoryAction}>
                       <input type="hidden" name="id" value={story.id} />
-                      <button
-                        type="submit"
+                      <ConfirmSubmitButton
+                        title="Delete story?"
+                        message={`Delete story "${story.title}"? This removes it from the dashboard and public website.`}
+                        confirmLabel="Delete story"
                         className="rounded-md p-1.5 text-gray-500 hover:bg-red-50 hover:text-red-600"
                       >
                         <Trash2 className="h-4 w-4" />
-                      </button>
+                      </ConfirmSubmitButton>
                     </form>
                   </div>
                 </td>

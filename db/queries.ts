@@ -5,6 +5,7 @@ import {
   galleryImages,
   messageStatusEnum,
   programs,
+  publicContent,
   programStatusEnum,
   projects,
   projectStatusEnum,
@@ -13,6 +14,10 @@ import {
   submissionStatusEnum,
   volunteerSubmissions,
 } from "./schema";
+import {
+  defaultHomepageContent,
+  type HomepageContent,
+} from "@/lib/homepage-content";
 import type {
   ContactMessage,
   GalleryImage,
@@ -123,6 +128,7 @@ function mapGalleryImage(row: typeof galleryImages.$inferSelect): GalleryImage {
     imageUrl: row.imageUrl,
     caption: row.caption ?? "",
     category: row.category ?? "",
+    showInGallery: row.showInGallery,
     createdAt: iso(row.createdAt),
   };
 }
@@ -201,6 +207,11 @@ export async function getPrograms(): Promise<Program[]> {
 
 export async function getProgramById(id: string): Promise<Program | null> {
   const [row] = await db.select().from(programs).where(eq(programs.id, id));
+  return row ? mapProgram(row) : null;
+}
+
+export async function getProgramBySlug(slug: string): Promise<Program | null> {
+  const [row] = await db.select().from(programs).where(eq(programs.slug, slug));
   return row ? mapProgram(row) : null;
 }
 
@@ -403,6 +414,65 @@ export async function getGalleryImages(): Promise<GalleryImage[]> {
   return rows.map(mapGalleryImage);
 }
 
+export async function getPublicGalleryImages(): Promise<GalleryImage[]> {
+  const rows = await db
+    .select()
+    .from(galleryImages)
+    .where(eq(galleryImages.showInGallery, true))
+    .orderBy(desc(galleryImages.createdAt));
+  return rows.map(mapGalleryImage);
+}
+
+export async function getPublicGalleryImagesPage({
+  limit,
+  offset,
+}: {
+  limit: number;
+  offset: number;
+}): Promise<{ images: GalleryImage[]; hasMore: boolean }> {
+  const safeLimit = Math.min(Math.max(limit, 1), 24);
+  const safeOffset = Math.max(offset, 0);
+  const rows = await db
+    .select()
+    .from(galleryImages)
+    .where(eq(galleryImages.showInGallery, true))
+    .orderBy(desc(galleryImages.createdAt))
+    .limit(safeLimit + 1)
+    .offset(safeOffset);
+
+  return {
+    images: rows.slice(0, safeLimit).map(mapGalleryImage),
+    hasMore: rows.length > safeLimit,
+  };
+}
+
+export async function createGalleryImage(
+  data: Omit<GalleryImage, "id" | "createdAt">
+): Promise<GalleryImage> {
+  const [row] = await db.insert(galleryImages).values(data).returning();
+  return mapGalleryImage(row);
+}
+
+export async function updateGalleryImageVisibility(
+  id: string,
+  showInGallery: boolean
+): Promise<boolean> {
+  const rows = await db
+    .update(galleryImages)
+    .set({ showInGallery })
+    .where(eq(galleryImages.id, id))
+    .returning({ id: galleryImages.id });
+  return rows.length > 0;
+}
+
+export async function deleteGalleryImage(id: string): Promise<boolean> {
+  const rows = await db
+    .delete(galleryImages)
+    .where(eq(galleryImages.id, id))
+    .returning({ id: galleryImages.id });
+  return rows.length > 0;
+}
+
 export async function getDashboardStats() {
   const [
     [storyCount],
@@ -431,4 +501,41 @@ export async function getDashboardStats() {
     unreadMessages: unreadCount.value,
     pendingVolunteers: pendingCount.value,
   };
+}
+
+export async function getHomepageContent(): Promise<HomepageContent> {
+  const [row] = await db
+    .select({ content: publicContent.content })
+    .from(publicContent)
+    .where(eq(publicContent.key, "homepage"))
+    .limit(1);
+
+  const savedContent = row?.content as Partial<HomepageContent> | undefined;
+
+  return {
+    ...defaultHomepageContent,
+    ...savedContent,
+    hero: { ...defaultHomepageContent.hero, ...savedContent?.hero },
+    impact: { ...defaultHomepageContent.impact, ...savedContent?.impact },
+    quote: { ...defaultHomepageContent.quote, ...savedContent?.quote },
+    opportunity: {
+      ...defaultHomepageContent.opportunity,
+      ...savedContent?.opportunity,
+    },
+    video: { ...defaultHomepageContent.video, ...savedContent?.video },
+    message: { ...defaultHomepageContent.message, ...savedContent?.message },
+    closing: { ...defaultHomepageContent.closing, ...savedContent?.closing },
+    partnerLogos:
+      savedContent?.partnerLogos ?? defaultHomepageContent.partnerLogos,
+  };
+}
+
+export async function updateHomepageContent(content: HomepageContent) {
+  await db
+    .insert(publicContent)
+    .values({ key: "homepage", content })
+    .onConflictDoUpdate({
+      target: publicContent.key,
+      set: { content, updatedAt: new Date() },
+    });
 }

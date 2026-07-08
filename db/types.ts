@@ -67,6 +67,6 @@ export type GalleryImage = {
   imageUrl: string;
   caption: string;
   category: string;
+  showInGallery: boolean;
   createdAt: string;
 };
-

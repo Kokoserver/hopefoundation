@@ -5,8 +5,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { ArrowLeft } from "lucide-react";
 import { createProgramAction } from "../actions";
+import { MediaUploadField } from "@/components/dashboard/media-upload-field";
+import { isMediaUploadEnabled } from "@/lib/media";
+import { getGalleryImages } from "@/db/queries";
 
-export default function NewProgramPage() {
+export default async function NewProgramPage() {
+  const mediaUploadEnabled = isMediaUploadEnabled();
+  const galleryImages = await getGalleryImages();
   return (
     <div>
       <Link
@@ -78,7 +83,13 @@ export default function NewProgramPage() {
 
           <div className="space-y-2">
             <Label htmlFor="coverImageUrl">Cover Image URL</Label>
-            <Input id="coverImageUrl" name="coverImageUrl" placeholder="/images/..." />
+            <MediaUploadField
+              id="coverImageUrl"
+              name="coverImageUrl"
+              enabled={mediaUploadEnabled}
+              galleryImages={galleryImages}
+              placeholder="/images/... or upload an image"
+            />
           </div>
 
           <div className="flex gap-3">

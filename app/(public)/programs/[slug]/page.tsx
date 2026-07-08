@@ -3,15 +3,11 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, CheckCircle2, Target, ArrowRight, Users, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { OptimizedImage } from "@/components/common/optimized-image";
-import { allPrograms, getProgramBySlug } from "@/lib/programs-data";
-
-export function generateStaticParams() {
-  return allPrograms.map((program) => ({ slug: program.slug }));
-}
+import { getCachedProgramBySlug } from "@/db/cached-queries";
 
 export default async function ProgramPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const program = getProgramBySlug(slug);
+  const program = await getCachedProgramBySlug(slug);
   if (!program) notFound();
 
   return (
@@ -20,7 +16,7 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
       <section className="relative overflow-hidden bg-footer pt-28 text-white sm:pt-32">
         <div className="absolute inset-0">
           <OptimizedImage
-            src={program.image}
+            src={program.coverImageUrl}
             alt={program.title}
             fill
             priority
@@ -42,9 +38,9 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
           <div className="animate-fade-up max-w-3xl">
             <span
               className={`mb-4 inline-flex rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider ${
-                program.tag === "Ongoing"
+                program.tag === "ongoing"
                   ? "bg-green-500/20 text-green-300"
-                  : program.tag === "Upcoming"
+                  : program.tag === "upcoming"
                     ? "bg-amber-500/20 text-amber-300"
                     : "bg-gray-500/20 text-gray-300"
               }`}
@@ -82,7 +78,7 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
               {program.fullDescription.split("\n\n").map((paragraph, i) => (
                 <p
                   key={i}
-                  className="mb-4 text-[15px] leading-[1.75] text-[#4f4a43]"
+                  className="mb-4 whitespace-pre-line text-[15px] leading-[1.75] text-[#4f4a43]"
                 >
                   {paragraph}
                 </p>
@@ -99,7 +95,7 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
                   {program.goals.map((goal) => (
                     <li key={goal} className="flex items-start gap-3">
                       <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                      <span className="text-[14px] leading-[1.6] text-[#4f4a43]">
+                      <span className="whitespace-pre-line text-[14px] leading-[1.6] text-[#4f4a43]">
                         {goal}
                       </span>
                     </li>
@@ -115,7 +111,7 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
                   {program.outcomes.map((outcome) => (
                     <li
                       key={outcome}
-                      className="rounded-[14px] border border-[#eadfcd] bg-[#fffaf2] px-4 py-3 text-[14px] leading-[1.5] text-[#4f4a43]"
+                      className="whitespace-pre-line rounded-[14px] border border-[#eadfcd] bg-[#fffaf2] px-4 py-3 text-[14px] leading-[1.5] text-[#4f4a43]"
                     >
                       {outcome}
                     </li>

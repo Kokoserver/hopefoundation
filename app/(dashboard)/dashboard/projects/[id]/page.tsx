@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getProjectById } from "@/db/queries";
+import { getGalleryImages, getProjectById } from "@/db/queries";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { ArrowLeft } from "lucide-react";
 import { updateProjectAction } from "../actions";
+import { MediaUploadField } from "@/components/dashboard/media-upload-field";
+import { isMediaUploadEnabled } from "@/lib/media";
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -14,6 +16,8 @@ export default async function EditProjectPage({ params }: Props) {
   const { id } = await params;
   const project = await getProjectById(id);
   if (!project) notFound();
+  const mediaUploadEnabled = isMediaUploadEnabled();
+  const galleryImages = await getGalleryImages();
 
   return (
     <div>
@@ -69,7 +73,13 @@ export default async function EditProjectPage({ params }: Props) {
 
           <div className="space-y-2">
             <Label htmlFor="coverImageUrl">Cover Image URL</Label>
-            <Input id="coverImageUrl" name="coverImageUrl" defaultValue={project.coverImageUrl} />
+            <MediaUploadField
+              id="coverImageUrl"
+              name="coverImageUrl"
+              defaultValue={project.coverImageUrl}
+              enabled={mediaUploadEnabled}
+              galleryImages={galleryImages}
+            />
           </div>
 
           <div className="flex gap-3">

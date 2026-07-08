@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getVolunteerSubmissions } from "@/db/queries";
 import { Badge } from "@/components/ui/badge";
+import { ConfirmSubmitButton } from "@/components/dashboard/confirm-submit-button";
 import { Trash2, Eye } from "lucide-react";
 import { deleteVolunteerAction } from "./actions";
 
@@ -62,12 +63,14 @@ export default async function VolunteersPage() {
                     </Link>
                     <form action={deleteVolunteerAction}>
                       <input type="hidden" name="id" value={v.id} />
-                      <button
-                        type="submit"
+                      <ConfirmSubmitButton
+                        title="Delete volunteer submission?"
+                        message={`Delete volunteer submission from ${v.fullName}? This cannot be undone.`}
+                        confirmLabel="Delete submission"
                         className="rounded-md p-1.5 text-gray-500 hover:bg-red-50 hover:text-red-600"
                       >
                         <Trash2 className="h-4 w-4" />
-                      </button>
+                      </ConfirmSubmitButton>
                     </form>
                   </div>
                 </td>

@@ -10,7 +10,7 @@ The Achebe Hope Foundation website serves as both a public-facing platform for d
 
 - **Public Site**: Information about programs, projects, impact stories, volunteer opportunities, and donation portal
 - **Admin Dashboard**: Content management for programs, projects, stories, contacts, and volunteers
-- **Database**: PostgreSQL backend with Drizzle ORM for data persistence
+- **Database**: SQLite by default, with PostgreSQL support through Drizzle ORM
 - **Responsive Design**: Mobile-first approach using Tailwind CSS
 
 ## Tech Stack
@@ -30,7 +30,7 @@ The Achebe Hope Foundation website serves as both a public-facing platform for d
 
 - Node.js 18+
 - pnpm (or npm/yarn)
-- PostgreSQL database
+- No external database is required for the default SQLite setup
 
 ### Installation
 
@@ -51,14 +51,16 @@ pnpm install
 
 ```bash
 # Create a .env.local file with:
-DATABASE_URL=postgresql://user:password@localhost:5432/hopefoundation
+DB_DRIVER=sqlite
+SQLITE_DATABASE_URL=file:./data/hopefoundation.db
 ```
 
 4. Set up the database:
 
 ```bash
 pnpm db:generate  # Generate migrations
-pnpm db:push      # Apply migrations
+pnpm db:migrate   # Apply generated migrations
+pnpm db:seed      # Seed default data
 ```
 
 ### Development
@@ -75,12 +77,34 @@ The application auto-refreshes as you make edits to files.
 
 ### Database Management
 
+SQLite is the default. To switch to PostgreSQL, set the following values,
+restart the application, then run the migration and seed commands:
+
+```bash
+DB_DRIVER=postgres
+DATABASE_URL=postgresql://user:password@localhost:5432/hopefoundation
+```
+
+Local SQLite files must never be placed in `public/`. For a temporary Vercel
+demo, the seeded private database is bundled and copied to `/tmp`; dashboard
+changes may reset after a cold start. For persistent deployment, keep
+`DB_DRIVER=sqlite` and configure a hosted libSQL/Turso database:
+
+```bash
+DB_DRIVER=sqlite
+SQLITE_DATABASE_URL=libsql://your-database.turso.io
+SQLITE_AUTH_TOKEN=your-database-token
+```
+
 ```bash
 # Generate database migrations after schema changes
 pnpm db:generate
 
-# Push migrations to database
-pnpm db:push
+# Apply generated migrations to database
+pnpm db:migrate
+
+# Seed default data
+pnpm db:seed
 
 # Open Drizzle Studio for visual database management
 pnpm db:studio
@@ -120,7 +144,9 @@ pnpm build     # Build for production
 pnpm start     # Start production server
 pnpm lint      # Run ESLint
 pnpm db:generate  # Generate database migrations
-pnpm db:push      # Apply migrations to database
+pnpm db:migrate   # Apply generated migrations to database
+pnpm db:push      # Push schema directly (development only)
+pnpm db:seed      # Seed default data
 pnpm db:studio    # Open Drizzle Studio
 ```
 

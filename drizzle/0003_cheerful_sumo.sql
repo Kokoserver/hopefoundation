@@ -1,0 +1,1 @@
+ALTER TABLE "gallery_images" ADD COLUMN "show_in_gallery" boolean DEFAULT true NOT NULL;

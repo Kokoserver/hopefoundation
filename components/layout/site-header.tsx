@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { navItems } from "@/lib/site-config";
 import { Button } from "@/components/ui/button";
+import { PlatformLogo } from "@/components/common/platform-logo";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -15,23 +16,24 @@ import {
 
 export function SiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   return (
-    <header className="absolute left-0 right-0 top-0 z-50 w-full">
+    <header
+      className={
+        isHomePage
+          ? "absolute left-0 right-0 top-0 z-50 w-full bg-[#1b1712]/90 shadow-sm backdrop-blur-md"
+          : "sticky top-0 z-50 w-full bg-[#1b1712] shadow-sm"
+      }
+    >
       <div className="mx-auto flex h-[76px] max-w-[1280px] items-center justify-between px-4 sm:px-8 lg:px-[72px]">
         <Link
           href="/"
           className="flex shrink-0 items-center"
           onClick={() => setIsMenuOpen(false)}
         >
-          <Image
-            src="/logo.svg"
-            alt="Hope Foundation Logo"
-            width={96}
-            height={96}
-            className="h-14 w-14 translate-y-2 object-contain sm:h-16 sm:w-16"
-            priority
-          />
+          <PlatformLogo imageClassName="h-14 w-14 object-contain sm:h-16 sm:w-16" />
         </Link>
 
         <NavigationMenu className="hidden md:flex">

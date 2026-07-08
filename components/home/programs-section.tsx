@@ -3,11 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { OptimizedImage } from "@/components/common/optimized-image";
 import { ArrowRight } from "lucide-react";
-import { allPrograms } from "@/lib/programs-data";
+import { getCachedPrograms } from "@/db/cached-queries";
 
-export function ProgramsSection() {
-  // Display the first 3 programs
-  const programs = allPrograms.slice(0, 3);
+export async function ProgramsSection() {
+  const programs = (await getCachedPrograms()).slice(0, 3);
 
   return (
     <section className="bg-[#f8e4e1] py-13.5 min-h-100 lg:min-h-125">
@@ -16,11 +15,12 @@ export function ProgramsSection() {
           <h2 className="text-[32px] font-bold leading-none text-[#17191f]">
             Programs
           </h2>
-          <Link href="/programs">
-            <Button className="hidden h-[34px] rounded-full bg-gold px-[18px] text-[11px] font-bold text-white hover:bg-gold/90 sm:inline-flex">
-              Our Programs
-            </Button>
-          </Link>
+          <Button
+            asChild
+            className="hidden h-[34px] rounded-full bg-gold px-[18px] text-[11px] font-bold !text-white hover:bg-gold/90 sm:inline-flex"
+          >
+            <Link href="/programs">Our Programs</Link>
+          </Button>
         </div>
 
         <div className="grid gap-[20px] md:grid-cols-3">
@@ -30,7 +30,7 @@ export function ProgramsSection() {
                 <CardContent className="flex h-full flex-col p-0">
                   <div className="relative h-[184px]">
                     <OptimizedImage
-                      src={program.image}
+                      src={program.coverImageUrl}
                       alt={program.title}
                       fill
                       quality={90}

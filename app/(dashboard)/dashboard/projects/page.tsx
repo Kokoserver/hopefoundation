@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getProjects } from "@/db/queries";
 import { Badge } from "@/components/ui/badge";
+import { ConfirmSubmitButton } from "@/components/dashboard/confirm-submit-button";
 import { Plus, Pencil, Trash2 } from "lucide-react";
 import { deleteProjectAction } from "./actions";
 
@@ -63,12 +64,14 @@ export default async function ProjectsPage() {
                     </Link>
                     <form action={deleteProjectAction}>
                       <input type="hidden" name="id" value={p.id} />
-                      <button
-                        type="submit"
+                      <ConfirmSubmitButton
+                        title="Delete project?"
+                        message={`Delete project "${p.title}"? This removes it from the public projects page.`}
+                        confirmLabel="Delete project"
                         className="rounded-md p-1.5 text-gray-500 hover:bg-red-50 hover:text-red-600"
                       >
                         <Trash2 className="h-4 w-4" />
-                      </button>
+                      </ConfirmSubmitButton>
                     </form>
                   </div>
                 </td>
