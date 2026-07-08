@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { OptimizedImage } from "@/components/common/optimized-image";
 import { publicPages } from "@/lib/public-pages";
-import { allPrograms } from "@/lib/programs-data";
+import { getCachedPrograms } from "@/db/cached-queries";
 
 const sectionIcons: Record<string, React.ReactNode> = {
   "Education access": <GraduationCap className="h-6 w-6 text-primary" />,
@@ -33,8 +33,9 @@ const stats = [
   { value: "8", label: "Schools Engaged" },
 ];
 
-export default function ProgramsPage() {
+export default async function ProgramsPage() {
   const page = publicPages.programs;
+  const programs = await getCachedPrograms();
 
   return (
     <div className="bg-background">
@@ -133,7 +134,7 @@ export default function ProgramsPage() {
           </div>
 
           <div className="grid gap-[20px] sm:grid-cols-2 lg:grid-cols-3">
-            {allPrograms.map((programme) => (
+            {programs.map((programme) => (
               <Link key={programme.slug} href={`/programs/${programme.slug}`}>
               <Card
                 className="group hover-lift overflow-hidden rounded-[12px] border border-[#efdcc4] bg-[#fffaf2] shadow-[0_4px_16px_rgba(105,77,32,0.08)]"
@@ -141,7 +142,7 @@ export default function ProgramsPage() {
                 <CardContent className="flex h-full flex-col p-0">
                   <div className="relative h-[184px]">
                     <OptimizedImage
-                      src={programme.image}
+                      src={programme.coverImageUrl}
                       alt={programme.title}
                       fill
                       quality={90}
@@ -151,9 +152,9 @@ export default function ProgramsPage() {
                   <div className="flex flex-1 flex-col px-[18px] pb-[16px] pt-[14px]">
                     <span
                       className={`mb-2 inline-flex self-start rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider ${
-                        programme.tag === "Ongoing"
+                        programme.tag === "ongoing"
                           ? "bg-green-100 text-green-700"
-                          : programme.tag === "Upcoming"
+                          : programme.tag === "upcoming"
                             ? "bg-amber-100 text-amber-700"
                             : "bg-gray-100 text-gray-600"
                       }`}
@@ -163,7 +164,7 @@ export default function ProgramsPage() {
                     <h3 className="mb-[6px] text-[16px] font-bold leading-none text-[#17191f]">
                       {programme.title}
                     </h3>
-                    <p className="line-clamp-2 text-[12px] leading-[1.5] text-[#17191f]/70">
+                    <p className="line-clamp-2 whitespace-pre-line text-[12px] leading-[1.5] text-[#17191f]/70">
                       {programme.description}
                     </p>
                     <div className="mt-auto flex gap-4 pt-3 text-[11px] text-muted-foreground">

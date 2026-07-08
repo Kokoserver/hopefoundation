@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -91,13 +92,21 @@ export function TestimonialsSection() {
                         ))}
                       </div>
                       <div className="mt-[28px] flex flex-col items-center gap-4 sm:flex-row sm:flex-wrap sm:gap-[26px] md:items-start">
-                        <Button className="h-[36px] rounded-full bg-gold px-[18px] text-[11px] font-bold text-white hover:bg-gold/90">
-                          Watch Full Story
-                          <ArrowUpRight className="ml-1.5 h-3 w-3" />
+                        <Button
+                          asChild
+                          className="h-[36px] rounded-full bg-gold px-[18px] text-[11px] font-bold !text-white hover:bg-gold/90"
+                        >
+                          <Link href="/stories">
+                            Watch Full Story
+                            <ArrowUpRight className="ml-1.5 h-3 w-3" />
+                          </Link>
                         </Button>
-                        <button className="text-[11px] font-bold text-gold transition hover:text-gold/80">
+                        <Link
+                          href="/stories"
+                          className="text-[11px] font-bold text-gold transition hover:text-gold/80"
+                        >
                           Read More Stories
-                        </button>
+                        </Link>
                       </div>
                     </div>
                   </CardContent>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { OptimizedImage } from "@/components/common/optimized-image";
@@ -60,8 +61,11 @@ export function WhatWeDoSection() {
           <h2 className="text-[38px] font-bold leading-none tracking-normal text-[#17191f] sm:text-[64px]">
             What We Do<span className="text-primary">.</span>
           </h2>
-          <Button className="hidden h-[52px] rounded-full bg-gold px-[30px] text-[16px] font-bold text-white hover:bg-gold/90 sm:inline-flex">
-            Our Work
+          <Button
+            asChild
+            className="hidden h-[52px] rounded-full bg-gold px-[30px] text-[16px] font-bold !text-white hover:bg-gold/90 sm:inline-flex"
+          >
+            <Link href="/projects">Our Work</Link>
           </Button>
         </div>
 
@@ -74,9 +78,11 @@ export function WhatWeDoSection() {
                 className="flex gap-3 pr-3 md:gap-1 md:pr-1"
               >
                 {galleryImages.map((image) => (
-                  <div
+                  <Link
                     key={image.src}
+                    href="/gallery"
                     className="group relative h-[210px] w-[280px] shrink-0 overflow-hidden rounded-[16px] sm:w-[340px] md:h-[300px] md:w-[430px]"
+                    aria-label="View gallery"
                   >
                     <OptimizedImage
                       src={image.src}
@@ -86,7 +92,7 @@ export function WhatWeDoSection() {
                       sizes="(min-width: 768px) 430px, 340px"
                       className="image-soft-zoom object-cover object-center"
                     />
-                  </div>
+                  </Link>
                 ))}
               </div>
             ))}
@@ -101,14 +107,16 @@ export function WhatWeDoSection() {
               key={index}
               className="hover-lift min-h-[162px] rounded-[20px] border-0 bg-gold shadow-none"
             >
-              <CardContent className="p-6 sm:p-[30px]">
-                <h3 className="mb-4 text-[21px] font-bold leading-none text-white sm:mb-[20px] sm:text-[24px]">
-                  {program.title}
-                </h3>
-                <p className="text-[15px] leading-[1.45] text-white sm:text-[18px]">
-                  {program.description}
-                </p>
-              </CardContent>
+              <Link href="/programs" className="block h-full">
+                <CardContent className="p-6 sm:p-[30px]">
+                  <h3 className="mb-4 text-[21px] font-bold leading-none text-white sm:mb-[20px] sm:text-[24px]">
+                    {program.title}
+                  </h3>
+                  <p className="text-[15px] leading-[1.45] text-white sm:text-[18px]">
+                    {program.description}
+                  </p>
+                </CardContent>
+              </Link>
             </Card>
           ))}
         </div>

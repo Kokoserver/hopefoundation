@@ -1,13 +1,11 @@
-"use client";
-
-import { useState, type FormEvent } from "react";
-import { Mail, Phone, MapPin, Send, CheckCircle2 } from "lucide-react";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { OptimizedImage } from "@/components/common/optimized-image";
 import { publicPages } from "@/lib/public-pages";
+import { submitContactMessageAction } from "./actions";
 
 const contactCardIcons: Record<string, React.ReactNode> = {
   Email: <Mail className="mb-5 h-6 w-6 text-primary" />,
@@ -17,12 +15,6 @@ const contactCardIcons: Record<string, React.ReactNode> = {
 
 export default function ContactPage() {
   const page = publicPages.contact;
-  const [submitted, setSubmitted] = useState(false);
-
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setSubmitted(true);
-  }
 
   return (
     <div className="bg-background">
@@ -96,23 +88,10 @@ export default function ContactPage() {
             </div>
 
             <div className="rounded-[22px] border border-[#eadfcd] bg-white p-6 shadow-[0_10px_30px_rgba(105,77,32,0.06)] sm:p-8">
-              {submitted ? (
-                <div className="flex flex-col items-center justify-center py-12 text-center">
-                  <CheckCircle2 className="mb-4 h-16 w-16 text-primary" />
-                  <h3 className="mb-2 text-[22px] font-bold text-[#17191f]">
-                    Message sent successfully!
-                  </h3>
-                  <p className="max-w-sm text-[14px] leading-[1.65] text-[#4f4a43]">
-                    Thank you for reaching out. Our team will get back to you
-                    within 48 hours.
-                  </p>
-                </div>
-              ) : (
-                <>
-                  <h3 className="mb-6 text-[20px] font-bold text-[#17191f]">
-                    Send us a message
-                  </h3>
-                  <form onSubmit={handleSubmit} className="space-y-5">
+              <h3 className="mb-6 text-[20px] font-bold text-[#17191f]">
+                Send us a message
+              </h3>
+              <form action={submitContactMessageAction} className="space-y-5">
                     <div className="grid gap-5 sm:grid-cols-2">
                       <div className="space-y-2">
                         <label
@@ -123,6 +102,7 @@ export default function ContactPage() {
                         </label>
                         <Input
                           id="name"
+                          name="fullName"
                           placeholder="Your name"
                           required
                           className="rounded-xl border-[#eadfcd]"
@@ -137,6 +117,7 @@ export default function ContactPage() {
                         </label>
                         <Input
                           id="email"
+                          name="email"
                           type="email"
                           placeholder="you@example.com"
                           required
@@ -153,6 +134,7 @@ export default function ContactPage() {
                       </label>
                       <Input
                         id="subject"
+                        name="subject"
                         placeholder="How can we help you?"
                         required
                         className="rounded-xl border-[#eadfcd]"
@@ -167,6 +149,7 @@ export default function ContactPage() {
                       </label>
                       <Textarea
                         id="message"
+                        name="message"
                         placeholder="Tell us more about your inquiry..."
                         required
                         className="rounded-xl border-[#eadfcd]"
@@ -179,9 +162,7 @@ export default function ContactPage() {
                       Send Message
                       <Send className="ml-2 h-4 w-4" />
                     </Button>
-                  </form>
-                </>
-              )}
+              </form>
             </div>
           </div>
         </div>

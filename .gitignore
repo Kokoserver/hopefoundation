@@ -20,6 +20,14 @@
 # production
 /build
 
+# local SQLite data
+/data/*.db
+/data/*.db-*
+/data/*.sqlite
+/data/*.sqlite-*
+!/data/.gitkeep
+!/data/hopefoundation.db
+
 # misc
 .DS_Store
 *.pem

@@ -3,28 +3,9 @@
 import { useEffect, useState } from "react";
 import { OptimizedImage } from "@/components/common/optimized-image";
 
-const slides = [
-  {
-    src: "/images/hero/hero-main.png",
-    alt: "Adult teaching child — Achebe Hope Foundation",
-  },
-  {
-    src: "/images/07d4e4d51d8482bb57eaa668e61381bad9aadb64.jpg",
-    alt: "Children celebrating together",
-  },
-  {
-    src: "/images/c49f4fcac50c2b6acba8314d8377904627f83cac.jpg",
-    alt: "Community gathering",
-  },
-  {
-    src: "/images/a3ecc4c3dc7dd5d41521f02dad48e05a77067ce5.jpg",
-    alt: "Children in the community supported by Achebe Hope Foundation",
-  },
-];
-
 const SLIDE_INTERVAL_MS = 8000;
 
-export function HeroSlideshow() {
+export function HeroSlideshow({ slides }: { slides: { src: string; alt: string }[] }) {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
@@ -36,7 +17,7 @@ export function HeroSlideshow() {
       SLIDE_INTERVAL_MS,
     );
     return () => clearInterval(id);
-  }, []);
+  }, [slides.length]);
 
   return (
     <>

@@ -70,7 +70,7 @@ export default async function StoryPage({ params }: { params: Promise<{ slug: st
             {story.content.split("\n\n").map((paragraph, i) => (
               <p
                 key={i}
-                className="mb-5 text-[15px] leading-[1.75] text-[#4f4a43] sm:text-[16px]"
+                className="mb-5 whitespace-pre-line text-[15px] leading-[1.75] text-[#4f4a43] sm:text-[16px]"
               >
                 {paragraph}
               </p>

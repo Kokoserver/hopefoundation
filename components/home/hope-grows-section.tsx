@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { OptimizedImage } from "@/components/common/optimized-image";
 
@@ -31,8 +32,11 @@ export function HopeGrowsSection() {
             opportunities that allow them to thrive.
           </p>
         </div>
-        <Button className="mt-[23px] h-[48px] rounded-full bg-white px-[24px] text-[14px] font-semibold text-[#b5792b] hover:bg-white/90">
-          Read Our Story
+        <Button
+          asChild
+          className="mt-[23px] h-[48px] rounded-full bg-white px-[24px] text-[14px] font-semibold !text-[#b5792b] hover:bg-white/90"
+        >
+          <Link href="/about">Read Our Story</Link>
         </Button>
       </div>
 
@@ -62,8 +66,11 @@ export function HopeGrowsSection() {
             individuals possess extraordinary potential but lack access to the
             opportunities that allow them to thrive.
           </p>
-          <Button className="h-12 rounded-full bg-white px-6 text-[14px] font-semibold text-[#b5792b] hover:bg-white/90">
-            Read Our Story
+          <Button
+            asChild
+            className="h-12 rounded-full bg-white px-6 text-[14px] font-semibold !text-[#b5792b] hover:bg-white/90"
+          >
+            <Link href="/about">Read Our Story</Link>
           </Button>
         </div>
         <div className="relative mx-auto mt-10 h-[300px] max-w-md overflow-hidden rounded-3xl sm:h-90">

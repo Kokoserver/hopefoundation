@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getStoryById } from "@/db/queries";
+import { getGalleryImages, getStoryById } from "@/db/queries";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { ArrowLeft } from "lucide-react";
 import { updateStoryAction } from "../actions";
+import { MediaUploadField } from "@/components/dashboard/media-upload-field";
+import { isMediaUploadEnabled } from "@/lib/media";
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -14,6 +16,8 @@ export default async function EditStoryPage({ params }: Props) {
   const { id } = await params;
   const story = await getStoryById(id);
   if (!story) notFound();
+  const mediaUploadEnabled = isMediaUploadEnabled();
+  const galleryImages = await getGalleryImages();
 
   return (
     <div>
@@ -76,7 +80,13 @@ export default async function EditStoryPage({ params }: Props) {
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="coverImageUrl">Cover Image URL</Label>
-              <Input id="coverImageUrl" name="coverImageUrl" defaultValue={story.coverImageUrl} />
+              <MediaUploadField
+                id="coverImageUrl"
+                name="coverImageUrl"
+                defaultValue={story.coverImageUrl}
+                enabled={mediaUploadEnabled}
+                galleryImages={galleryImages}
+              />
             </div>
             <div className="flex items-end gap-4">
               <div className="flex items-center gap-2">
