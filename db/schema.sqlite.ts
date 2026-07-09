@@ -99,6 +99,12 @@ export const contactMessages = sqliteTable("contact_messages", {
   createdAt: createdAt(),
 });
 
+export const newsletterSubscriptions = sqliteTable("newsletter_subscriptions", {
+  id: id(),
+  email: text("email").notNull().unique(),
+  createdAt: createdAt(),
+});
+
 export const programs = sqliteTable("programs", {
   id: id(),
   title: text("title").notNull(),

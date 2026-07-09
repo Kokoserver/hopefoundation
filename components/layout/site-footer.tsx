@@ -3,8 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { footerLinks, contactInfo, socialLinks } from "@/lib/site-config";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { NewsletterForm } from "@/components/common/newsletter-form";
 import { Separator } from "@/components/ui/separator";
 import * as Icons from "lucide-react";
 
@@ -18,16 +17,7 @@ export function SiteFooter() {
           <h3 className="max-w-sm text-[22px] font-semibold leading-tight text-white sm:text-2xl">
             Subscribe to our mailing list to get update
           </h3>
-          <div className="flex w-full flex-col gap-2 sm:w-[320px]">
-            <Input
-              type="email"
-              placeholder=""
-              className="h-8 rounded-full border-0 bg-white"
-            />
-            <Button className="h-9 rounded-full bg-gold px-6 text-[13px] font-semibold text-white hover:bg-gold/90">
-              Subscribe
-            </Button>
-          </div>
+          <NewsletterForm className="w-full sm:w-[320px]" />
         </div>
 
         <div className="grid gap-8 py-10 sm:grid-cols-2 sm:gap-10 lg:grid-cols-[1.25fr_0.8fr_0.8fr_1fr_1fr]">
