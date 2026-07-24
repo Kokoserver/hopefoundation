@@ -33,17 +33,18 @@ function layoutFor(eyebrow: string, title: string): PublicPageData["layout"] {
   const lower = title.toLowerCase();
   if (lower === "downloads") return "downloads";
   if (lower === "videos") return "videos";
-  if (eyebrow === "Legal") return "text";
+  if (eyebrow === "Legal") return "manifesto";
+  if (eyebrow === "Who We Are") return "manifesto";
+  if (eyebrow === "AADA" || eyebrow === "What We Do") return "approach";
   if (eyebrow === "Support Our Work" || eyebrow === "Get Involved") {
-    return "cards";
+    return "approach";
   }
-  if (eyebrow === "AADA") return "split";
-  if (eyebrow === "Who We Are") return "split";
+  if (eyebrow === "Media Centre") return "news";
   if (lower.includes("reports") || lower.includes("news") || lower.includes("blog")) {
-    return "article";
+    return "news";
   }
   if (eyebrow === "Media Centre" || eyebrow === "Our Work & Impact") {
-    return "article";
+    return "stories";
   }
   return "split";
 }
@@ -78,6 +79,26 @@ function imageFor(eyebrow: string, title: string) {
     return images.leadership;
   }
   return defaultImage;
+}
+
+function videosFor(
+  eyebrow: string,
+  title: string,
+  thumbnail: string
+): PublicPageData["videos"] {
+  if (eyebrow !== "What We Do") return undefined;
+
+  return [
+    {
+      title: `${title} Video`,
+      description:
+        "Temporary programme video placeholder for review. This space is reserved for a formal programme video that can explain objectives, target beneficiaries, implementation approach, safeguarding measures, expected outcomes, and accountability standards for Nigerian government review, approval, or further guidance where applicable.",
+      category: eyebrow,
+      duration: "Placeholder",
+      thumbnail,
+      href: "https://www.youtube.com/watch?v=ysz5S6PUM-U",
+    },
+  ];
 }
 
 function profileFor(title: string) {
@@ -539,11 +560,13 @@ function makePage({
   downloads?: PublicPageData["downloads"];
   videos?: PublicPageData["videos"];
 }): PublicPageData {
+  const pageImage = image ?? imageFor(eyebrow, title);
+
   return {
     eyebrow,
     title,
     description,
-    image: image ?? imageFor(eyebrow, title),
+    image: pageImage,
     imageAlt: `${title} at Achebe Hope Foundation`,
     layout: layoutFor(eyebrow, title),
     theme: themeFor(eyebrow),
@@ -556,7 +579,7 @@ function makePage({
     ctaLabel,
     ctaHref,
     downloads,
-    videos,
+    videos: videos ?? videosFor(eyebrow, title, pageImage),
   };
 }
 

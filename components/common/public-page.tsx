@@ -20,7 +20,17 @@ export type PublicPageData = {
   description: string;
   image: string;
   imageAlt: string;
-  layout?: "article" | "split" | "cards" | "text" | "downloads" | "videos";
+  layout?:
+    | "article"
+    | "split"
+    | "cards"
+    | "text"
+    | "downloads"
+    | "videos"
+    | "manifesto"
+    | "approach"
+    | "stories"
+    | "news";
   theme?: "default" | "aada" | "support" | "media" | "legal" | "impact";
   overviewKicker: string;
   overviewTitle: string;

@@ -575,6 +575,8 @@ export async function getSubmenuPages(): Promise<SubmenuPagesContent> {
         {
           ...defaultPage,
           ...savedPage,
+          layout: defaultPage.layout,
+          theme: defaultPage.theme,
           sections:
             savedPage?.sections && savedPage.sections.length > 0
               ? savedPage.sections

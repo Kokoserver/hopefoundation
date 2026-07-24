@@ -316,6 +316,67 @@ export default async function PublicDataPage() {
                             </div>
                           </div>
 
+                          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+                            <h3 className="mb-3 text-sm font-semibold text-[#17191f]">
+                              Page video
+                            </h3>
+                            <div className="grid gap-4 lg:grid-cols-2">
+                              <div className="space-y-2">
+                                <Label htmlFor={`submenuVideoTitle_${pageIndex}`}>
+                                  Video title
+                                </Label>
+                                <Input
+                                  id={`submenuVideoTitle_${pageIndex}`}
+                                  name={`submenuVideoTitle_${pageIndex}`}
+                                  defaultValue={page.videos?.[0]?.title}
+                                  placeholder={`${page.title} Video`}
+                                />
+                              </div>
+                              <div className="space-y-2">
+                                <Label htmlFor={`submenuVideoHref_${pageIndex}`}>
+                                  Video URL
+                                </Label>
+                                <Input
+                                  id={`submenuVideoHref_${pageIndex}`}
+                                  name={`submenuVideoHref_${pageIndex}`}
+                                  defaultValue={page.videos?.[0]?.href}
+                                  placeholder="YouTube, Vimeo, or MP4 URL"
+                                />
+                              </div>
+                            </div>
+                            <div className="mt-4 grid gap-4 lg:grid-cols-2">
+                              <div className="space-y-2">
+                                <Label
+                                  htmlFor={`submenuVideoDescription_${pageIndex}`}
+                                >
+                                  Video description
+                                </Label>
+                                <Textarea
+                                  id={`submenuVideoDescription_${pageIndex}`}
+                                  name={`submenuVideoDescription_${pageIndex}`}
+                                  defaultValue={page.videos?.[0]?.description}
+                                  rows={3}
+                                  placeholder="Short summary shown beside or below the video."
+                                />
+                              </div>
+                              <div className="space-y-2">
+                                <Label
+                                  htmlFor={`submenuVideoThumbnail_${pageIndex}`}
+                                >
+                                  Video thumbnail
+                                </Label>
+                                <MediaUploadField
+                                  id={`submenuVideoThumbnail_${pageIndex}`}
+                                  name={`submenuVideoThumbnail_${pageIndex}`}
+                                  defaultValue={page.videos?.[0]?.thumbnail}
+                                  enabled={uploadEnabled}
+                                  galleryImages={galleryImages}
+                                  placeholder="Optional thumbnail image"
+                                />
+                              </div>
+                            </div>
+                          </div>
+
                           <div className="grid gap-4 lg:grid-cols-2">
                             <div className="space-y-2">
                               <Label

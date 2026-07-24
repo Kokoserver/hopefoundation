@@ -172,7 +172,7 @@ export const footerLinks = [
       { label: "Annual Reports", href: "/annual-reports" },
       { label: "Publications", href: "/publications" },
       { label: "Policies", href: "/privacy" },
-      { label: "FAQs", href: "/contact" },
+      { label: "FAQs", href: "/faq" },
       { label: "Media Centre", href: "/stories" },
       { label: "News", href: "/news" },
       { label: "Gallery", href: "/gallery" },

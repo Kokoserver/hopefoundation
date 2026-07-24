@@ -150,6 +150,13 @@ export async function updateSubmenuPagesAction(formData: FormData) {
 
     const sectionCount = count(formData, `submenuSectionCount_${pageIndex}`);
     const cardCount = count(formData, `submenuCardCount_${pageIndex}`);
+    const videoTitle = value(formData, `submenuVideoTitle_${pageIndex}`);
+    const videoDescription = value(
+      formData,
+      `submenuVideoDescription_${pageIndex}`
+    );
+    const videoHref = value(formData, `submenuVideoHref_${pageIndex}`);
+    const videoThumbnail = value(formData, `submenuVideoThumbnail_${pageIndex}`);
 
     nextPages[slug] = {
       ...currentPage,
@@ -181,6 +188,20 @@ export async function updateSubmenuPagesAction(formData: FormData) {
           `submenuCardDescription_${pageIndex}_${cardIndex}`
         ),
       })).filter((card) => card.title || card.description),
+      videos: videoHref
+        ? [
+            {
+              title: videoTitle || `${currentPage.title} Video`,
+              description:
+                videoDescription ||
+                `Watch this video from Achebe Hope Foundation's ${currentPage.title} work.`,
+              category: currentPage.eyebrow,
+              duration: "Video",
+              thumbnail: videoThumbnail || currentPage.image,
+              href: videoHref,
+            },
+          ]
+        : [],
     };
   }
 

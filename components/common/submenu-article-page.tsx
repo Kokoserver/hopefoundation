@@ -1,21 +1,79 @@
 import Link from "next/link";
 import {
   ArrowRight,
-  CalendarDays,
-  CheckCircle2,
   Download,
   FileText,
   PlayCircle,
 } from "lucide-react";
 import type { PublicPageData } from "@/components/common/public-page";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { OptimizedImage } from "@/components/common/optimized-image";
 
 type RelatedLink = {
   title: string;
   href: string;
   eyebrow: string;
+};
+
+const submenuTileImages = [
+  "/images/new/de27638f019a31c8b293f7ccc96dce4e.jpg.jpeg",
+  "/images/new/c07c29641a2d90d19da14525b548a863.jpg.jpeg",
+  "/images/new/18d3102e58527d82295a9d108a101405.jpg.jpeg",
+  "/images/new/chief.a.u.achebe_20260722_p_3946737021547120023_1_3946737021547120023.webp",
+  "/images/new/cd7684054ec5036b88f97615ab12d5a2.jpg.jpeg",
+  "/images/new/8c7e6f87be07cbf3341a2cdd6184c25d.jpg.jpeg",
+  "/images/new/19092f3ac4376805a624bbdad23eb895.jpg.jpeg",
+  "/images/new/baf129cb71ea45fab3ff3b664f9f42d5.jpg.jpeg",
+];
+
+const submenuCategoryThemes: Record<
+  string,
+  {
+    tileOffset: number;
+    variant: "split" | "editorial" | "cards" | "timeline" | "compact";
+  }
+> = {
+  "Who We Are": {
+    tileOffset: 0,
+    variant: "editorial",
+  },
+  "What We Do": {
+    tileOffset: 2,
+    variant: "split",
+  },
+  AADA: {
+    tileOffset: 4,
+    variant: "cards",
+  },
+  "Our Work & Impact": {
+    tileOffset: 1,
+    variant: "timeline",
+  },
+  "Get Involved": {
+    tileOffset: 3,
+    variant: "cards",
+  },
+  "Media Centre": {
+    tileOffset: 5,
+    variant: "compact",
+  },
+  Legal: {
+    tileOffset: 6,
+    variant: "editorial",
+  },
+};
+
+const defaultSubmenuCategoryTheme = submenuCategoryThemes["Who We Are"];
+const submenuBrand = {
+  accent: "bg-[#c77a05]",
+  accentText: "text-[#c77a05]",
+  dark: "text-[#3a1600]",
+  darkBg: "bg-[#3a1600]",
+  soft: "bg-[#fff8ec]",
+  border: "border-[#ead7b8]",
+  muted: "text-[#6d5542]",
+  body: "text-[#4a3425]",
+  relatedHover: "group-hover:bg-[#3a1600]/80",
 };
 
 export function SubmenuArticlePage({
@@ -25,18 +83,6 @@ export function SubmenuArticlePage({
   page: PublicPageData;
   relatedLinks: RelatedLink[];
 }) {
-  if (page.layout === "text") {
-    return <TextOnlyTemplate page={page} relatedLinks={relatedLinks} />;
-  }
-
-  if (page.layout === "split") {
-    return <SplitTemplate page={page} relatedLinks={relatedLinks} />;
-  }
-
-  if (page.layout === "cards") {
-    return <CardsTemplate page={page} relatedLinks={relatedLinks} />;
-  }
-
   if (page.layout === "downloads") {
     return <DownloadsTemplate page={page} relatedLinks={relatedLinks} />;
   }
@@ -45,171 +91,442 @@ export function SubmenuArticlePage({
     return <VideosTemplate page={page} relatedLinks={relatedLinks} />;
   }
 
-  const [leadSection, ...sections] = page.sections;
-  const publishedDate = "July 24, 2026";
+  return <ClassicSubmenuTemplate page={page} relatedLinks={relatedLinks} />;
+}
+
+function ClassicSubmenuTemplate({
+  page,
+  relatedLinks,
+}: {
+  page: PublicPageData;
+  relatedLinks: RelatedLink[];
+}) {
+  const overviewParagraphs = [
+    page.description,
+    page.overviewTitle,
+    ...page.sections.map((section) => section.body),
+  ].filter(Boolean);
+  const principles = page.cards.length > 0 ? page.cards : page.sections;
+  const theme = submenuCategoryThemes[page.eyebrow] ?? defaultSubmenuCategoryTheme;
+  const featuredVideo = page.videos?.[0];
 
   return (
-    <article className="bg-[#f7f3ec]">
-      <section className="border-b border-[#eadfcd] bg-white pt-28 sm:pt-32">
-        <div className="mx-auto max-w-[980px] px-6 pb-8 sm:px-10">
-          <Link
-            href="/"
-            className="inline-flex rounded-sm bg-primary px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-white"
+    <article className="bg-white">
+      <section className={`relative h-[180px] overflow-hidden ${submenuBrand.darkBg} text-white sm:h-[240px] lg:h-[300px]`}>
+        <OptimizedImage
+          src={page.image}
+          alt={page.imageAlt}
+          fill
+          priority
+          quality={90}
+          className="object-cover object-center"
+          showPlaceholder={false}
+        />
+      </section>
+      <div className={`h-1.5 ${submenuBrand.accent}`} />
+
+      <SubmenuBodyVariant
+        page={page}
+        paragraphs={overviewParagraphs}
+        principles={principles}
+        theme={theme}
+      />
+
+      {featuredVideo ? (
+        <SubmenuVideoSection video={featuredVideo} />
+      ) : null}
+
+      <RelatedLinksStrip links={relatedLinks} />
+
+      {page.ctaLabel && page.ctaHref ? (
+        <section className="mx-auto max-w-[880px] px-6 pb-12 text-center sm:px-10">
+          <Button
+            asChild
+            className="h-11 rounded-full bg-gold px-7 text-[12px] font-bold text-white hover:bg-gold/90"
           >
-            Back Home
-          </Link>
-          <p className="mt-6 text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
+            <Link href={page.ctaHref}>
+              {page.ctaLabel}
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
+        </section>
+      ) : null}
+    </article>
+  );
+}
+
+type SubmenuPrinciple = PublicPageData["cards"][number] | PublicPageData["sections"][number];
+
+function SubmenuBodyVariant({
+  page,
+  paragraphs,
+  principles,
+  theme,
+}: {
+  page: PublicPageData;
+  paragraphs: string[];
+  principles: SubmenuPrinciple[];
+  theme: typeof defaultSubmenuCategoryTheme;
+}) {
+  if (theme.variant === "editorial") {
+    return (
+      <>
+        <section className="mx-auto grid max-w-[980px] gap-8 px-6 py-10 sm:px-10 lg:grid-cols-[260px_1fr]">
+          <div>
+            <p className={`text-[11px] font-bold uppercase tracking-[0.24em] ${submenuBrand.accentText}`}>
+              {page.eyebrow}
+            </p>
+            <h2 className={`mt-3 text-[30px] font-bold leading-tight ${submenuBrand.dark}`}>
+              {page.title}
+            </h2>
+          </div>
+          <div className={`space-y-5 border-l-4 pl-6 text-[14px] leading-[1.9] ${submenuBrand.body} border-[#c77a05]`}>
+            {paragraphs.slice(0, 4).map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+        </section>
+        <SubmenuPrinciplesGrid principles={principles} theme={theme} title={page.cardsTitle} description={page.cardsDescription} />
+      </>
+    );
+  }
+
+  if (theme.variant === "cards") {
+    return (
+      <>
+        <section className="mx-auto max-w-[980px] px-6 py-10 text-center sm:px-10">
+          <p className={`text-[11px] font-bold uppercase tracking-[0.24em] ${submenuBrand.accentText}`}>
             {page.eyebrow}
           </p>
-          <h1 className="mt-3 max-w-4xl text-[34px] font-bold leading-tight text-[#17191f] sm:text-[46px]">
-            {page.title}
-          </h1>
-          <div className="mt-4 flex flex-wrap items-center gap-3 text-[12px] text-muted-foreground">
-            <span>Achebe Hope Foundation</span>
-            <span className="h-1 w-1 rounded-full bg-muted-foreground/50" />
-            <span className="inline-flex items-center gap-1">
-              <CalendarDays className="h-3.5 w-3.5" />
-              Updated {publishedDate}
-            </span>
+          <h2 className={`mx-auto mt-3 max-w-2xl text-[28px] font-bold leading-tight ${submenuBrand.dark}`}>
+            {page.overviewTitle}
+          </h2>
+          <p className={`mx-auto mt-5 max-w-3xl text-[14px] leading-[1.85] ${submenuBrand.body}`}>
+            {page.description}
+          </p>
+        </section>
+        <section className={`mx-auto max-w-[980px] px-6 pb-10 sm:px-10`}>
+          <div className="grid gap-4 md:grid-cols-3">
+            {principles.map((item, index) => (
+              <article
+                key={item.title}
+                className={`rounded-[22px] border bg-white p-6 shadow-[0_10px_30px_rgba(105,77,32,0.06)] ${submenuBrand.border}`}
+              >
+                <span className={`text-[34px] font-bold ${submenuBrand.accentText}`}>
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3 className={`mt-4 text-[17px] font-bold uppercase leading-tight ${submenuBrand.dark}`}>
+                  {item.title}
+                </h3>
+                <p className={`mt-3 text-[13px] leading-[1.75] ${submenuBrand.muted}`}>
+                  {getPrincipleText(item)}
+                </p>
+              </article>
+            ))}
           </div>
-        </div>
-      </section>
+        </section>
+      </>
+    );
+  }
 
-      <div className="mx-auto grid max-w-[1180px] gap-8 px-6 py-8 sm:px-10 lg:grid-cols-[minmax(0,760px)_300px] lg:px-12">
-        <div>
-          <div className="relative mb-8 h-[260px] overflow-hidden rounded-[6px] bg-footer sm:h-[360px]">
-            <OptimizedImage
-              src={page.image}
-              alt={page.imageAlt}
-              fill
-              priority
-              quality={90}
-              className="object-cover object-center"
-              showPlaceholder={false}
-            />
+  if (theme.variant === "timeline") {
+    return (
+      <>
+        <section className={`mx-auto max-w-[920px] px-6 py-10 sm:px-10`}>
+          <p className={`text-center text-[11px] font-bold uppercase tracking-[0.24em] ${submenuBrand.accentText}`}>
+            {page.eyebrow}
+          </p>
+          <h2 className={`mt-3 text-center text-[26px] font-bold leading-tight ${submenuBrand.dark}`}>
+            {page.overviewTitle}
+          </h2>
+          <div className={`mx-auto mt-6 max-w-3xl space-y-5 text-center text-[14px] leading-[1.85] ${submenuBrand.body}`}>
+            {paragraphs.slice(0, 2).map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
           </div>
+        </section>
+        <section className={`mx-auto max-w-[880px] px-6 pb-10 sm:px-10`}>
+          <div className="space-y-5">
+            {principles.map((item, index) => (
+              <article
+                key={item.title}
+                className="grid gap-4 border-l-2 border-[#c77a05] pl-5 sm:grid-cols-[90px_1fr]"
+              >
+                <span className={`text-[28px] font-bold leading-none ${submenuBrand.accentText}`}>
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <div>
+                  <h3 className={`text-[18px] font-bold uppercase ${submenuBrand.dark}`}>
+                    {item.title}
+                  </h3>
+                  <p className={`mt-2 text-[13px] leading-[1.8] ${submenuBrand.muted}`}>
+                    {getPrincipleText(item)}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      </>
+    );
+  }
 
-          <div className="bg-white px-6 py-8 shadow-[0_4px_20px_rgba(105,77,32,0.08)] sm:px-9 sm:py-10">
-            <p className="first-letter:float-left first-letter:mr-3 first-letter:text-[56px] first-letter:font-bold first-letter:leading-[0.9] first-letter:text-primary text-[15px] leading-[1.85] text-[#3f3933]">
+  if (theme.variant === "compact") {
+    return (
+      <>
+        <section className={`mx-auto max-w-[880px] px-6 py-8 sm:px-10`}>
+          <div className={`border-b pb-7 ${submenuBrand.border}`}>
+            <p className={`text-[11px] font-bold uppercase tracking-[0.24em] ${submenuBrand.accentText}`}>
+              {page.eyebrow}
+            </p>
+            <h2 className={`mt-3 text-[26px] font-bold leading-tight ${submenuBrand.dark}`}>
+              {page.title}
+            </h2>
+            <p className={`mt-4 text-[14px] leading-[1.85] ${submenuBrand.body}`}>
               {page.description}
             </p>
-
-            <div className="my-8 border-y border-[#eadfcd] py-5">
-              <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-primary">
-                In This Page
-              </p>
-              <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                {[leadSection, ...sections].filter(Boolean).map((section) => (
-                  <span
-                    key={section.title}
-                    className="text-[13px] font-semibold text-[#17191f]"
-                  >
-                    {section.title}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {leadSection ? (
-              <section className="mb-8">
-                <h2 className="mb-3 text-[24px] font-bold leading-tight text-[#17191f]">
-                  {leadSection.title}
-                </h2>
-                <p className="text-[15px] leading-[1.85] text-[#3f3933]">
-                  {leadSection.body}
+          </div>
+          <div className="mt-7 grid gap-4 sm:grid-cols-2">
+            {principles.map((item) => (
+              <article key={item.title}>
+                <h3 className={`text-[14px] font-bold uppercase ${submenuBrand.dark}`}>
+                  {item.title}
+                </h3>
+                <p className={`mt-2 text-[13px] leading-[1.7] ${submenuBrand.muted}`}>
+                  {getPrincipleText(item)}
                 </p>
-              </section>
-            ) : null}
-
-            {sections.map((section) => (
-              <section key={section.title} className="mb-8">
-                <h2 className="mb-3 text-[24px] font-bold leading-tight text-[#17191f]">
-                  {section.title}
-                </h2>
-                <p className="text-[15px] leading-[1.85] text-[#3f3933]">
-                  {section.body}
-                </p>
-              </section>
+              </article>
             ))}
-
-            <section className="mt-10">
-              <h2 className="mb-4 text-[24px] font-bold leading-tight text-[#17191f]">
-                {page.cardsTitle}
-              </h2>
-              <p className="mb-5 text-[14px] leading-[1.7] text-muted-foreground">
-                {page.cardsDescription}
-              </p>
-              <div className="grid gap-4 sm:grid-cols-3">
-                {page.cards.map((card) => (
-                  <Card
-                    key={card.title}
-                    className="rounded-[8px] border border-[#eadfcd] bg-[#fffaf2] shadow-none"
-                  >
-                    <CardContent className="p-5">
-                      <CheckCircle2 className="mb-3 h-5 w-5 text-primary" />
-                      <h3 className="mb-2 text-[15px] font-bold text-[#17191f]">
-                        {card.title}
-                      </h3>
-                      <p className="text-[12px] leading-[1.65] text-[#4f4a43]">
-                        {card.description}
-                      </p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </section>
-
-            {page.ctaLabel && page.ctaHref ? (
-              <div className="mt-10 border-t border-[#eadfcd] pt-8">
-                <Button
-                  asChild
-                  className="h-11 rounded-full bg-gold px-7 text-[12px] font-bold text-white hover:bg-gold/90"
-                >
-                  <Link href={page.ctaHref}>
-                    {page.ctaLabel}
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </div>
-            ) : null}
           </div>
+        </section>
+      </>
+    );
+  }
+
+  return (
+    <>
+      <section className="mx-auto max-w-[880px] px-6 py-8 sm:px-10 sm:py-10">
+        <p className={`text-center text-[11px] font-bold uppercase tracking-[0.24em] ${submenuBrand.accentText}`}>
+          {page.eyebrow}
+        </p>
+        <h2 className={`mt-3 text-center text-[22px] font-medium uppercase tracking-[-0.01em] ${submenuBrand.accentText}`}>
+          What is {page.title}?
+        </h2>
+        <div className={`mt-6 space-y-5 text-[14px] leading-[1.9] ${submenuBrand.body}`}>
+          {paragraphs.slice(0, 4).map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
         </div>
+      </section>
+      <SubmenuPrinciplesGrid principles={principles} theme={theme} title={page.cardsTitle} description={page.cardsDescription} />
+    </>
+  );
+}
 
-        <aside className="space-y-5 lg:sticky lg:top-24 lg:self-start">
-          <div className="bg-footer p-5 text-white">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold">
-              Section
-            </p>
-            <h2 className="mt-2 text-[22px] font-bold leading-tight">
-              {page.eyebrow}
-            </h2>
-            <p className="mt-3 text-[13px] leading-[1.65] text-white/72">
-              {page.overviewTitle}
-            </p>
-          </div>
+function SubmenuPrinciplesGrid({
+  principles,
+  theme,
+  title,
+  description,
+}: {
+  principles: SubmenuPrinciple[];
+  theme: typeof defaultSubmenuCategoryTheme;
+  title: string;
+  description: string;
+}) {
+  return (
+    <section className={`mx-auto max-w-[880px] border-t px-6 py-8 sm:px-10 sm:py-10 ${submenuBrand.border} ${submenuBrand.soft}`}>
+      <h2 className={`text-center text-[22px] font-medium uppercase tracking-[-0.01em] ${submenuBrand.accentText}`}>
+        {title}
+      </h2>
+      {description ? (
+        <p className={`mx-auto mt-4 max-w-2xl text-center text-[13px] leading-[1.75] ${submenuBrand.muted}`}>
+          {description}
+        </p>
+      ) : null}
 
-          {relatedLinks.length > 0 ? (
-            <div className="bg-white p-5 shadow-[0_4px_20px_rgba(105,77,32,0.08)]">
-              <h2 className="mb-4 text-[18px] font-bold text-[#17191f]">
-                Related Links
-              </h2>
-              <div className="grid gap-2">
-                {relatedLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="group flex items-center justify-between gap-3 border-b border-[#eadfcd] py-3 text-[13px] font-semibold text-[#241E18] transition last:border-b-0 hover:text-primary"
-                  >
-                    {link.title}
-                    <ArrowRight className="h-3.5 w-3.5 shrink-0 transition group-hover:translate-x-0.5" />
-                  </Link>
-                ))}
-              </div>
+      <div className="mt-8 grid gap-x-12 gap-y-9 md:grid-cols-2">
+        {principles.map((item, index) => (
+          <article
+            key={item.title}
+            className="grid grid-cols-[118px_1fr] gap-5 sm:grid-cols-[136px_1fr]"
+          >
+            <div className="relative h-[96px] overflow-hidden bg-[#f4ead8] sm:h-[116px]">
+              <OptimizedImage
+                src={
+                  submenuTileImages[
+                    (index + theme.tileOffset) % submenuTileImages.length
+                  ]
+                }
+                alt=""
+                fill
+                sizes="136px"
+                className="object-cover object-center"
+                showPlaceholder={false}
+              />
             </div>
-          ) : null}
-        </aside>
+            <div>
+              <h3 className={`text-[13px] font-bold uppercase leading-snug ${submenuBrand.dark}`}>
+                {item.title}
+              </h3>
+              <p className={`mt-4 text-[13px] leading-[1.85] ${submenuBrand.muted}`}>
+                {getPrincipleText(item)}
+              </p>
+            </div>
+          </article>
+        ))}
       </div>
-    </article>
+    </section>
+  );
+}
+
+function getPrincipleText(item: SubmenuPrinciple) {
+  return "description" in item ? item.description : item.body;
+}
+
+function SubmenuVideoSection({
+  video,
+}: {
+  video: NonNullable<PublicPageData["videos"]>[number];
+}) {
+  const embedUrl = video.href ? getVideoEmbedUrl(video.href) : null;
+  const directVideoUrl = video.href && isDirectVideoUrl(video.href) ? video.href : null;
+
+  return (
+    <section className="mx-auto max-w-[880px] px-6 py-8 sm:px-10 sm:py-10">
+      <div className={`grid overflow-hidden rounded-[22px] border bg-white shadow-[0_10px_30px_rgba(105,77,32,0.06)] lg:grid-cols-[1.35fr_0.65fr] ${submenuBrand.border}`}>
+        <div className={`relative aspect-video ${submenuBrand.darkBg}`}>
+          {embedUrl ? (
+            <iframe
+              src={embedUrl}
+              title={video.title}
+              className="absolute inset-0 h-full w-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          ) : directVideoUrl ? (
+            <video
+              src={directVideoUrl}
+              poster={video.thumbnail}
+              className="absolute inset-0 h-full w-full object-cover"
+              controls
+            />
+          ) : video.href ? (
+            <Link
+              href={video.href}
+              className="group absolute inset-0 flex items-center justify-center"
+            >
+              <OptimizedImage
+                src={video.thumbnail}
+                alt={video.title}
+                fill
+                sizes="600px"
+                className="object-cover object-center"
+                showPlaceholder={false}
+              />
+              <span className="absolute inset-0 bg-black/35 transition group-hover:bg-black/45" />
+              <span
+                className={`relative flex h-14 w-14 items-center justify-center rounded-full ${submenuBrand.accent} text-white`}
+              >
+                <PlayCircle className="h-7 w-7" />
+              </span>
+            </Link>
+          ) : null}
+        </div>
+        <div className="p-6">
+          <p className={`text-[11px] font-bold uppercase tracking-[0.22em] ${submenuBrand.accentText}`}>
+            Featured Video
+          </p>
+          <h2 className={`mt-3 text-[24px] font-bold leading-tight ${submenuBrand.dark}`}>
+            {video.title}
+          </h2>
+          <p className={`mt-3 text-[14px] leading-[1.75] ${submenuBrand.muted}`}>
+            {video.description}
+          </p>
+          {video.href ? (
+            <Button
+              asChild
+              className={`mt-5 h-10 rounded-full px-5 text-[12px] font-bold text-white ${submenuBrand.accent} hover:bg-[#b66d00]`}
+            >
+              <Link href={video.href}>
+                Watch Video
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          ) : null}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function getVideoEmbedUrl(url: string) {
+  try {
+    const parsedUrl = new URL(url);
+
+    if (parsedUrl.hostname.includes("youtube.com")) {
+      const videoId = parsedUrl.searchParams.get("v");
+      return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
+    }
+
+    if (parsedUrl.hostname === "youtu.be") {
+      const videoId = parsedUrl.pathname.replace("/", "");
+      return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
+    }
+
+    if (parsedUrl.hostname.includes("vimeo.com")) {
+      const videoId = parsedUrl.pathname.split("/").filter(Boolean).at(-1);
+      return videoId ? `https://player.vimeo.com/video/${videoId}` : null;
+    }
+  } catch {
+    return null;
+  }
+
+  return null;
+}
+
+function isDirectVideoUrl(url: string) {
+  try {
+    const parsedUrl = new URL(url, "https://achebehopefoundation.org");
+    return /\.(mp4|webm|ogg)$/i.test(parsedUrl.pathname);
+  } catch {
+    return false;
+  }
+}
+
+function RelatedLinksStrip({ links }: { links: RelatedLink[] }) {
+  if (links.length === 0) return null;
+
+  return (
+    <section className="mx-auto max-w-[900px] px-6 pb-10 sm:px-10">
+      <div className="bg-[#f4ead8]">
+        <h2 className={`py-3 text-center text-[12px] font-medium uppercase tracking-[0.28em] ${submenuBrand.muted}`}>
+          Related Links
+        </h2>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4">
+          {links.slice(0, 4).map((link, index) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="group relative flex h-[78px] items-center justify-center overflow-hidden border-t border-white text-center text-[11px] font-bold uppercase tracking-[0.16em] text-white sm:border-l sm:first:border-l-0"
+            >
+              <OptimizedImage
+                src={submenuTileImages[(index + 2) % submenuTileImages.length]}
+                alt=""
+                fill
+                sizes="225px"
+                className="object-cover object-center transition duration-300 group-hover:scale-105"
+                showPlaceholder={false}
+              />
+              <span
+                className={`absolute inset-0 bg-black/55 transition ${submenuBrand.relatedHover}`}
+              />
+              <span className="relative px-3">{link.title}</span>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -232,282 +549,6 @@ function RelatedLinksBlock({ links }: { links: RelatedLink[] }) {
             <ArrowRight className="h-3.5 w-3.5 shrink-0 transition group-hover:translate-x-0.5" />
           </Link>
         ))}
-      </div>
-    </div>
-  );
-}
-
-function SplitTemplate({
-  page,
-  relatedLinks,
-}: {
-  page: PublicPageData;
-  relatedLinks: RelatedLink[];
-}) {
-  return (
-    <div className="bg-background">
-      <section className="grid min-h-[520px] bg-[#f7e6e2] pt-24 lg:grid-cols-2 lg:pt-0">
-        <div className="flex items-center px-6 py-16 sm:px-10 lg:px-[72px]">
-          <div className="max-w-xl">
-            <p className="text-[12px] font-bold uppercase tracking-[0.22em] text-primary">
-              {page.eyebrow}
-            </p>
-            <h1 className="mt-5 text-[36px] font-bold leading-tight text-[#17191f] sm:text-[52px]">
-              {page.title}
-            </h1>
-            <p className="mt-5 text-[15px] leading-[1.8] text-[#4f4a43]">
-              {page.description}
-            </p>
-          </div>
-        </div>
-        <div className="relative min-h-[360px] lg:min-h-[520px]">
-          <OptimizedImage
-            src={page.image}
-            alt={page.imageAlt}
-            fill
-            priority
-            quality={90}
-            className="object-cover object-center"
-            showPlaceholder={false}
-          />
-        </div>
-      </section>
-
-      <section className="py-14 sm:py-18">
-        <div className="mx-auto max-w-[1080px] px-6 sm:px-10">
-          <div className="max-w-3xl">
-            <p className="text-[15px] leading-[1.9] text-[#3f3933]">
-              {page.overviewTitle}
-            </p>
-            <div className="mt-5 space-y-4">
-              {page.sections.map((section) => (
-                <p
-                  key={section.title}
-                  className="text-[15px] leading-[1.9] text-[#3f3933]"
-                >
-                  <span className="font-bold text-[#17191f]">
-                    {section.title}:
-                  </span>{" "}
-                  {section.body}
-                </p>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white py-14">
-        <div className="mx-auto grid max-w-[1080px] gap-5 px-6 sm:grid-cols-3 sm:px-10">
-          {page.cards.map((card) => (
-            <Card
-              key={card.title}
-              className="rounded-[8px] border border-[#d8dce7] bg-white shadow-[0_10px_30px_rgba(23,25,31,0.06)]"
-            >
-              <CardContent className="p-6">
-                <CheckCircle2 className="mb-4 h-5 w-5 text-primary" />
-                <h3 className="mb-3 text-[16px] font-bold text-[#17191f]">
-                  {card.title}
-                </h3>
-                <p className="text-[13px] leading-[1.7] text-[#4f4a43]">
-                  {card.description}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      <section className="py-12">
-        <div className="mx-auto grid max-w-[1080px] gap-6 px-6 sm:px-10 lg:grid-cols-[1fr_300px]">
-          <div className="rounded-[10px] bg-footer p-8 text-white">
-            <h2 className="text-[26px] font-bold leading-tight">
-              {page.cardsTitle}
-            </h2>
-            <p className="mt-3 text-[14px] leading-[1.7] text-white/72">
-              {page.cardsDescription}
-            </p>
-            {page.ctaLabel && page.ctaHref ? (
-              <Button
-                asChild
-                className="mt-6 h-11 rounded-full bg-gold px-7 text-[12px] font-bold text-white hover:bg-gold/90"
-              >
-                <Link href={page.ctaHref}>{page.ctaLabel}</Link>
-              </Button>
-            ) : null}
-          </div>
-          <RelatedLinksBlock links={relatedLinks} />
-        </div>
-      </section>
-    </div>
-  );
-}
-
-function CardsTemplate({
-  page,
-  relatedLinks,
-}: {
-  page: PublicPageData;
-  relatedLinks: RelatedLink[];
-}) {
-  return (
-    <div className="bg-[#fffaf2]">
-      <section className="relative overflow-hidden bg-footer pt-28 text-white sm:pt-32">
-        <div className="absolute inset-0">
-          <OptimizedImage
-            src={page.image}
-            alt={page.imageAlt}
-            fill
-            priority
-            quality={90}
-            className="object-cover object-center opacity-45"
-            showPlaceholder={false}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/45 to-footer" />
-        </div>
-        <div className="relative mx-auto max-w-[980px] px-6 py-20 text-center sm:px-10">
-          <p className="text-[12px] font-bold uppercase tracking-[0.22em] text-gold">
-            {page.eyebrow}
-          </p>
-          <h1 className="mt-4 text-[38px] font-bold leading-tight sm:text-[56px]">
-            {page.title}
-          </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-[15px] leading-[1.8] text-white/82">
-            {page.description}
-          </p>
-        </div>
-      </section>
-
-      <section className="py-14 sm:py-18">
-        <div className="mx-auto max-w-[1100px] px-6 sm:px-10">
-          <div className="grid gap-5 lg:grid-cols-3">
-            {page.sections.map((section, index) => (
-              <div
-                key={section.title}
-                className={`rounded-[18px] p-7 shadow-[0_12px_34px_rgba(105,77,32,0.08)] ${
-                  index === 0 ? "bg-[#f8e4e1]" : "bg-white"
-                }`}
-              >
-                <span className="text-[34px] font-bold text-primary/25">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <h2 className="mt-5 text-[20px] font-bold text-[#17191f]">
-                  {section.title}
-                </h2>
-                <p className="mt-3 text-[14px] leading-[1.75] text-[#4f4a43]">
-                  {section.body}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 rounded-[24px] bg-white p-7 shadow-[0_12px_34px_rgba(105,77,32,0.08)]">
-            <h2 className="text-[28px] font-bold text-[#17191f]">
-              {page.cardsTitle}
-            </h2>
-            <p className="mt-2 max-w-2xl text-[14px] leading-[1.7] text-muted-foreground">
-              {page.cardsDescription}
-            </p>
-            <div className="mt-6 grid gap-4 sm:grid-cols-3">
-              {page.cards.map((card) => (
-                <div
-                  key={card.title}
-                  className="rounded-[14px] border border-[#eadfcd] bg-[#fffaf2] p-5"
-                >
-                  <h3 className="text-[15px] font-bold text-[#17191f]">
-                    {card.title}
-                  </h3>
-                  <p className="mt-2 text-[12px] leading-[1.65] text-[#4f4a43]">
-                    {card.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_320px]">
-            {page.ctaLabel && page.ctaHref ? (
-              <div className="rounded-[20px] bg-footer p-7 text-white">
-                <h2 className="text-[24px] font-bold">Take action</h2>
-                <p className="mt-2 text-[14px] leading-[1.7] text-white/70">
-                  Use this page to move from interest to practical support.
-                </p>
-                <Button
-                  asChild
-                  className="mt-5 h-11 rounded-full bg-gold px-7 text-[12px] font-bold text-white hover:bg-gold/90"
-                >
-                  <Link href={page.ctaHref}>{page.ctaLabel}</Link>
-                </Button>
-              </div>
-            ) : <div />}
-            <RelatedLinksBlock links={relatedLinks} />
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-}
-
-function TextOnlyTemplate({
-  page,
-  relatedLinks,
-}: {
-  page: PublicPageData;
-  relatedLinks: RelatedLink[];
-}) {
-  return (
-    <div className="bg-[#f7f3ec] pt-28 sm:pt-32">
-      <div className="mx-auto grid max-w-[1120px] gap-8 px-6 py-10 sm:px-10 lg:grid-cols-[minmax(0,740px)_300px]">
-        <main className="bg-white px-6 py-9 shadow-[0_8px_28px_rgba(105,77,32,0.08)] sm:px-10">
-          <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-primary">
-            {page.eyebrow}
-          </p>
-          <h1 className="mt-4 text-[34px] font-bold leading-tight text-[#17191f] sm:text-[48px]">
-            {page.title}
-          </h1>
-          <p className="mt-5 border-b border-[#eadfcd] pb-7 text-[15px] leading-[1.85] text-[#3f3933]">
-            {page.description}
-          </p>
-
-          {page.sections.map((section) => (
-            <section key={section.title} className="border-b border-[#eadfcd] py-7">
-              <h2 className="mb-3 text-[22px] font-bold text-[#17191f]">
-                {section.title}
-              </h2>
-              <p className="text-[15px] leading-[1.85] text-[#3f3933]">
-                {section.body}
-              </p>
-            </section>
-          ))}
-
-          <section className="pt-7">
-            <h2 className="mb-4 text-[22px] font-bold text-[#17191f]">
-              {page.cardsTitle}
-            </h2>
-            <div className="space-y-4">
-              {page.cards.map((card) => (
-                <div key={card.title}>
-                  <h3 className="text-[15px] font-bold text-[#17191f]">
-                    {card.title}
-                  </h3>
-                  <p className="mt-1 text-[14px] leading-[1.75] text-[#4f4a43]">
-                    {card.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </section>
-        </main>
-        <aside className="space-y-5 lg:sticky lg:top-24 lg:self-start">
-          <div className="bg-footer p-5 text-white">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold">
-              Policy Area
-            </p>
-            <p className="mt-3 text-[13px] leading-[1.7] text-white/72">
-              {page.overviewTitle}
-            </p>
-          </div>
-          <RelatedLinksBlock links={relatedLinks} />
-        </aside>
       </div>
     </div>
   );
