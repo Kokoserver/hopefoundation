@@ -2,7 +2,7 @@
 
 **Changing lives, one family at a time**
 
-The official website for Achebe Hope Foundation - a nonprofit organization dedicated to improving lives through strategic programs, community projects, and volunteer engagement. This repository contains the frontend and content management system for the foundation's web presence.
+The official website for Achebe Hope Foundation - a nonprofit organization dedicated to improving lives through strategic programs, community projects, and volunteer engagement. This repository contains the frontend and content management system for the foundation's web presence..
 
 ## About the Project
 

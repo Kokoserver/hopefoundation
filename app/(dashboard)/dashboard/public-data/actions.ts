@@ -2,10 +2,17 @@
 
 import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
-import { updateHomepageContent } from "@/db/queries";
+import {
+  getSubmenuPages,
+  updateHomepageContent,
+  updateSubmenuPagesContent,
+} from "@/db/queries";
 import { requireAdmin } from "@/lib/auth";
 import { cacheTags } from "@/lib/cache-tags";
-import type { HomepageContent } from "@/lib/homepage-content";
+import {
+  defaultHomepageContent,
+  type HomepageContent,
+} from "@/lib/homepage-content";
 import { withToast } from "@/lib/toast";
 
 const value = (formData: FormData, key: string) =>
@@ -32,10 +39,23 @@ export async function updatePublicDataAction(formData: FormData) {
       },
       slides: Array.from(
         { length: count(formData, "heroSlideCount") },
-        (_, index) => ({
-          src: value(formData, `heroSlideSrc_${index}`),
-          alt: value(formData, `heroSlideAlt_${index}`),
-        })
+        (_, index) => {
+          const defaultSlide = defaultHomepageContent.hero.slides[index];
+          return {
+            src: value(formData, `heroSlideSrc_${index}`),
+            alt: value(formData, `heroSlideAlt_${index}`),
+            title: defaultSlide?.title ?? defaultHomepageContent.hero.title,
+            description:
+              defaultSlide?.description ??
+              defaultHomepageContent.hero.description,
+            primaryButton:
+              defaultSlide?.primaryButton ??
+              defaultHomepageContent.hero.primaryButton,
+            secondaryButton:
+              defaultSlide?.secondaryButton ??
+              defaultHomepageContent.hero.secondaryButton,
+          };
+        }
       ).filter((slide) => slide.src),
     },
     impact: {
@@ -52,6 +72,7 @@ export async function updatePublicDataAction(formData: FormData) {
       text: value(formData, "quoteText"),
       attribution: value(formData, "quoteAttribution"),
     },
+    aada: defaultHomepageContent.aada,
     opportunity: {
       title: value(formData, "opportunityTitle"),
       footer: value(formData, "opportunityFooter"),
@@ -112,4 +133,77 @@ export async function updatePublicDataAction(formData: FormData) {
   revalidateTag(cacheTags.homepage, "max");
   revalidatePath("/");
   redirect(withToast("/dashboard/public-data", "Public homepage data updated."));
+}
+
+export async function updateSubmenuPagesAction(formData: FormData) {
+  await requireAdmin();
+
+  const currentPages = await getSubmenuPages();
+  const submenuCount = count(formData, "submenuPageCount");
+  const nextPages = { ...currentPages };
+
+  for (let pageIndex = 0; pageIndex < submenuCount; pageIndex += 1) {
+    const slug = value(formData, `submenuSlug_${pageIndex}`);
+    const currentPage = currentPages[slug];
+
+    if (!slug || !currentPage) continue;
+
+    const sectionCount = count(formData, `submenuSectionCount_${pageIndex}`);
+    const cardCount = count(formData, `submenuCardCount_${pageIndex}`);
+
+    nextPages[slug] = {
+      ...currentPage,
+      eyebrow: value(formData, `submenuEyebrow_${pageIndex}`),
+      title: value(formData, `submenuTitle_${pageIndex}`),
+      description: value(formData, `submenuDescription_${pageIndex}`),
+      image: value(formData, `submenuImage_${pageIndex}`),
+      imageAlt: value(formData, `submenuImageAlt_${pageIndex}`),
+      overviewKicker: value(formData, `submenuOverviewKicker_${pageIndex}`),
+      overviewTitle: value(formData, `submenuOverviewTitle_${pageIndex}`),
+      cardsTitle: value(formData, `submenuCardsTitle_${pageIndex}`),
+      cardsDescription: value(formData, `submenuCardsDescription_${pageIndex}`),
+      ctaLabel: value(formData, `submenuCtaLabel_${pageIndex}`),
+      ctaHref: value(formData, `submenuCtaHref_${pageIndex}`),
+      sections: Array.from({ length: sectionCount }, (_, sectionIndex) => ({
+        title: value(
+          formData,
+          `submenuSectionTitle_${pageIndex}_${sectionIndex}`
+        ),
+        body: value(
+          formData,
+          `submenuSectionBody_${pageIndex}_${sectionIndex}`
+        ),
+      })).filter((section) => section.title || section.body),
+      cards: Array.from({ length: cardCount }, (_, cardIndex) => ({
+        title: value(formData, `submenuCardTitle_${pageIndex}_${cardIndex}`),
+        description: value(
+          formData,
+          `submenuCardDescription_${pageIndex}_${cardIndex}`
+        ),
+      })).filter((card) => card.title || card.description),
+    };
+  }
+
+  const invalidPage = Object.entries(nextPages).find(([, page]) => {
+    return !page.title || !page.description || !page.image;
+  });
+
+  if (invalidPage) {
+    redirect(
+      withToast(
+        "/dashboard/public-data",
+        `Please complete title, description, and image for ${invalidPage[0]}.`,
+        "error"
+      )
+    );
+  }
+
+  await updateSubmenuPagesContent(nextPages);
+  revalidateTag(cacheTags.submenuPages, "max");
+
+  for (const slug of Object.keys(nextPages)) {
+    revalidatePath(`/${slug}`);
+  }
+
+  redirect(withToast("/dashboard/public-data", "Submenu pages updated."));
 }

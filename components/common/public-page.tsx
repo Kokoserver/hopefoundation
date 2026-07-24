@@ -20,6 +20,8 @@ export type PublicPageData = {
   description: string;
   image: string;
   imageAlt: string;
+  layout?: "article" | "split" | "cards" | "text" | "downloads" | "videos";
+  theme?: "default" | "aada" | "support" | "media" | "legal" | "impact";
   overviewKicker: string;
   overviewTitle: string;
   cardsTitle: string;
@@ -28,6 +30,21 @@ export type PublicPageData = {
   cards: PublicPageCard[];
   ctaLabel?: string;
   ctaHref?: string;
+  downloads?: {
+    title: string;
+    description: string;
+    category: string;
+    fileType: string;
+    href?: string;
+  }[];
+  videos?: {
+    title: string;
+    description: string;
+    category: string;
+    duration: string;
+    thumbnail: string;
+    href?: string;
+  }[];
 };
 
 type PublicPageProps = {
@@ -35,6 +52,45 @@ type PublicPageProps = {
 };
 
 export function PublicPage({ page }: PublicPageProps) {
+  const theme = {
+    default: {
+      eyebrow: "text-primary",
+      heroOverlay: "from-black/70 via-black/55 to-footer",
+      cardSection: "bg-white",
+      card: "bg-[#f7ebe8]",
+    },
+    aada: {
+      eyebrow: "text-gold",
+      heroOverlay: "from-black/78 via-black/56 to-footer",
+      cardSection: "bg-[#fffaf2]",
+      card: "bg-white",
+    },
+    support: {
+      eyebrow: "text-gold",
+      heroOverlay: "from-black/72 via-black/50 to-[#3a2416]",
+      cardSection: "bg-[#f8e4e1]",
+      card: "bg-white",
+    },
+    media: {
+      eyebrow: "text-primary",
+      heroOverlay: "from-black/75 via-black/52 to-footer",
+      cardSection: "bg-white",
+      card: "bg-[#fffaf2]",
+    },
+    legal: {
+      eyebrow: "text-gold",
+      heroOverlay: "from-black/80 via-black/60 to-footer",
+      cardSection: "bg-[#fffaf2]",
+      card: "bg-white",
+    },
+    impact: {
+      eyebrow: "text-gold",
+      heroOverlay: "from-black/72 via-black/50 to-footer",
+      cardSection: "bg-[#f8e4e1]",
+      card: "bg-white",
+    },
+  }[page.theme ?? "default"];
+
   return (
     <div className="bg-background">
       <section className="relative overflow-hidden bg-footer pt-28 text-white sm:pt-32">
@@ -48,13 +104,17 @@ export function PublicPage({ page }: PublicPageProps) {
             className="object-cover object-center opacity-55"
             showPlaceholder={false}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-footer" />
+          <div
+            className={`absolute inset-0 bg-gradient-to-b ${theme.heroOverlay}`}
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/20 to-transparent" />
         </div>
 
         <div className="relative mx-auto max-w-[1280px] px-6 pb-16 pt-16 sm:px-10 sm:pb-24 sm:pt-20 lg:px-[72px]">
           <div className="max-w-3xl animate-fade-up">
-            <p className="mb-4 text-[12px] font-bold uppercase tracking-[0.22em] text-primary">
+            <p
+              className={`mb-4 text-[12px] font-bold uppercase tracking-[0.22em] ${theme.eyebrow}`}
+            >
               {page.eyebrow}
             </p>
             <h1 className="max-w-4xl text-[38px] font-bold leading-[1.08] sm:text-[56px] lg:text-[64px]">
@@ -107,7 +167,7 @@ export function PublicPage({ page }: PublicPageProps) {
         </div>
       </section>
 
-      <section className="bg-white py-12 sm:py-16">
+      <section className={`${theme.cardSection} py-12 sm:py-16`}>
         <div className="mx-auto max-w-[1180px] px-6 sm:px-10 lg:px-12">
           <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <h2 className="text-[30px] font-bold leading-tight text-[#17191f] sm:text-[40px]">
@@ -122,7 +182,7 @@ export function PublicPage({ page }: PublicPageProps) {
             {page.cards.map((card) => (
               <Card
                 key={card.title}
-                className="hover-lift rounded-[20px] border-0 bg-[#f7ebe8] shadow-none"
+                className={`hover-lift rounded-[20px] border-0 ${theme.card} shadow-none`}
               >
                 <CardContent className="p-6">
                   <CheckCircle2 className="mb-5 h-6 w-6 text-gold" />

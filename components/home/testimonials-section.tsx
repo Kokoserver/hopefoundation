@@ -21,7 +21,7 @@ const testimonials = [
       "Through community support, vocational training, and mentorship, she rebuilt her confidence, started a small business, and today supports not only her own family but mentors other women in her community.",
       "Hope spreads when opportunity is shared.",
     ],
-    image: "/images/b146d95d118b6f0b23c31c4d91959f1e86ca36fc.jpg",
+    image: "/images/new/cd7684054ec5036b88f97615ab12d5a2.jpg.jpeg",
   },
   {
     name: "Dreams Come True",
@@ -30,16 +30,16 @@ const testimonials = [
       "I now have the skills to support my family and contribute to my community.",
       "Every story begins with a chance.",
     ],
-    image: "/images/ebde0f20909875bfb504427887ada502c3c38648.jpg",
+    image: "/images/new/de27638f019a31c8b293f7ccc96dce4e.jpg.jpeg",
   },
   {
     name: "Real Change",
     paragraphs: [
-      "Watching the impact of these programs in my community has been inspiring.",
+      "Watching the impact of these programmes in my community has been inspiring.",
       "The foundation truly cares about sustainable change and long-term dignity.",
       "Real change grows through people.",
     ],
-    image: "/images/94e1204421b9dc987ed980d38d79ae0374fc1c72.jpg",
+    image: "/images/new/chief.a.u.achebe_20220403_p_2808307974990542593_8_2808307969093477935.webp.jpeg",
   },
 ];
 

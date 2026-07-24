@@ -12,6 +12,7 @@ import {
   GalleryHorizontal,
   PanelsTopLeft,
   LogOut,
+  MailCheck,
   Menu,
   MessageSquare,
   ShieldCheck,
@@ -32,6 +33,11 @@ const sidebarLinks = [
   { href: "/dashboard/gallery", label: "Gallery", icon: GalleryHorizontal },
   { href: "/dashboard/contact", label: "Messages", icon: MessageSquare },
   { href: "/dashboard/volunteers", label: "Volunteers", icon: Users },
+  {
+    href: "/dashboard/subscribers",
+    label: "Subscribers",
+    icon: MailCheck,
+  },
   { href: "/dashboard/admins", label: "Administrators", icon: ShieldCheck },
 ];
 

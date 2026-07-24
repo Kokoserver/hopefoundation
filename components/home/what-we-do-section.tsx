@@ -5,27 +5,27 @@ import { OptimizedImage } from "@/components/common/optimized-image";
 
 const galleryImages = [
   {
-    src: "/images/b146d95d118b6f0b23c31c4d91959f1e86ca36fc.jpg",
+    src: "/images/new/cd7684054ec5036b88f97615ab12d5a2.jpg.jpeg",
     alt: "Children learning in the classroom",
   },
   {
-    src: "/images/ebde0f20909875bfb504427887ada502c3c38648.jpg",
-    alt: "Women empowerment program",
+    src: "/images/new/de27638f019a31c8b293f7ccc96dce4e.jpg.jpeg",
+    alt: "Women empowerment programme",
   },
   {
-    src: "/images/a71acae314d01270a85bf4733d98aa5afb33aff4.jpg",
-    alt: "Community development program",
+    src: "/images/new/18d3102e58527d82295a9d108a101405.jpg.jpeg",
+    alt: "Community development programme",
   },
   {
-    src: "/images/918104b48623a6d997a17a9a8a03567739e23fbf.jpg",
+    src: "/images/new/8c7e6f87be07cbf3341a2cdd6184c25d.jpg.jpeg",
     alt: "Women's vocational skills training",
   },
   {
-    src: "/images/a3ecc4c3dc7dd5d41521f02dad48e05a77067ce5.jpg",
+    src: "/images/new/c07c29641a2d90d19da14525b548a863.jpg.jpeg",
     alt: "Children in the community supported by Achebe Hope Foundation",
   },
   {
-    src: "/images/c49f4fcac50c2b6acba8314d8377904627f83cac.jpg",
+    src: "/images/new/baf129cb71ea45fab3ff3b664f9f42d5.jpg.jpeg",
     alt: "Community gathering",
   },
 ];
@@ -44,7 +44,7 @@ const programs = [
   {
     title: "Children & Orphanages",
     description:
-      "Supporting orphanages and vulnerable children with care, education, welfare programs, and safe environments.",
+      "Supporting orphanages and vulnerable children with care, education, welfare programmes, and safe environments.",
   },
   {
     title: "Community Development",

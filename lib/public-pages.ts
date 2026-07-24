@@ -8,14 +8,14 @@ export const publicPages: Record<string, PublicPageData> = {
     eyebrow: "About the Foundation",
     title: "A mission shaped by compassion and service",
     description:
-      "Achebe Hope Foundation exists to strengthen families, create opportunity, and support underserved communities with practical programs rooted in dignity.",
-    image: "/images/94e1204421b9dc987ed980d38d79ae0374fc1c72.jpg",
+      "Achebe Hope Foundation exists to strengthen families, create opportunity, and support underserved communities with practical programmes rooted in dignity.",
+    image: "/images/new/chief.a.u.achebe_20220403_p_2808307974990542593_8_2808307969093477935.webp.jpeg",
     imageAlt: "Foundation representative with community members",
     overviewKicker: "Who We Are",
     overviewTitle: "A people-first foundation built around family stability.",
     cardsTitle: "Our foundation pillars",
     cardsDescription:
-      "Compassion, community, and legacy guide every decision we make and every program we build.",
+      "Compassion, community, and legacy guide every decision we make and every programme we build.",
     sections: [
       {
         title: "Our beginning",
@@ -55,7 +55,7 @@ export const publicPages: Record<string, PublicPageData> = {
     title: "Projects that respond to real community needs",
     description:
       "From classroom supplies to family welfare packages and community health campaigns — every project we run is designed to meet pressing needs with practical, dignified support.",
-    image: "/images/c49f4fcac50c2b6acba8314d8377904627f83cac.jpg",
+    image: "/images/new/baf129cb71ea45fab3ff3b664f9f42d5.jpg.jpeg",
     imageAlt: "Community gathering",
     overviewKicker: "Project Focus",
     overviewTitle: "Short-term action connected to long-term outcomes.",
@@ -97,13 +97,13 @@ export const publicPages: Record<string, PublicPageData> = {
     ctaHref: "/donate",
   },
   programs: {
-    eyebrow: "Programs",
-    title: "Structured programs for education, women, and children",
+    eyebrow: "Programmes",
+    title: "Structured programmes for education, women, and children",
     description:
       "Our programmes are built around three core pillars: education access, women empowerment, and child welfare — each designed to create lasting, measurable change.",
-    image: "/images/ebde0f20909875bfb504427887ada502c3c38648.jpg",
+    image: "/images/new/de27638f019a31c8b293f7ccc96dce4e.jpg.jpeg",
     imageAlt: "Children learning together",
-    overviewKicker: "Program Pillars",
+    overviewKicker: "Programme Pillars",
     overviewTitle: "Clear focus areas make support easier to organise.",
     cardsTitle: "Core programme tracks",
     cardsDescription:
@@ -146,8 +146,8 @@ export const publicPages: Record<string, PublicPageData> = {
     eyebrow: "Hope Stories",
     title: "Human stories behind every act of support",
     description:
-      "This page is designed for beneficiary stories, volunteer reflections, and partner testimonials using current placeholder content.",
-    image: "/images/b146d95d118b6f0b23c31c4d91959f1e86ca36fc.jpg",
+      "Beneficiary stories, volunteer reflections, and partner perspectives show how practical support becomes lasting change in communities.",
+    image: "/images/new/cd7684054ec5036b88f97615ab12d5a2.jpg.jpeg",
     imageAlt: "Children and community story",
     overviewKicker: "Stories",
     overviewTitle: "Impact is clearest when people can tell it themselves.",
@@ -157,32 +157,32 @@ export const publicPages: Record<string, PublicPageData> = {
     sections: [
       {
         title: "Beneficiary journeys",
-        body: "Dummy copy for stories about families receiving education support, welfare assistance, or empowerment resources.",
+        body: "Families share how education support, welfare assistance, skills training, and consistent encouragement helped them move through difficult seasons with dignity.",
       },
       {
         title: "Volunteer reflections",
-        body: "Placeholder text for people sharing what they learned while giving time, skills, or field support.",
+        body: "Volunteers describe the responsibility, humility, and practical lessons that come from serving alongside community members and local partners.",
       },
       {
         title: "Partner perspectives",
-        body: "Dummy content for organizations explaining why they collaborate with the foundation.",
+        body: "Partners explain how collaboration expands reach, improves delivery, and connects resources to families with clear needs.",
       },
     ],
     cards: [
       {
         title: "Family journeys",
         description:
-          "Dummy story copy for families rebuilding confidence through practical support and encouragement.",
+          "Stories from families rebuilding confidence through practical support, care, and sustained follow-up.",
       },
       {
         title: "Volunteer voices",
         description:
-          "Placeholder text for reflections from people who give time and professional skills.",
+          "Reflections from people who contribute time, field support, professional skills, and advocacy.",
       },
       {
         title: "Community wins",
         description:
-          "Dummy content for milestones achieved through local collaboration and consistent follow-up.",
+          "Milestones achieved through local collaboration, accountable delivery, and consistent follow-up.",
       },
     ],
     ctaLabel: "Become Part of a Story",
@@ -192,43 +192,43 @@ export const publicPages: Record<string, PublicPageData> = {
     eyebrow: "Get Involved",
     title: "Volunteer your time, skills, and care",
     description:
-      "A public volunteer page for signups, opportunities, and orientation details. All content here is placeholder copy.",
-    image: "/images/07d4e4d51d8482bb57eaa668e61381bad9aadb64.jpg",
+      "Volunteer your time, skills, and networks to support education, welfare, outreach, communications, and community programme delivery.",
+    image: "/images/new/19092f3ac4376805a624bbdad23eb895.jpg.jpeg",
     imageAlt: "Volunteers and children celebrating",
     overviewKicker: "Volunteer Path",
     overviewTitle: "Give support in ways that match your availability.",
     cardsTitle: "Ways to volunteer",
     cardsDescription:
-      "Replace these blocks with real volunteer roles, requirements, and onboarding instructions.",
+      "Volunteer roles are matched to availability, skills, safeguarding requirements, and current programme needs.",
     sections: [
       {
         title: "Apply",
-        body: "Dummy copy for submitting interest, sharing availability, and selecting preferred volunteer areas.",
+        body: "Submit your interest, share your availability, and identify the areas where your skills or field support can serve the Foundation best.",
       },
       {
         title: "Get oriented",
-        body: "Placeholder text for training, safeguarding expectations, field conduct, and program briefing.",
+        body: "Volunteers receive orientation on safeguarding, field conduct, communication standards, and the programme context before serving.",
       },
       {
         title: "Serve consistently",
-        body: "Dummy content for joining outreach days, remote support, campaign work, or professional advisory teams.",
+        body: "Serve through outreach days, remote support, campaign work, professional advisory teams, or recurring operational support.",
       },
     ],
     cards: [
       {
         title: "Field support",
         description:
-          "Dummy text for event assistance, outreach days, community visits, and logistics support.",
+          "Support event setup, outreach days, community visits, beneficiary care, and logistics coordination.",
       },
       {
         title: "Professional skills",
         description:
-          "Placeholder copy for design, finance, education, health, legal, technology, and operations support.",
+          "Contribute expertise in design, finance, education, health, legal, technology, communications, or operations.",
       },
       {
         title: "Remote advocacy",
         description:
-          "Dummy content for awareness campaigns, fundraising, storytelling, research, and donor updates.",
+          "Help with awareness campaigns, fundraising, storytelling, research, newsletter support, and donor updates.",
       },
     ],
     ctaLabel: "Contact Us",
@@ -239,7 +239,7 @@ export const publicPages: Record<string, PublicPageData> = {
     title: "Start a conversation with the foundation",
     description:
       "We’d love to hear from you. Whether you have questions about our programmes, want to partner with us, or are interested in volunteering, reach out and our team will respond promptly.",
-    image: "/images/message-children-generated.png",
+    image: "/images/new/400ca5bd72399daefb3ba1ed0da11072.jpg.jpeg",
     imageAlt: "Children supported by the foundation",
     overviewKicker: "Reach Us",
     overviewTitle: "Choose the right channel for your inquiry.",
@@ -273,10 +273,10 @@ export const publicPages: Record<string, PublicPageData> = {
   },
   gallery: {
     eyebrow: "Gallery",
-    title: "Moments from programs, outreach, and community life",
+    title: "Moments from programmes, outreach, and community life",
     description:
-      "A placeholder gallery page using existing images until real albums, captions, and event photography are ready.",
-    image: "/images/a3ecc4c3dc7dd5d41521f02dad48e05a77067ce5.jpg",
+      "Photos from outreach, learning activities, community gatherings, and partner moments document the Foundation’s work in action.",
+    image: "/images/new/c07c29641a2d90d19da14525b548a863.jpg.jpeg",
     imageAlt: "Children in the community",
     overviewKicker: "Albums",
     overviewTitle: "Visual documentation of care, service, and community.",
@@ -286,32 +286,32 @@ export const publicPages: Record<string, PublicPageData> = {
     sections: [
       {
         title: "Outreach days",
-        body: "Dummy text for field visits, distribution activities, volunteer teams, and community gatherings.",
+        body: "Field visits, distribution activities, volunteer teams, and community gatherings show practical support reaching families directly.",
       },
       {
         title: "Learning moments",
-        body: "Placeholder content for school programs, tutoring, mentorship, and education support.",
+        body: "School programmes, tutoring, mentorship, and education support capture the Foundation’s investment in young people.",
       },
       {
         title: "Community portraits",
-        body: "Dummy copy for respectful portraits, family moments, and partner documentation.",
+        body: "Respectful portraits, family moments, and partner documentation help tell the human story behind each programme.",
       },
     ],
     cards: [
       {
         title: "Outreach photos",
         description:
-          "Dummy text for event albums, community visits, and field documentation.",
+          "Event albums, community visits, and field documentation from active outreach work.",
       },
       {
-        title: "Program moments",
+        title: "Programme moments",
         description:
-          "Placeholder copy for education, women empowerment, welfare, and training activities.",
+          "Education, women empowerment, welfare, and training activities captured across programme delivery.",
       },
       {
         title: "Partner highlights",
         description:
-          "Dummy content for donors, sponsors, volunteers, and local collaborators.",
+          "Donors, sponsors, volunteers, and local collaborators supporting community outcomes.",
       },
     ],
   },
@@ -320,7 +320,7 @@ export const publicPages: Record<string, PublicPageData> = {
     title: "Give toward practical hope and lasting support",
     description:
       "Your generosity makes every programme, outreach, and welfare package possible. Every contribution — no matter the size — goes directly toward strengthening families and building brighter futures.",
-    image: "/images/closing-cta-bg-generated.png",
+    image: "/images/new/cd7684054ec5036b88f97615ab12d5a2.jpg.jpeg",
     imageAlt: "Children celebrating",
     overviewKicker: "Giving",
     overviewTitle: "Every gift creates real, measurable impact.",
@@ -365,43 +365,43 @@ export const publicPages: Record<string, PublicPageData> = {
     eyebrow: "Events",
     title: "Gatherings that connect people to purpose",
     description:
-      "Use this page for upcoming outreach events, fundraisers, trainings, and community activities with dummy listings.",
-    image: "/images/a71acae314d01270a85bf4733d98aa5afb33aff4.jpg",
+      "Upcoming outreach events, volunteer sessions, fundraising activities, and community gatherings connect supporters to practical service.",
+    image: "/images/new/18d3102e58527d82295a9d108a101405.jpg.jpeg",
     imageAlt: "Community outreach event",
     overviewKicker: "Event Calendar",
     overviewTitle: "Planned moments for service, learning, and partnership.",
     cardsTitle: "Upcoming event types",
     cardsDescription:
-      "Replace these placeholders with event dates, registration links, venues, and participation requirements.",
+      "Event details include the purpose, audience, participation route, and the support needed from volunteers, donors, and partners.",
     sections: [
       {
         title: "Outreach events",
-        body: "Dummy copy for field visits, school support days, welfare distributions, and community engagement.",
+        body: "Field visits, school support days, welfare distributions, and community engagement activities are planned around verified needs.",
       },
       {
         title: "Volunteer sessions",
-        body: "Placeholder text for orientation, training, safeguarding briefings, and planning meetings.",
+        body: "Orientation, training, safeguarding briefings, and planning meetings prepare volunteers to serve responsibly.",
       },
       {
         title: "Fundraising moments",
-        body: "Dummy content for donor briefings, dinners, campaigns, and partner appreciation events.",
+        body: "Donor briefings, campaigns, and partner events keep supporters informed and connected to measurable outcomes.",
       },
     ],
     cards: [
       {
         title: "Community outreach day",
         description:
-          "Placeholder listing for an upcoming local service event with volunteers and partners.",
+          "A local service event where volunteers and partners support families through direct outreach.",
       },
       {
         title: "Volunteer orientation",
         description:
-          "Dummy event copy for onboarding new volunteers and explaining program expectations.",
+          "An onboarding session covering volunteer expectations, safeguarding, communication, and programme priorities.",
       },
       {
         title: "Fundraising dinner",
         description:
-          "Placeholder content for donor engagement, stories from the field, and program updates.",
+          "A supporter gathering focused on donor engagement, field stories, and programme updates.",
       },
     ],
     ctaLabel: "Ask About Events",
@@ -416,57 +416,57 @@ export const legalPages: Record<
   privacy: {
     title: "Privacy Policy",
     description:
-      "This placeholder policy explains how privacy content can be structured before final legal review.",
+      "This policy explains how the Foundation handles personal information submitted through the website and related public channels.",
     sections: [
       {
         title: "Information we collect",
-        body: "Dummy text describing contact details, donation records, volunteer information, and website usage data.",
+        body: "We may collect contact details, donation-related information, volunteer submissions, newsletter preferences, and website usage data needed to operate our services.",
       },
       {
         title: "How we use information",
-        body: "Placeholder copy for communication, program administration, donor updates, and service improvement.",
+        body: "We use information for communication, programme administration, donor updates, volunteer coordination, records management, and service improvement.",
       },
       {
         title: "Your choices",
-        body: "Dummy text describing opt-out requests, record updates, and contact preferences.",
+        body: "You may contact the Foundation to update your details, change communication preferences, request corrections, or opt out of non-essential messages.",
       },
     ],
   },
   terms: {
     title: "Terms of Use",
     description:
-      "This placeholder terms page can be replaced with final website usage rules and organization-specific provisions.",
+      "These terms describe acceptable use of the website, public content, forms, and information shared by the Foundation.",
     sections: [
       {
         title: "Website use",
-        body: "Dummy text explaining acceptable use of website content, forms, and public resources.",
+        body: "Visitors should use website content, forms, and public resources lawfully, respectfully, and only for legitimate engagement with the Foundation.",
       },
       {
         title: "Content accuracy",
-        body: "Placeholder copy noting that information may change as programs, events, and policies evolve.",
+        body: "Programme information, events, policies, and public resources may change as needs, partnerships, and operational plans evolve.",
       },
       {
         title: "Limitation of liability",
-        body: "Dummy text reserved for final legal language from the foundation’s advisors.",
+        body: "The website is provided for public information and engagement. For formal commitments, contact the Foundation directly.",
       },
     ],
   },
   cookies: {
     title: "Cookie Policy",
     description:
-      "This placeholder cookie policy gives the page a complete design while tracking details are finalized.",
+      "This cookie policy explains how browser storage and similar technologies may support website functionality and performance.",
     sections: [
       {
         title: "What cookies are",
-        body: "Dummy text explaining browser cookies, local storage, and similar technologies.",
+        body: "Cookies, local storage, and similar technologies can help websites remember preferences, support security, and understand site performance.",
       },
       {
         title: "How cookies may be used",
-        body: "Placeholder copy for analytics, preferences, security, and site performance.",
+        body: "The Foundation may use these technologies for preferences, security, analytics, and service improvement where appropriate.",
       },
       {
         title: "Managing cookies",
-        body: "Dummy text describing browser controls and visitor choices.",
+        body: "Most browsers allow visitors to review, block, or delete cookies. Some website features may not work fully if cookies are disabled.",
       },
     ],
   },

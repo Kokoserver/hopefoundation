@@ -9,7 +9,7 @@ export function PartnerLogosSection({
   if (logos.length === 0) return null;
 
   return (
-    <section className="bg-white py-10 lg:py-16">
+    <section id="partners" className="bg-white py-10 lg:py-16">
       <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
         <div className="grid grid-cols-2 items-center gap-x-6 gap-y-8 sm:grid-cols-3 lg:flex lg:flex-nowrap lg:justify-between lg:gap-10">
           {logos.map((logo, index) => (

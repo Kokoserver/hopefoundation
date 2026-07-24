@@ -87,6 +87,14 @@ export const contactMessages = pgTable("contact_messages", {
     .defaultNow(),
 });
 
+export const newsletterSubscriptions = pgTable("newsletter_subscriptions", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  email: text("email").notNull().unique(),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+});
+
 export const programStatusEnum = pgEnum("program_status", [
   "ongoing",
   "upcoming",
