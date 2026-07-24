@@ -18,6 +18,10 @@ import {
   defaultHomepageContent,
   type HomepageContent,
 } from "@/lib/homepage-content";
+import {
+  submenuPages as defaultSubmenuPages,
+  type SubmenuPagesContent,
+} from "@/lib/submenu-pages";
 import type {
   ContactMessage,
   GalleryImage,
@@ -547,6 +551,50 @@ export async function updateHomepageContent(content: HomepageContent) {
   await db
     .insert(publicContent)
     .values({ key: "homepage", content })
+    .onConflictDoUpdate({
+      target: publicContent.key,
+      set: { content, updatedAt: new Date() },
+    });
+}
+
+export async function getSubmenuPages(): Promise<SubmenuPagesContent> {
+  const [row] = await db
+    .select({ content: publicContent.content })
+    .from(publicContent)
+    .where(eq(publicContent.key, "submenu-pages"))
+    .limit(1);
+
+  const savedPages = row?.content as Partial<SubmenuPagesContent> | undefined;
+
+  return Object.fromEntries(
+    Object.entries(defaultSubmenuPages).map(([slug, defaultPage]) => {
+      const savedPage = savedPages?.[slug];
+
+      return [
+        slug,
+        {
+          ...defaultPage,
+          ...savedPage,
+          sections:
+            savedPage?.sections && savedPage.sections.length > 0
+              ? savedPage.sections
+              : defaultPage.sections,
+          cards:
+            savedPage?.cards && savedPage.cards.length > 0
+              ? savedPage.cards
+              : defaultPage.cards,
+          downloads: savedPage?.downloads ?? defaultPage.downloads,
+          videos: savedPage?.videos ?? defaultPage.videos,
+        },
+      ];
+    })
+  );
+}
+
+export async function updateSubmenuPagesContent(content: SubmenuPagesContent) {
+  await db
+    .insert(publicContent)
+    .values({ key: "submenu-pages", content })
     .onConflictDoUpdate({
       target: publicContent.key,
       set: { content, updatedAt: new Date() },

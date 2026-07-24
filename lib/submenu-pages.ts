@@ -1088,3 +1088,5 @@ export const submenuPages: Record<string, PublicPageData> = {
 };
 
 export const submenuSlugs = Object.keys(submenuPages);
+
+export type SubmenuPagesContent = typeof submenuPages;

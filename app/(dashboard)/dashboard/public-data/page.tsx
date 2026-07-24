@@ -1,11 +1,15 @@
-import { getGalleryImages, getHomepageContent } from "@/db/queries";
+import {
+  getGalleryImages,
+  getHomepageContent,
+  getSubmenuPages,
+} from "@/db/queries";
 import { isMediaUploadEnabled } from "@/lib/media";
 import { MediaUploadField } from "@/components/dashboard/media-upload-field";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { updatePublicDataAction } from "./actions";
+import { updatePublicDataAction, updateSubmenuPagesAction } from "./actions";
 
 function Section({
   title,
@@ -29,8 +33,18 @@ function Section({
 
 export default async function PublicDataPage() {
   const content = await getHomepageContent();
+  const submenuPages = await getSubmenuPages();
   const uploadEnabled = isMediaUploadEnabled();
   const galleryImages = await getGalleryImages();
+  const submenuEntries = Object.entries(submenuPages);
+  const submenuGroups = submenuEntries.reduce<
+    Record<string, typeof submenuEntries>
+  >((groups, entry) => {
+    const [, page] = entry;
+    groups[page.eyebrow] = groups[page.eyebrow] ?? [];
+    groups[page.eyebrow].push(entry);
+    return groups;
+  }, {});
 
   return (
     <div className="space-y-6">
@@ -193,6 +207,264 @@ export default async function PublicDataPage() {
 
         <div className="sticky bottom-4 flex justify-end rounded-xl border border-gray-200 bg-white/95 p-4 shadow-lg backdrop-blur">
           <Button type="submit">Save homepage changes</Button>
+        </div>
+      </form>
+
+      <form action={updateSubmenuPagesAction} className="space-y-6">
+        <Section
+          title="Submenu Pages"
+          description="Update the pages opened from the header dropdown menus. Use each group to edit page headings, hero images, overview content, sections, cards, and CTA links."
+        >
+          <input
+            type="hidden"
+            name="submenuPageCount"
+            value={submenuEntries.length}
+          />
+          <div className="space-y-4">
+            {Object.entries(submenuGroups).map(([group, entries]) => (
+              <details
+                key={group}
+                className="rounded-xl border border-gray-200 bg-gray-50 p-4"
+              >
+                <summary className="cursor-pointer text-sm font-semibold text-[#17191f]">
+                  {group} ({entries.length})
+                </summary>
+                <div className="mt-4 space-y-4">
+                  {entries.map(([slug, page]) => {
+                    const pageIndex = submenuEntries.findIndex(
+                      ([entrySlug]) => entrySlug === slug
+                    );
+
+                    return (
+                      <details
+                        key={slug}
+                        className="rounded-xl border border-gray-200 bg-white p-4"
+                      >
+                        <summary className="cursor-pointer text-sm font-semibold text-[#17191f]">
+                          {page.title}{" "}
+                          <span className="font-normal text-muted-foreground">
+                            /{slug}
+                          </span>
+                        </summary>
+                        <div className="mt-5 space-y-5">
+                          <input
+                            type="hidden"
+                            name={`submenuSlug_${pageIndex}`}
+                            value={slug}
+                          />
+                          <div className="grid gap-4 lg:grid-cols-3">
+                            <div className="space-y-2">
+                              <Label htmlFor={`submenuEyebrow_${pageIndex}`}>
+                                Menu group
+                              </Label>
+                              <Input
+                                id={`submenuEyebrow_${pageIndex}`}
+                                name={`submenuEyebrow_${pageIndex}`}
+                                defaultValue={page.eyebrow}
+                              />
+                            </div>
+                            <div className="space-y-2 lg:col-span-2">
+                              <Label htmlFor={`submenuTitle_${pageIndex}`}>
+                                Page title
+                              </Label>
+                              <Input
+                                id={`submenuTitle_${pageIndex}`}
+                                name={`submenuTitle_${pageIndex}`}
+                                defaultValue={page.title}
+                                required
+                              />
+                            </div>
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label
+                              htmlFor={`submenuDescription_${pageIndex}`}
+                            >
+                              Hero description
+                            </Label>
+                            <Textarea
+                              id={`submenuDescription_${pageIndex}`}
+                              name={`submenuDescription_${pageIndex}`}
+                              defaultValue={page.description}
+                              rows={4}
+                              required
+                            />
+                          </div>
+
+                          <div className="grid gap-4 lg:grid-cols-2">
+                            <div className="space-y-2">
+                              <Label htmlFor={`submenuImage_${pageIndex}`}>
+                                Hero image
+                              </Label>
+                              <MediaUploadField
+                                id={`submenuImage_${pageIndex}`}
+                                name={`submenuImage_${pageIndex}`}
+                                defaultValue={page.image}
+                                enabled={uploadEnabled}
+                                galleryImages={galleryImages}
+                              />
+                            </div>
+                            <div className="space-y-2">
+                              <Label htmlFor={`submenuImageAlt_${pageIndex}`}>
+                                Image alt text
+                              </Label>
+                              <Input
+                                id={`submenuImageAlt_${pageIndex}`}
+                                name={`submenuImageAlt_${pageIndex}`}
+                                defaultValue={page.imageAlt}
+                              />
+                            </div>
+                          </div>
+
+                          <div className="grid gap-4 lg:grid-cols-2">
+                            <div className="space-y-2">
+                              <Label
+                                htmlFor={`submenuOverviewKicker_${pageIndex}`}
+                              >
+                                Overview label
+                              </Label>
+                              <Input
+                                id={`submenuOverviewKicker_${pageIndex}`}
+                                name={`submenuOverviewKicker_${pageIndex}`}
+                                defaultValue={page.overviewKicker}
+                              />
+                            </div>
+                            <div className="space-y-2">
+                              <Label
+                                htmlFor={`submenuOverviewTitle_${pageIndex}`}
+                              >
+                                Overview headline
+                              </Label>
+                              <Input
+                                id={`submenuOverviewTitle_${pageIndex}`}
+                                name={`submenuOverviewTitle_${pageIndex}`}
+                                defaultValue={page.overviewTitle}
+                              />
+                            </div>
+                          </div>
+
+                          <div>
+                            <input
+                              type="hidden"
+                              name={`submenuSectionCount_${pageIndex}`}
+                              value={page.sections.length}
+                            />
+                            <h3 className="mb-3 text-sm font-semibold text-[#17191f]">
+                              Content sections
+                            </h3>
+                            <div className="grid gap-4 lg:grid-cols-3">
+                              {page.sections.map((section, sectionIndex) => (
+                                <div
+                                  key={`${slug}-section-${sectionIndex}`}
+                                  className="space-y-3 rounded-lg bg-gray-50 p-4"
+                                >
+                                  <Input
+                                    name={`submenuSectionTitle_${pageIndex}_${sectionIndex}`}
+                                    defaultValue={section.title}
+                                    aria-label={`${page.title} section ${sectionIndex + 1} title`}
+                                  />
+                                  <Textarea
+                                    name={`submenuSectionBody_${pageIndex}_${sectionIndex}`}
+                                    defaultValue={section.body}
+                                    rows={5}
+                                    aria-label={`${page.title} section ${sectionIndex + 1} body`}
+                                  />
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+
+                          <div className="grid gap-4 lg:grid-cols-2">
+                            <div className="space-y-2">
+                              <Label htmlFor={`submenuCardsTitle_${pageIndex}`}>
+                                Cards section title
+                              </Label>
+                              <Input
+                                id={`submenuCardsTitle_${pageIndex}`}
+                                name={`submenuCardsTitle_${pageIndex}`}
+                                defaultValue={page.cardsTitle}
+                              />
+                            </div>
+                            <div className="space-y-2">
+                              <Label
+                                htmlFor={`submenuCardsDescription_${pageIndex}`}
+                              >
+                                Cards section description
+                              </Label>
+                              <Textarea
+                                id={`submenuCardsDescription_${pageIndex}`}
+                                name={`submenuCardsDescription_${pageIndex}`}
+                                defaultValue={page.cardsDescription}
+                                rows={3}
+                              />
+                            </div>
+                          </div>
+
+                          <div>
+                            <input
+                              type="hidden"
+                              name={`submenuCardCount_${pageIndex}`}
+                              value={page.cards.length}
+                            />
+                            <h3 className="mb-3 text-sm font-semibold text-[#17191f]">
+                              Cards
+                            </h3>
+                            <div className="grid gap-4 lg:grid-cols-3">
+                              {page.cards.map((card, cardIndex) => (
+                                <div
+                                  key={`${slug}-card-${cardIndex}`}
+                                  className="space-y-3 rounded-lg bg-gray-50 p-4"
+                                >
+                                  <Input
+                                    name={`submenuCardTitle_${pageIndex}_${cardIndex}`}
+                                    defaultValue={card.title}
+                                    aria-label={`${page.title} card ${cardIndex + 1} title`}
+                                  />
+                                  <Textarea
+                                    name={`submenuCardDescription_${pageIndex}_${cardIndex}`}
+                                    defaultValue={card.description}
+                                    rows={4}
+                                    aria-label={`${page.title} card ${cardIndex + 1} description`}
+                                  />
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+
+                          <div className="grid gap-4 lg:grid-cols-2">
+                            <div className="space-y-2">
+                              <Label htmlFor={`submenuCtaLabel_${pageIndex}`}>
+                                CTA label
+                              </Label>
+                              <Input
+                                id={`submenuCtaLabel_${pageIndex}`}
+                                name={`submenuCtaLabel_${pageIndex}`}
+                                defaultValue={page.ctaLabel}
+                              />
+                            </div>
+                            <div className="space-y-2">
+                              <Label htmlFor={`submenuCtaHref_${pageIndex}`}>
+                                CTA link
+                              </Label>
+                              <Input
+                                id={`submenuCtaHref_${pageIndex}`}
+                                name={`submenuCtaHref_${pageIndex}`}
+                                defaultValue={page.ctaHref}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </details>
+                    );
+                  })}
+                </div>
+              </details>
+            ))}
+          </div>
+        </Section>
+
+        <div className="sticky bottom-4 flex justify-end rounded-xl border border-gray-200 bg-white/95 p-4 shadow-lg backdrop-blur">
+          <Button type="submit">Save submenu page changes</Button>
         </div>
       </form>
     </div>

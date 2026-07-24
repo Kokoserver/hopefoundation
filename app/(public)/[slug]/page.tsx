@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { SubmenuArticlePage } from "@/components/common/submenu-article-page";
-import { submenuPages, submenuSlugs } from "@/lib/submenu-pages";
+import { getCachedSubmenuPages } from "@/db/cached-queries";
+import { submenuSlugs } from "@/lib/submenu-pages";
 
 export function generateStaticParams() {
   return submenuSlugs.map((slug) => ({ slug }));
@@ -12,6 +13,7 @@ export default async function SubmenuPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const submenuPages = await getCachedSubmenuPages();
   const page = submenuPages[slug];
 
   if (!page) {
