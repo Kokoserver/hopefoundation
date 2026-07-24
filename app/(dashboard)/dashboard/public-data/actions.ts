@@ -5,7 +5,10 @@ import { redirect } from "next/navigation";
 import { updateHomepageContent } from "@/db/queries";
 import { requireAdmin } from "@/lib/auth";
 import { cacheTags } from "@/lib/cache-tags";
-import type { HomepageContent } from "@/lib/homepage-content";
+import {
+  defaultHomepageContent,
+  type HomepageContent,
+} from "@/lib/homepage-content";
 import { withToast } from "@/lib/toast";
 
 const value = (formData: FormData, key: string) =>
@@ -32,10 +35,23 @@ export async function updatePublicDataAction(formData: FormData) {
       },
       slides: Array.from(
         { length: count(formData, "heroSlideCount") },
-        (_, index) => ({
-          src: value(formData, `heroSlideSrc_${index}`),
-          alt: value(formData, `heroSlideAlt_${index}`),
-        })
+        (_, index) => {
+          const defaultSlide = defaultHomepageContent.hero.slides[index];
+          return {
+            src: value(formData, `heroSlideSrc_${index}`),
+            alt: value(formData, `heroSlideAlt_${index}`),
+            title: defaultSlide?.title ?? defaultHomepageContent.hero.title,
+            description:
+              defaultSlide?.description ??
+              defaultHomepageContent.hero.description,
+            primaryButton:
+              defaultSlide?.primaryButton ??
+              defaultHomepageContent.hero.primaryButton,
+            secondaryButton:
+              defaultSlide?.secondaryButton ??
+              defaultHomepageContent.hero.secondaryButton,
+          };
+        }
       ).filter((slide) => slide.src),
     },
     impact: {
@@ -52,6 +68,7 @@ export async function updatePublicDataAction(formData: FormData) {
       text: value(formData, "quoteText"),
       attribution: value(formData, "quoteAttribution"),
     },
+    aada: defaultHomepageContent.aada,
     opportunity: {
       title: value(formData, "opportunityTitle"),
       footer: value(formData, "opportunityFooter"),

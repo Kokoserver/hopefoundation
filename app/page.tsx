@@ -5,6 +5,7 @@ import { QuoteBannerSection } from "@/components/home/quote-banner-section";
 import { HopeGrowsSection } from "@/components/home/hope-grows-section";
 import { OpportunitySection } from "@/components/home/opportunity-section";
 import { WhatWeDoSection } from "@/components/home/what-we-do-section";
+import { AadaFeatureSection } from "@/components/home/aada-feature-section";
 import { VideoSection } from "@/components/home/video-section";
 import { TestimonialsSection } from "@/components/home/testimonials-section";
 import { ProgramsSection } from "@/components/home/programs-section";
@@ -28,6 +29,7 @@ export default async function Home() {
       <HopeGrowsSection />
       <OpportunitySection content={content.opportunity} />
       <WhatWeDoSection />
+      <AadaFeatureSection content={content.aada} />
       <VideoSection content={content.video} />
       <TestimonialsSection />
       <ProgramsSection />

@@ -511,13 +511,26 @@ export async function getHomepageContent(): Promise<HomepageContent> {
     .limit(1);
 
   const savedContent = row?.content as Partial<HomepageContent> | undefined;
+  const savedHero = savedContent?.hero;
+  const savedSlides = savedHero?.slides ?? [];
+  const defaultSlides = defaultHomepageContent.hero.slides;
 
   return {
     ...defaultHomepageContent,
     ...savedContent,
-    hero: { ...defaultHomepageContent.hero, ...savedContent?.hero },
+    hero: {
+      ...defaultHomepageContent.hero,
+      ...savedHero,
+      slides: (savedSlides.length > 0 ? savedSlides : defaultSlides).map(
+        (slide, index) => ({
+          ...(defaultSlides[index] ?? defaultHomepageContent.hero),
+          ...slide,
+        })
+      ),
+    },
     impact: { ...defaultHomepageContent.impact, ...savedContent?.impact },
     quote: { ...defaultHomepageContent.quote, ...savedContent?.quote },
+    aada: { ...defaultHomepageContent.aada, ...savedContent?.aada },
     opportunity: {
       ...defaultHomepageContent.opportunity,
       ...savedContent?.opportunity,

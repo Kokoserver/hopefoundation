@@ -1,15 +1,55 @@
 export const defaultHomepageContent = {
   hero: {
     eyebrow: "Registered Humanitarian Foundation • Nigeria",
-    title: "Changing Lives, One Family At A Time",
+    title: "Turning Heritage Into Hope",
     description:
-      "Achebe Hope Foundation works alongside underserved communities across Africa to expand access to education, empower women, support vulnerable children, and build sustainable pathways toward lasting independence.",
-    primaryButton: { label: "Support Our Mission", href: "/donate" },
-    secondaryButton: { label: "Explore Our Programs", href: "/programs" },
+      "Empowering communities, strengthening families, and creating opportunities for lasting change across Africa.\n\nThrough compassion, education, healthcare, and sustainable development, we are restoring dignity and creating pathways to a brighter future for underserved families across Africa.",
+    primaryButton: { label: "Learn More", href: "/about" },
+    secondaryButton: { label: "Support Our Work", href: "/donate" },
     slides: [
-      { src: "/images/hero/hero-main.png", alt: "Adult teaching child" },
-      { src: "/images/07d4e4d51d8482bb57eaa668e61381bad9aadb64.jpg", alt: "Children celebrating together" },
-      { src: "/images/c49f4fcac50c2b6acba8314d8377904627f83cac.jpg", alt: "Community gathering" },
+      {
+        src: "/images/new/chief.a.u.achebe_20260722_p_3946737021547120023_1_3946737021547120023.webp",
+        alt: "Adult teaching child",
+        title: "Turning Heritage Into Hope",
+        description:
+          "Empowering communities, strengthening families, and creating opportunities for lasting change across Africa.\n\nThrough compassion, education, healthcare, and sustainable development, we are restoring dignity and creating pathways to a brighter future for underserved families across Africa.",
+        primaryButton: { label: "Learn More", href: "/about" },
+        secondaryButton: { label: "Support Our Work", href: "/donate" },
+      },
+      {
+        src: "/images/new/19092f3ac4376805a624bbdad23eb895.jpg.jpeg",
+        alt: "Children celebrating together",
+        title: "Every Child Deserves a Chance",
+        description:
+          "Supporting education, maternal care, orphanages, and vulnerable families. Every child deserves safety, quality education, proper nutrition, and the opportunity to dream beyond their circumstances.\n\nFrom orphanage support and school interventions to maternal care and family empowerment, we are helping children and young adults build brighter futures.",
+        primaryButton: {
+          label: "Our Child-Support Programmes",
+          href: "/orphanage-support",
+        },
+        secondaryButton: { label: "Sponsor a Child", href: "/donate" },
+      },
+      {
+        src: "/images/new/baf129cb71ea45fab3ff3b664f9f42d5.jpg.jpeg",
+        alt: "Community gathering",
+        title: "Hope Begins With Opportunity",
+        description:
+          "Every child deserves safety, quality education, proper nutrition, and the opportunity to dream beyond their circumstances.\n\nFrom orphanage support and school interventions to maternal care and family empowerment, we are helping children build brighter futures.",
+        primaryButton: { label: "Become a Volunteer", href: "/volunteer" },
+        secondaryButton: { label: "Partner With Us", href: "/contact" },
+      },
+      {
+        src: "/images/new/de27638f019a31c8b293f7ccc96dce4e.jpg.jpeg",
+        alt: "Young Africans learning digital and practical skills",
+        title:
+          "Ending Unemployment Through Digital and Practical Skills Training",
+        description:
+          "The Achebe Africa Digital Academy (AADA) is Achebe Hope Foundation's flagship digital education initiative that equips young Africans with practical digital skills, mentorship, and career opportunities for the future.\n\nBeyond AADA, the Foundation expands access to practical and vocational skills through community-based training programmes that promote self-reliance, economic independence, and long-term community development.",
+        primaryButton: { label: "Explore AADA", href: "/aada" },
+        secondaryButton: {
+          label: "Reserve Your Slot for Free Practical Skills Training",
+          href: "/contact",
+        },
+      },
     ],
   },
   impact: {
@@ -24,7 +64,21 @@ export const defaultHomepageContent = {
   },
   quote: {
     text: "Heritage is honoured through service. Legacy is proven through action. The work continues.",
-    attribution: "Chief Obiora Achebe, Founder",
+    attribution: "Chief Alex Ubaka Achebe, Founder",
+  },
+  aada: {
+    eyebrow: "Our Flagship Initiative",
+    title: "Achebe Africa Digital Academy (AADA)",
+    description:
+      "While Achebe Hope Foundation responds to immediate needs through education, maternal and child care, humanitarian support, and community development, Achebe Africa Digital Academy (AADA) addresses one of Africa's greatest long-term challenges: unemployment and limited access to quality digital education.\n\nAADA equips young Africans with practical digital skills, mentorship, entrepreneurship support, career pathways, and access to thriving learning communities, empowering them to build sustainable careers and become catalysts for change within their communities.\n\nBy combining humanitarian intervention with digital education, Achebe Hope Foundation is not only restoring hope for today but creating lasting opportunities for tomorrow.",
+    highlights: [
+      "Practical digital courses",
+      "Mentorship and career pathways",
+      "Entrepreneurship support",
+      "Scholarships and learning communities",
+    ],
+    primaryButton: { label: "See AADA Courses", href: "https://achebecampus.com/achebe-africa-digital-academy" },
+    secondaryButton: { label: "Join the Academy", href: "https://achebecampus.com/" },
   },
   opportunity: {
     title: "Opportunity should never depend on where a child is born",
@@ -37,12 +91,12 @@ export const defaultHomepageContent = {
   },
   video: {
     label: "Watch Video",
-    poster: "/images/07d4e4d51d8482bb57eaa668e61381bad9aadb64.jpg",
+    poster: "/images/new/19092f3ac4376805a624bbdad23eb895.jpg.jpeg",
     url: "/videos/hope-story.mp4",
   },
   message: {
     title: "A message from Achebe Hope Foundation",
-    image: "/images/message-children-generated.png",
+    image: "/images/new/400ca5bd72399daefb3ba1ed0da11072.jpg.jpeg",
     paragraphs: [
       "Every community carries untapped strength, every family deserves opportunity, and every child deserves the chance to dream without limitation.",
       "Our work is rooted in a belief that meaningful change happens when compassion is paired with action, and when communities become active partners in shaping their own future.",
@@ -52,7 +106,7 @@ export const defaultHomepageContent = {
   closing: {
     title: "Hope begins with one decision",
     description: "Whether you choose to volunteer, donate, partner, or simply share our mission, your support helps create opportunities that last for generations.",
-    image: "/images/closing-cta-bg-generated.png",
+    image: "/images/new/cd7684054ec5036b88f97615ab12d5a2.jpg.jpeg",
     primaryButton: { label: "Donate Today", href: "/donate" },
     secondaryButton: { label: "Become a Volunteer", href: "/volunteer" },
   },

@@ -20,7 +20,7 @@ export const allStories: Story[] = [
     author: "Achebe Hope Foundation",
     date: "12 Jun 2026",
     category: "Beneficiary journeys",
-    image: "/images/918104b48623a6d997a17a9a8a03567739e23fbf.jpg",
+    image: "/images/new/8c7e6f87be07cbf3341a2cdd6184c25d.jpg.jpeg",
   },
   {
     slug: "why-i-volunteer-a-teachers-perspective",
@@ -32,7 +32,7 @@ export const allStories: Story[] = [
     author: "Emeka Okafor",
     date: "28 May 2026",
     category: "Volunteer reflections",
-    image: "/images/ebde0f20909875bfb504427887ada502c3c38648.jpg",
+    image: "/images/new/de27638f019a31c8b293f7ccc96dce4e.jpg.jpeg",
   },
   {
     slug: "building-healthier-communities-together",
@@ -44,7 +44,7 @@ export const allStories: Story[] = [
     author: "Achebe Hope Foundation",
     date: "15 May 2026",
     category: "Partner perspectives",
-    image: "/images/c49f4fcac50c2b6acba8314d8377904627f83cac.jpg",
+    image: "/images/new/baf129cb71ea45fab3ff3b664f9f42d5.jpg.jpeg",
   },
   {
     slug: "bringing-the-classroom-to-the-village",
@@ -56,7 +56,7 @@ export const allStories: Story[] = [
     author: "Achebe Hope Foundation",
     date: "2 May 2026",
     category: "Community wins",
-    image: "/images/94e1204421b9dc987ed980d38d79ae0374fc1c72.jpg",
+    image: "/images/new/chief.a.u.achebe_20220403_p_2808307974990542593_8_2808307969093477935.webp.jpeg",
   },
   {
     slug: "graces-journey-back-to-school",
@@ -68,7 +68,7 @@ export const allStories: Story[] = [
     author: "Grace Adeyemi",
     date: "18 Apr 2026",
     category: "Beneficiary journeys",
-    image: "/images/b146d95d118b6f0b23c31c4d91959f1e86ca36fc.jpg",
+    image: "/images/new/cd7684054ec5036b88f97615ab12d5a2.jpg.jpeg",
   },
   {
     slug: "behind-every-meal-is-a-dedicated-volunteer",
@@ -80,7 +80,7 @@ export const allStories: Story[] = [
     author: "Ngozi Eze",
     date: "22 Mar 2026",
     category: "Volunteer reflections",
-    image: "/images/a3ecc4c3dc7dd5d41521f02dad48e05a77067ce5.jpg",
+    image: "/images/new/c07c29641a2d90d19da14525b548a863.jpg.jpeg",
   },
   {
     slug: "a-community-rallies-around-its-widows",
@@ -92,7 +92,7 @@ export const allStories: Story[] = [
     author: "Achebe Hope Foundation",
     date: "10 Mar 2026",
     category: "Community wins",
-    image: "/images/message-children-generated.png",
+    image: "/images/new/400ca5bd72399daefb3ba1ed0da11072.jpg.jpeg",
   },
   {
     slug: "partnership-spotlight-supporting-orphanages",
@@ -104,7 +104,7 @@ export const allStories: Story[] = [
     author: "Achebe Hope Foundation",
     date: "5 Apr 2026",
     category: "Partner perspectives",
-    image: "/images/a71acae314d01270a85bf4733d98aa5afb33aff4.jpg",
+    image: "/images/new/18d3102e58527d82295a9d108a101405.jpg.jpeg",
   },
   {
     slug: "education-against-the-odds",
@@ -116,7 +116,7 @@ export const allStories: Story[] = [
     author: "Samuel Okonkwo",
     date: "28 Feb 2026",
     category: "Beneficiary journeys",
-    image: "/images/07d4e4d51d8482bb57eaa668e61381bad9aadb64.jpg",
+    image: "/images/new/19092f3ac4376805a624bbdad23eb895.jpg.jpeg",
   },
 ];
 

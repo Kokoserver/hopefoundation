@@ -22,7 +22,7 @@ export const allPrograms: Program[] = [
       "The Back to School Drive is one of our flagship annual programmes. Every year, we identify children from low-income families who are at risk of missing school due to lack of basic supplies. We provide complete school kits including uniforms, bags, books, stationery, and sandals. The programme also covers school fee support for the most vulnerable cases. Since its inception, the drive has helped over 800 children start the school term with confidence and dignity.",
     beneficiaries: "200 children",
     location: "Enugu East",
-    image: "/images/ebde0f20909875bfb504427887ada502c3c38648.jpg",
+    image: "/images/new/de27638f019a31c8b293f7ccc96dce4e.jpg.jpeg",
     goals: [
       "Ensure no child misses school due to lack of supplies",
       "Boost confidence and readiness for the academic term",
@@ -45,7 +45,7 @@ export const allPrograms: Program[] = [
       "The Women Skills Bootcamp is an intensive 6-week vocational training programme designed to equip women with practical, income-generating skills. Participants choose from three tracks: tailoring, bead-making, or pastry production. Each track combines hands-on training with basic business management, pricing, and customer relations. Graduates receive a startup kit with the tools they need to begin earning immediately. The programme also provides post-training mentorship and access to a peer support network.",
     beneficiaries: "50 women",
     location: "Enugu North",
-    image: "/images/918104b48623a6d997a17a9a8a03567739e23fbf.jpg",
+    image: "/images/new/8c7e6f87be07cbf3341a2cdd6184c25d.jpg.jpeg",
     goals: [
       "Equip women with marketable vocational skills",
       "Provide startup resources for immediate income generation",
@@ -68,7 +68,7 @@ export const allPrograms: Program[] = [
       "Our Orphanage Welfare Visit programme ensures that children in partner orphanages receive consistent material and emotional support. Our team visits monthly, delivering food supplies, hygiene products, educational materials, and organising recreational activities. Beyond material support, we spend quality time with the children, offering mentorship, tutoring, and psychosocial encouragement. We currently partner with six orphanages across Enugu State, reaching over 120 children on a regular basis.",
     beneficiaries: "120 children",
     location: "Enugu South",
-    image: "/images/b146d95d118b6f0b23c31c4d91959f1e86ca36fc.jpg",
+    image: "/images/new/cd7684054ec5036b88f97615ab12d5a2.jpg.jpeg",
     goals: [
       "Provide consistent material support to partner orphanages",
       "Improve educational outcomes through tutoring and supplies",
@@ -91,7 +91,7 @@ export const allPrograms: Program[] = [
       "Our Scholarship Programme identifies academically promising students from underserved communities and sponsors their secondary education. Each scholar receives full coverage of school fees, textbooks, uniforms, writing materials, and transportation. Beyond financial support, we provide mentorship, academic monitoring, and career guidance. Scholars are selected through a rigorous process involving community referrals, academic assessments, and home visits to verify need.",
     beneficiaries: "30 students",
     location: "Enugu State",
-    image: "/images/94e1204421b9dc987ed980d38d79ae0374fc1c72.jpg",
+    image: "/images/new/chief.a.u.achebe_20220403_p_2808307974990542593_8_2808307969093477935.webp.jpeg",
     goals: [
       "Remove financial barriers to secondary education",
       "Support academically promising students from low-income families",
@@ -114,7 +114,7 @@ export const allPrograms: Program[] = [
       "The Health Awareness Campaign brings essential preventive healthcare services directly to rural communities. In partnership with local health workers and the Enugu State Primary Healthcare Agency, our team sets up temporary clinics in community centres, schools, and churches. Services include malaria testing, blood pressure and blood sugar screening, deworming for children, and hygiene education sessions. The campaign also distributes mosquito nets, water purification tablets, and hygiene supplies.",
     beneficiaries: "500+ residents",
     location: "Nsukka",
-    image: "/images/c49f4fcac50c2b6acba8314d8377904627f83cac.jpg",
+    image: "/images/new/baf129cb71ea45fab3ff3b664f9f42d5.jpg.jpeg",
     goals: [
       "Increase access to basic health screenings in rural areas",
       "Raise awareness about preventive healthcare practices",
@@ -137,7 +137,7 @@ export const allPrograms: Program[] = [
       "Youth Mentorship Day is a flagship event that brings together young people from underserved communities with professionals from various fields. Participants attend career talks, interactive mentoring sessions, and skills workshops. Topics include career planning, interview skills, personal branding, financial literacy, and goal setting. The event aims to broaden horizons, build confidence, and provide young people with the guidance they need to make informed decisions about their futures.",
     beneficiaries: "100 youths",
     location: "Enugu Urban",
-    image: "/images/a71acae314d01270a85bf4733d98aa5afb33aff4.jpg",
+    image: "/images/new/18d3102e58527d82295a9d108a101405.jpg.jpeg",
     goals: [
       "Connect young people with positive role models",
       "Provide practical career guidance and life skills training",
