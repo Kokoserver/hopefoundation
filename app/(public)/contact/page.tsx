@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { OptimizedImage } from "@/components/common/optimized-image";
+import { faqItems } from "@/lib/faq";
 import { publicPages } from "@/lib/public-pages";
 import { socialLinks } from "@/lib/site-config";
 import { submitContactMessageAction } from "./actions";
@@ -246,23 +247,7 @@ export default function ContactPage() {
               Frequently Asked Questions
             </h2>
             <div className="space-y-4">
-              {[
-                {
-                  question: "How can I volunteer?",
-                  answer:
-                    "Use the contact form or visit the Volunteer page and the team will follow up with available opportunities.",
-                },
-                {
-                  question: "How can an organisation partner with AHF?",
-                  answer:
-                    "Send a partnership inquiry with your organisation name, area of interest, and proposed support.",
-                },
-                {
-                  question: "How can I support AADA or child programmes?",
-                  answer:
-                    "Use the Support Our Work options or contact the Foundation to discuss giving, sponsorship, or corporate support.",
-                },
-              ].map((item) => (
+              {faqItems.slice(2, 5).map((item) => (
                 <div key={item.question}>
                   <h3 className="text-[14px] font-bold text-[#17191f]">
                     {item.question}
