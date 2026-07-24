@@ -1,6 +1,5 @@
 import { randomUUID } from "node:crypto";
 import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
-import type { HomepageContent } from "@/lib/homepage-content";
 
 export const projectStatusEnum = {
   enumValues: ["planned", "ongoing", "completed"] as const,
@@ -45,7 +44,7 @@ const updatedAt = () =>
 export const publicContent = sqliteTable("public_content", {
   id: id(),
   key: text("key").notNull().unique(),
-  content: text("content", { mode: "json" }).$type<HomepageContent>().notNull(),
+  content: text("content", { mode: "json" }).$type<unknown>().notNull(),
   updatedAt: updatedAt(),
 });
 
@@ -96,6 +95,12 @@ export const contactMessages = sqliteTable("contact_messages", {
   status: text("status", { enum: messageStatusEnum.enumValues })
     .notNull()
     .default("unread"),
+  createdAt: createdAt(),
+});
+
+export const newsletterSubscriptions = sqliteTable("newsletter_subscriptions", {
+  id: id(),
+  email: text("email").notNull().unique(),
   createdAt: createdAt(),
 });
 

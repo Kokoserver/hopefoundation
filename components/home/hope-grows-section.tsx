@@ -7,7 +7,7 @@ export function HopeGrowsSection() {
     <section className="relative overflow-hidden bg-olive text-olive-foreground xl:min-h-[640px]">
       <div className="absolute inset-y-0 right-0 hidden w-[36.5vw] min-w-[526px] border-l-[6px] border-white xl:block">
         <OptimizedImage
-          src="/images/a3ecc4c3dc7dd5d41521f02dad48e05a77067ce5.jpg"
+          src="/images/new/c07c29641a2d90d19da14525b548a863.jpg.jpeg"
           alt="Children in the community supported by Achebe Hope Foundation"
           fill
           priority
@@ -42,7 +42,7 @@ export function HopeGrowsSection() {
 
       <div className="absolute right-158 top-50 z-20 hidden h-90.25 w-70 overflow-hidden rounded-[38px] border-4 border-white shadow-[0_26px_52px_rgba(0,0,0,0.28)] xl:block">
         <OptimizedImage
-          src="/images/94e1204421b9dc987ed980d38d79ae0374fc1c72.jpg"
+          src="/images/new/chief.a.u.achebe_20220403_p_2808307974990542593_8_2808307969093477935.webp.jpeg"
           alt="Founder of Achebe Hope Foundation"
           fill
           priority
@@ -75,7 +75,7 @@ export function HopeGrowsSection() {
         </div>
         <div className="relative mx-auto mt-10 h-[300px] max-w-md overflow-hidden rounded-3xl sm:h-90">
           <OptimizedImage
-            src="/images/a3ecc4c3dc7dd5d41521f02dad48e05a77067ce5.jpg"
+            src="/images/new/c07c29641a2d90d19da14525b548a863.jpg.jpeg"
             alt="Children in the community supported by Achebe Hope Foundation"
             fill
             loading="eager"

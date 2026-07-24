@@ -4,6 +4,7 @@ import {
   getProgramBySlug,
   getPrograms,
   getPublicGalleryImagesPage,
+  getSubmenuPages,
 } from "@/db/queries";
 import { cacheTags } from "@/lib/cache-tags";
 
@@ -12,6 +13,15 @@ export const getCachedHomepageContent = unstable_cache(
   ["homepage-content"],
   {
     tags: [cacheTags.homepage],
+    revalidate: 3600,
+  }
+);
+
+export const getCachedSubmenuPages = unstable_cache(
+  getSubmenuPages,
+  ["submenu-pages"],
+  {
+    tags: [cacheTags.submenuPages],
     revalidate: 3600,
   }
 );

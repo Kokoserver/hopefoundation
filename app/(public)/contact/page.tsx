@@ -1,11 +1,13 @@
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, MessageCircleQuestion } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { OptimizedImage } from "@/components/common/optimized-image";
 import { publicPages } from "@/lib/public-pages";
+import { socialLinks } from "@/lib/site-config";
 import { submitContactMessageAction } from "./actions";
+import * as Icons from "lucide-react";
 
 const contactCardIcons: Record<string, React.ReactNode> = {
   Email: <Mail className="mb-5 h-6 w-6 text-primary" />,
@@ -196,6 +198,81 @@ export default function ContactPage() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 sm:py-16">
+        <div className="mx-auto grid max-w-[1180px] gap-6 px-6 sm:px-10 lg:grid-cols-2 lg:px-12">
+          <div className="rounded-[22px] border border-[#eadfcd] bg-white p-6 shadow-[0_10px_30px_rgba(105,77,32,0.06)]">
+            <h2 className="mb-4 text-[24px] font-bold text-[#17191f]">
+              Social Media
+            </h2>
+            <p className="mb-5 text-[14px] leading-[1.65] text-[#4f4a43]">
+              Follow Achebe Hope Foundation for programme updates, outreach
+              moments, community stories, and campaign announcements.
+            </p>
+            {socialLinks.length > 0 ? (
+              <div className="flex flex-wrap gap-3">
+                {socialLinks.map((social) => {
+                  const Icon = Icons[
+                    social.icon as keyof typeof Icons
+                  ] as React.ComponentType<{ className?: string }>;
+                  return (
+                    <a
+                      key={`${social.label}-${social.href}`}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full border border-[#eadfcd] px-4 py-2 text-[12px] font-semibold text-[#241E18] transition hover:border-primary hover:text-primary"
+                    >
+                      {Icon ? <Icon className="h-4 w-4" /> : null}
+                      {social.label}
+                    </a>
+                  );
+                })}
+              </div>
+            ) : (
+              <p className="rounded-2xl border border-[#eadfcd] bg-[#fffaf2] px-4 py-3 text-[13px] leading-[1.6] text-[#4f4a43]">
+                For verified updates, contact the Foundation directly or
+                subscribe to the newsletter.
+              </p>
+            )}
+          </div>
+
+          <div className="rounded-[22px] border border-[#eadfcd] bg-white p-6 shadow-[0_10px_30px_rgba(105,77,32,0.06)]">
+            <MessageCircleQuestion className="mb-4 h-7 w-7 text-primary" />
+            <h2 className="mb-4 text-[24px] font-bold text-[#17191f]">
+              Frequently Asked Questions
+            </h2>
+            <div className="space-y-4">
+              {[
+                {
+                  question: "How can I volunteer?",
+                  answer:
+                    "Use the contact form or visit the Volunteer page and the team will follow up with available opportunities.",
+                },
+                {
+                  question: "How can an organisation partner with AHF?",
+                  answer:
+                    "Send a partnership inquiry with your organisation name, area of interest, and proposed support.",
+                },
+                {
+                  question: "How can I support AADA or child programmes?",
+                  answer:
+                    "Use the Support Our Work options or contact the Foundation to discuss giving, sponsorship, or corporate support.",
+                },
+              ].map((item) => (
+                <div key={item.question}>
+                  <h3 className="text-[14px] font-bold text-[#17191f]">
+                    {item.question}
+                  </h3>
+                  <p className="mt-1 text-[13px] leading-[1.6] text-[#4f4a43]">
+                    {item.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

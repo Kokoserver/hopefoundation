@@ -13,13 +13,13 @@ export async function ProgramsSection() {
       <div className="mx-auto max-w-7xl px-6 sm:px-10">
         <div className="mb-6.5 flex items-center justify-between gap-4">
           <h2 className="text-[32px] font-bold leading-none text-[#17191f]">
-            Programs
+            Programmes
           </h2>
           <Button
             asChild
             className="hidden h-[34px] rounded-full bg-gold px-[18px] text-[11px] font-bold !text-white hover:bg-gold/90 sm:inline-flex"
           >
-            <Link href="/programs">Our Programs</Link>
+            <Link href="/programs">Our Programmes</Link>
           </Button>
         </div>
 

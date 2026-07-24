@@ -6,10 +6,9 @@ import {
   ArrowRight,
   Calendar,
   ChevronRight,
-  Mail,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { NewsletterForm } from "@/components/common/newsletter-form";
 import { Card, CardContent } from "@/components/ui/card";
 import { OptimizedImage } from "@/components/common/optimized-image";
 import { publicPages } from "@/lib/public-pages";
@@ -18,7 +17,6 @@ import { allStories, storyCategories } from "@/lib/stories-data";
 export default function StoriesPage() {
   const page = publicPages.stories;
   const [activeCategory, setActiveCategory] = useState("all");
-  const [subscribed, setSubscribed] = useState(false);
 
   const filtered = allStories.filter(
     (s) => activeCategory === "all" || s.category === activeCategory
@@ -167,24 +165,7 @@ export default function StoriesPage() {
                   <p className="mb-4 text-[12px] leading-[1.5] text-[#4f4a43]">
                     Get new stories delivered to your inbox.
                   </p>
-                  {subscribed ? (
-                    <p className="text-[13px] font-semibold text-green-700">
-                      You&apos;re subscribed!
-                    </p>
-                  ) : (
-                    <div className="flex gap-2">
-                      <Input
-                        placeholder="your@email.com"
-                        className="h-9 rounded-xl border-[#efdcc4] text-[12px]"
-                      />
-                      <Button
-                        onClick={() => setSubscribed(true)}
-                        className="h-9 rounded-xl bg-gold px-3 text-[11px] font-bold text-white hover:bg-gold/90"
-                      >
-                        <Mail className="h-3.5 w-3.5" />
-                      </Button>
-                    </div>
-                  )}
+                  <NewsletterForm compact />
                 </div>
               </div>
             </aside>

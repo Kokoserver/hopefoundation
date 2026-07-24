@@ -16,6 +16,7 @@ export const {
   contactMessages,
   galleryImages,
   messageStatusEnum,
+  newsletterSubscriptions,
   programs,
   programStatusEnum,
   projects,
