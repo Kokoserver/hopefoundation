@@ -22,7 +22,7 @@ export const allPrograms: Program[] = [
       "The Back to School Drive is one of our flagship annual programmes. Every year, we identify children from low-income families who are at risk of missing school due to lack of basic supplies. We provide complete school kits including uniforms, bags, books, stationery, and sandals. The programme also covers school fee support for the most vulnerable cases. Since its inception, the drive has helped over 800 children start the school term with confidence and dignity.",
     beneficiaries: "200 children",
     location: "Enugu East",
-    image: "/images/new/de27638f019a31c8b293f7ccc96dce4e.jpg.jpeg",
+    image: "/images/generated/foundation-education-branded.png",
     goals: [
       "Ensure no child misses school due to lack of supplies",
       "Boost confidence and readiness for the academic term",
@@ -114,7 +114,7 @@ export const allPrograms: Program[] = [
       "The Health Awareness Campaign brings essential preventive healthcare services directly to rural communities. In partnership with local health workers and the Enugu State Primary Healthcare Agency, our team sets up temporary clinics in community centres, schools, and churches. Services include malaria testing, blood pressure and blood sugar screening, deworming for children, and hygiene education sessions. The campaign also distributes mosquito nets, water purification tablets, and hygiene supplies.",
     beneficiaries: "500+ residents",
     location: "Nsukka",
-    image: "/images/new/baf129cb71ea45fab3ff3b664f9f42d5.jpg.jpeg",
+    image: "/images/generated/foundation-healthcare-branded.png",
     goals: [
       "Increase access to basic health screenings in rural areas",
       "Raise awareness about preventive healthcare practices",

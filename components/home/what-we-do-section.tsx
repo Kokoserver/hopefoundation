@@ -9,7 +9,7 @@ const galleryImages = [
     alt: "Children learning in the classroom",
   },
   {
-    src: "/images/new/de27638f019a31c8b293f7ccc96dce4e.jpg.jpeg",
+    src: "/images/generated/foundation-education-branded.png",
     alt: "Women empowerment programme",
   },
   {
@@ -25,7 +25,7 @@ const galleryImages = [
     alt: "Children in the community supported by Achebe Hope Foundation",
   },
   {
-    src: "/images/new/baf129cb71ea45fab3ff3b664f9f42d5.jpg.jpeg",
+    src: "/images/generated/foundation-outreach-branded.png",
     alt: "Community gathering",
   },
 ];

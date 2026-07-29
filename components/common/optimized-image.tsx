@@ -14,6 +14,7 @@ interface OptimizedImageProps
   showPlaceholder?: boolean;
   placeholderLabel?: string;
   className?: string;
+  hoverFlash?: boolean;
 }
 
 export function OptimizedImage({
@@ -25,6 +26,7 @@ export function OptimizedImage({
   showPlaceholder = true,
   placeholderLabel,
   className,
+  hoverFlash,
   ...props
 }: OptimizedImageProps) {
   // Fallback to ImagePlaceholder if no src provided
@@ -46,23 +48,26 @@ export function OptimizedImage({
     square: "aspect-square",
     auto: "",
   };
+  const shouldHoverFlash = hoverFlash ?? (!priority && showPlaceholder);
 
   // For fill mode (background-like images)
   if (props.fill) {
     return (
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        priority={priority}
-        quality={quality}
-        className={cn("object-cover object-center", className)}
-        sizes={
-          props.sizes ||
-          "(min-width: 1920px) 1920px, (min-width: 1280px) 1280px, (min-width: 768px) 768px, 100vw"
-        }
-        {...props}
-      />
+      <span className={cn("optimized-image-shell absolute inset-0", shouldHoverFlash && "image-hover-flash")}>
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          priority={priority}
+          quality={quality}
+          className={cn("object-cover object-center", className)}
+          sizes={
+            props.sizes ||
+            "(min-width: 1920px) 1920px, (min-width: 1280px) 1280px, (min-width: 768px) 768px, 100vw"
+          }
+          {...props}
+        />
+      </span>
     );
   }
 
@@ -71,6 +76,7 @@ export function OptimizedImage({
     <div
       className={cn(
         "relative overflow-hidden rounded-lg",
+        shouldHoverFlash && "image-hover-flash",
         aspectClasses[aspectRatio],
         !aspectRatio && !props.width && !props.height && "w-full"
       )}

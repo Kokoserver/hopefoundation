@@ -1,234 +1,214 @@
-import Link from "next/link";
-import {
-  ArrowRight,
-  Heart,
-  Calendar,
-  Building2,
-  ShieldCheck,
-  TrendingUp,
-  Users,
-} from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { Check, Copy } from "lucide-react";
+import { AnimatedCollapsible } from "@/components/common/animated-collapsible";
+import { ScrollRevealController } from "@/components/common/scroll-reveal-controller";
+import { PageHero } from "@/components/common/static-design";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { OptimizedImage } from "@/components/common/optimized-image";
-import { publicPages } from "@/lib/public-pages";
+import { Input } from "@/components/ui/input";
 
-const cardIcons: Record<string, React.ReactNode> = {
-  "One-time gifts": <Heart className="mb-5 h-6 w-6 text-primary" />,
-  "Monthly support": <Calendar className="mb-5 h-6 w-6 text-primary" />,
-  "Corporate giving": <Building2 className="mb-5 h-6 w-6 text-primary" />,
-};
+const donationAmounts = ["$10.00", "$25.00", "$50.00", "$100.00", "$250.00", "$500.00"];
+const bankDetails = [
+  ["Bank Name", "First Bank of Nigeria"],
+  ["Account Name", "Achebe Hope Foundation"],
+  ["Account Number", "1234567890"],
+  ["Reference", "Donation"],
+];
 
-const gifticons: Record<string, React.ReactNode> = {
-  "Where gifts go": <TrendingUp className="h-6 w-6 text-primary" />,
-  "Donor updates": <ShieldCheck className="h-6 w-6 text-primary" />,
-  "Corporate support": <Users className="h-6 w-6 text-primary" />,
-};
+function formatDonationAmount(value: string) {
+  const amount = Number(value.replace(/[^0-9.]/g, ""));
+
+  if (!Number.isFinite(amount) || amount <= 0) {
+    return "$0.00";
+  }
+
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format(amount);
+}
 
 export default function DonatePage() {
-  const page = publicPages.donate;
+  const [selectedAmount, setSelectedAmount] = useState(donationAmounts[0]);
+  const [customAmount, setCustomAmount] = useState("");
+  const [copiedLabel, setCopiedLabel] = useState("");
+  const displayedAmount = customAmount.trim() ? formatDonationAmount(customAmount) : selectedAmount;
+
+  const copyBankDetail = async (label: string, value: string) => {
+    try {
+      if (navigator.clipboard) {
+        await navigator.clipboard.writeText(value);
+      } else {
+        const textarea = document.createElement("textarea");
+        textarea.value = value;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "absolute";
+        textarea.style.left = "-9999px";
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+      }
+
+      setCopiedLabel(label);
+      window.setTimeout(() => setCopiedLabel(""), 1800);
+    } catch {
+      setCopiedLabel("");
+    }
+  };
 
   return (
-    <div className="bg-background">
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-footer pt-28 text-white sm:pt-32">
-        <div className="absolute inset-0">
-          <OptimizedImage
-            src={page.image}
-            alt={page.imageAlt}
-            fill
-            priority
-            quality={90}
-            className="object-cover object-center opacity-55"
-            showPlaceholder={false}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-footer" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/20 to-transparent" />
-        </div>
-
-        <div className="relative mx-auto max-w-[1280px] px-6 pb-16 pt-16 sm:px-10 sm:pb-24 sm:pt-20 lg:px-[72px]">
-          <div className="max-w-3xl animate-fade-up">
-            <p className="mb-4 text-[12px] font-bold uppercase tracking-[0.22em] text-gold">
-              {page.eyebrow}
-            </p>
-            <h1 className="max-w-4xl text-[38px] font-bold leading-[1.08] sm:text-[56px] lg:text-[64px]">
-              {page.title}
-            </h1>
-            <p className="mt-6 max-w-2xl text-[15px] leading-[1.65] text-white/88 sm:text-[17px]">
-              {page.description}
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Button className="h-11 rounded-full bg-gold px-7 text-[12px] font-bold text-white hover:bg-gold/90">
-                Donate Now
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Impact Stats */}
-      <section className="bg-footer border-t border-white/10 py-14">
-        <div className="mx-auto max-w-[1180px] px-6 sm:px-10 lg:px-12">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              { value: "\u20A610M+", label: "Raised to Date" },
-              { value: "500+", label: "Donors" },
-              { value: "15+", label: "Projects Funded" },
-              { value: "95%", label: "Goes to Programmes" },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <p className="text-[34px] font-bold text-primary sm:text-[40px]">
-                  {stat.value}
-                </p>
-                <p className="mt-1 text-[13px] font-medium uppercase tracking-wider text-white/72">
-                  {stat.label}
-                </p>
+    <>
+      <ScrollRevealController />
+      <PageHero title="Donation" crumb="Donation" />
+      <section className="bg-[#f4f4f4] py-24">
+        <div className="mx-auto max-w-[720px] bg-white px-12 py-10" data-scroll-reveal="zoom-up">
+          <form onSubmit={(event) => event.preventDefault()}>
+            <div>
+              <h2 className="text-[16px] font-black text-[#2A1708]">
+                How much would you like to donate today?
+              </h2>
+              <p className="mt-3 text-[13px] font-medium text-[#697084]">
+                All donations directly impact our organization and help us further our mission.
+              </p>
+              <div className="mt-8 flex items-center justify-between">
+                <label className="text-[13px] font-semibold text-[#2A1708]" htmlFor="custom-amount">
+                  Donation Amount <span className="text-primary">*</span>
+                </label>
+                <span className="rounded-[4px] bg-[#eef0f2] px-3 py-1 text-[10px] font-black text-[#9aa0aa]">
+                  USD $
+                </span>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Ways to Give */}
-      <section className="py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-[1180px] px-6 sm:px-10 lg:px-12">
-          <div className="mb-10 text-center">
-            <span className="inline-flex rounded-full bg-gold px-4 py-1.5 text-[12px] font-semibold text-white">
-              {page.overviewKicker}
-            </span>
-            <h2 className="mt-5 text-[30px] font-bold leading-tight text-[#17191f] sm:text-[40px]">
-              {page.overviewTitle}
-            </h2>
-            <p className="mx-auto mt-3 max-w-lg text-[14px] leading-[1.65] text-[#4f4a43]">
-              {page.cardsDescription}
-            </p>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {page.cards.map((card) => (
-              <Card
-                key={card.title}
-                className="hover-lift rounded-[20px] border-0 bg-[#f7ebe8] shadow-none"
-              >
-                <CardContent className="p-6">
-                  {cardIcons[card.title]}
-                  <h3 className="mb-3 text-[18px] font-bold text-[#17191f]">
-                    {card.title}
-                  </h3>
-                  <p className="text-[13px] leading-[1.6] text-[#342b25]">
-                    {card.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Bank Details */}
-      <section className="bg-white py-16 sm:py-20">
-        <div className="mx-auto max-w-[800px] px-6 text-center sm:px-10 lg:px-12">
-          <h2 className="text-[30px] font-bold leading-tight text-[#17191f] sm:text-[40px]">
-            Bank transfer details
-          </h2>
-          <p className="mx-auto mt-3 max-w-md text-[14px] leading-[1.65] text-[#4f4a43]">
-            You can also make a direct transfer to our foundation account.
-          </p>
-
-          <div className="mt-8 rounded-[22px] border border-[#eadfcd] bg-[#fffaf2] p-6 text-left shadow-[0_10px_30px_rgba(105,77,32,0.06)] sm:p-8">
-            <div className="grid gap-4 sm:grid-cols-2">
-              {[
-                { label: "Bank", value: "First Bank of Nigeria" },
-                { label: "Account Name", value: "Achebe Hope Foundation" },
-                { label: "Account Number", value: "1234567890" },
-                { label: "Sort Code", value: "011" },
-              ].map((detail) => (
-                <div key={detail.label}>
-                  <p className="text-[12px] font-bold uppercase tracking-wider text-gold">
-                    {detail.label}
-                  </p>
-                  <p className="mt-1 text-[15px] font-semibold text-[#17191f]">
-                    {detail.value}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <p className="mt-6 text-[12px] leading-[1.6] text-muted-foreground">
-            After your transfer, please email us at{" "}
-            <Link
-              href="mailto:AchebeHopeFoundation@gmail.com"
-              className="font-semibold text-gold underline"
-            >
-              AchebeHopeFoundation@gmail.com
-            </Link>{" "}
-            with your transaction details so we can acknowledge your gift.
-          </p>
-        </div>
-      </section>
-
-      {/* How Gifts Are Used */}
-      <section className="py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-[1180px] px-6 sm:px-10 lg:px-12">
-          <div className="mb-10">
-            <span className="inline-flex rounded-full bg-gold px-4 py-1.5 text-[12px] font-semibold text-white">
-              Transparency
-            </span>
-            <h2 className="mt-5 max-w-2xl text-[30px] font-bold leading-tight text-[#17191f] sm:text-[40px]">
-              How your donations are used
-            </h2>
-          </div>
-
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {page.sections.map((section) => (
-              <div
-                key={section.title}
-                className="rounded-[22px] border border-[#eadfcd] bg-white p-6 shadow-[0_10px_30px_rgba(105,77,32,0.06)] sm:p-8"
-              >
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-gold/10">
-                  {gifticons[section.title]}
-                </div>
-                <h3 className="mb-3 text-[18px] font-bold text-[#17191f]">
-                  {section.title}
-                </h3>
-                <p className="text-[14px] leading-[1.65] text-[#4f4a43]">
-                  {section.body}
-                </p>
+              <div className="mt-2 grid gap-2 sm:grid-cols-3">
+                {donationAmounts.map((amount) => (
+                  <button
+                    key={amount}
+                    type="button"
+                    aria-pressed={!customAmount && selectedAmount === amount}
+                    onClick={() => {
+                      setSelectedAmount(amount);
+                      setCustomAmount("");
+                    }}
+                    className={`h-11 rounded-[6px] text-[13px] font-black ${
+                      !customAmount && selectedAmount === amount ? "bg-primary text-white" : "bg-[#f4f4f4] text-[#2A1708]"
+                    }`}
+                  >
+                    {amount}
+                  </button>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+              <Input
+                id="custom-amount"
+                inputMode="decimal"
+                placeholder="Enter custom amount"
+                value={customAmount}
+                onChange={(event) => setCustomAmount(event.target.value)}
+                className="mt-3 h-10 rounded-[5px] border-[#b9b9b9] text-center text-[12px]"
+              />
+            </div>
 
-      {/* CTA */}
-      <section className="bg-footer py-16 text-white sm:py-20">
-        <div className="mx-auto max-w-[800px] px-6 text-center sm:px-10 lg:px-12">
-          <h2 className="text-[30px] font-bold leading-tight sm:text-[40px]">
-            Every gift matters
-          </h2>
-          <p className="mx-auto mt-4 max-w-lg text-[15px] leading-[1.65] text-white/72">
-            Whether you give once, monthly, or as a corporate partner, your
-            support directly strengthens families and builds lasting hope.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Button className="h-11 rounded-full bg-gold px-7 text-[12px] font-bold text-white hover:bg-gold/90">
-              Donate Now
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <div className="mt-14">
+              <h2 className="text-[16px] font-black text-[#2A1708]">Who&apos;s Giving Today?</h2>
+              <p className="mt-3 text-[13px] font-medium text-[#697084]">
+                We&apos;ll never share this information with anyone.
+              </p>
+              <div className="mt-8 grid gap-3 sm:grid-cols-2">
+                <label className="grid gap-2 text-[13px] font-semibold text-[#2A1708]">
+                  First name <span className="sr-only">required</span>
+                  <Input placeholder="John" className="h-10 rounded-[5px] border-[#b9b9b9]" required />
+                </label>
+                <label className="grid gap-2 text-[13px] font-semibold text-[#2A1708]">
+                  Last name
+                  <Input placeholder="Doe" className="h-10 rounded-[5px] border-[#b9b9b9]" />
+                </label>
+              </div>
+              <label className="mt-5 grid gap-2 text-[13px] font-semibold text-[#2A1708]">
+                Email Address <span className="sr-only">required</span>
+                <Input type="email" className="h-10 rounded-[5px] border-[#b9b9b9]" required />
+              </label>
+            </div>
+
+            <div className="mt-14">
+              <h2 className="text-[16px] font-black text-[#2A1708]">Payment Details</h2>
+              <p className="mt-3 text-[13px] font-medium text-[#697084]">
+                How would you like to pay for your donation?
+              </p>
+
+              <div className="mt-8 rounded-[6px] border border-[#e4e4e4] bg-[#fafafa] p-6">
+                <h3 className="text-[15px] font-black text-[#2A1708]">Donation Summary</h3>
+                <div className="mt-6 space-y-6 text-[13px] font-semibold text-[#697084]">
+                  <div className="flex justify-between">
+                    <span>Payment Amount</span>
+                    <span className="text-[#2A1708]">{displayedAmount}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Giving Frequency</span>
+                    <span className="text-[#2A1708]">One time</span>
+                  </div>
+                  <div className="flex justify-between border-t border-[#e4e4e4] pt-5 text-[15px] font-black text-[#2A1708]">
+                    <span>Donation Total</span>
+                    <span>{displayedAmount}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8">
+                <AnimatedCollapsible
+                  name="donation-payment"
+                  numbered={false}
+                  itemClassName="rounded-[6px] border border-primary"
+                  titleClassName="px-4 py-4 text-[13px] font-semibold text-[#697084]"
+                  contentClassName="border-t border-primary px-6 py-8"
+                  items={[
+                    {
+                      title: "Donate with Offline Donation",
+                      content: (
+                        <>
+                          <h3 className="text-[15px] font-black text-[#2A1708]">Bank Transfer Details</h3>
+                          <p className="mt-3 text-[12px] font-semibold leading-5 text-[#697084]">
+                            Send your donation using the account details below, then contact us with your payment reference.
+                          </p>
+                          <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                            {bankDetails.map(([label, value]) => (
+                              <div key={label} className="rounded-[6px] bg-[#f4f4f4] p-4">
+                                <div className="flex items-center justify-between gap-3">
+                                  <p className="text-[11px] font-black uppercase tracking-[0.04em] text-[#697084]">
+                                    {label}
+                                  </p>
+                                  <button
+                                    type="button"
+                                    aria-label={`Copy ${label}`}
+                                    className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-[#697084] transition hover:bg-primary hover:text-white"
+                                    onClick={() => void copyBankDetail(label, value)}
+                                  >
+                                    {copiedLabel === label ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+                                  </button>
+                                </div>
+                                <p className="mt-2 text-[14px] font-black text-[#2A1708]">{value}</p>
+                                <p className="mt-2 min-h-4 text-[11px] font-semibold text-primary">
+                                  {copiedLabel === label ? "Copied" : ""}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                        </>
+                      ),
+                    },
+                  ]}
+                />
+              </div>
+            </div>
+
             <Button
-              asChild
-              className="h-11 rounded-full border border-white/30 bg-transparent px-7 text-[12px] font-bold text-white hover:bg-white/10"
+              type="button"
+              className="mt-12 h-12 w-full rounded-[4px] bg-primary text-[18px] font-black text-white hover:bg-accent"
             >
-              <Link href="/contact">
-                Questions? Contact Us
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
+              Donate now
             </Button>
-          </div>
+          </form>
         </div>
       </section>
-    </div>
+    </>
   );
 }

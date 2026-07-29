@@ -4,18 +4,23 @@ import type {
   PublicPageSection,
 } from "@/components/common/public-page";
 
-const defaultImage = "/images/new/baf129cb71ea45fab3ff3b664f9f42d5.jpg.jpeg";
+const defaultImage = "/images/generated/foundation-outreach-branded.png";
 const images = {
-  community: "/images/new/baf129cb71ea45fab3ff3b664f9f42d5.jpg.jpeg",
-  children: "/images/new/19092f3ac4376805a624bbdad23eb895.jpg.jpeg",
-  education: "/images/new/de27638f019a31c8b293f7ccc96dce4e.jpg.jpeg",
-  family: "/images/new/400ca5bd72399daefb3ba1ed0da11072.jpg.jpeg",
+  community: "/images/generated/foundation-outreach-branded.png",
+  children: "/images/generated/foundation-child-welfare-branded.png",
+  education: "/images/generated/foundation-education-branded.png",
+  healthcare: "/images/generated/foundation-healthcare-branded.png",
+  foodRelief: "/images/generated/foundation-food-relief-branded.png",
+  partners: "/images/generated/foundation-partners-branded.png",
+  volunteers: "/images/generated/foundation-volunteers-branded.png",
+  womenSkills: "/images/generated/foundation-women-skills-branded.png",
+  family: "/images/generated/foundation-child-welfare-branded.png",
   leadership: "/images/new/chief.a.u.achebe_20220403_p_2808307974990542593_8_2808307969093477935.webp.jpeg",
-  outreach: "/images/new/18d3102e58527d82295a9d108a101405.jpg.jpeg",
-  stories: "/images/new/cd7684054ec5036b88f97615ab12d5a2.jpg.jpeg",
-  media: "/images/new/c07c29641a2d90d19da14525b548a863.jpg.jpeg",
-  support: "/images/new/cd7684054ec5036b88f97615ab12d5a2.jpg.jpeg",
-  aada: "/images/new/de27638f019a31c8b293f7ccc96dce4e.jpg.jpeg",
+  outreach: "/images/generated/foundation-food-relief-branded.png",
+  stories: "/images/generated/foundation-volunteers-branded.png",
+  media: "/images/generated/foundation-partners-branded.png",
+  support: "/images/generated/foundation-food-relief-branded.png",
+  aada: "/images/generated/foundation-digital-academy-branded.png",
 };
 
 function themeFor(eyebrow: string): PublicPageData["theme"] {
@@ -54,7 +59,7 @@ function imageFor(eyebrow: string, title: string) {
   if (eyebrow === "AADA") return images.aada;
   if (eyebrow === "Media Centre") return images.media;
   if (eyebrow === "Support Our Work" || eyebrow === "Get Involved") {
-    return images.support;
+    return images.volunteers;
   }
   if (eyebrow === "Legal") return images.leadership;
   if (eyebrow === "Our Work & Impact") return images.stories;
@@ -67,8 +72,20 @@ function imageFor(eyebrow: string, title: string) {
   if (lower.includes("mother") || lower.includes("maternal")) {
     return images.family;
   }
-  if (lower.includes("health") || lower.includes("relief")) {
-    return images.outreach;
+  if (lower.includes("women") || lower.includes("skills")) {
+    return images.womenSkills;
+  }
+  if (lower.includes("health")) {
+    return images.healthcare;
+  }
+  if (lower.includes("relief")) {
+    return images.foodRelief;
+  }
+  if (lower.includes("partner")) {
+    return images.partners;
+  }
+  if (lower.includes("volunteer")) {
+    return images.volunteers;
   }
   if (
     lower.includes("founder") ||
@@ -96,7 +113,7 @@ function videosFor(
       category: eyebrow,
       duration: "Placeholder",
       thumbnail,
-      href: "https://www.youtube.com/watch?v=ysz5S6PUM-U",
+      href: "https://www.youtube.com/watch?v=Y-x0efG1seA",
     },
   ];
 }
@@ -499,9 +516,21 @@ function cardsFor(eyebrow: string, title: string): PublicPageCard[] {
   ];
 }
 
-function cardsTitleFor(eyebrow: string) {
+function cardsTitleFor(eyebrow: string, title: string) {
   if (eyebrow === "AADA") return "Inside this AADA pathway";
-  if (eyebrow === "Support Our Work") return "How your support creates impact";
+  if (eyebrow === "Support Our Work") {
+    const supportTitles: Record<string, string> = {
+      "Sponsor a Child": "What child sponsorship supports",
+      "Sponsor a Mother": "How mother sponsorship helps",
+      "Support Education": "What education support provides",
+      "Support AADA": "How AADA support is used",
+      "Corporate Giving": "How corporate support works",
+      "Monthly Giving": "Why monthly giving matters",
+      "Legacy Giving": "How legacy giving continues impact",
+    };
+
+    return supportTitles[title] ?? "How this support route works";
+  }
   if (eyebrow === "Legal") return "What this policy protects";
   if (eyebrow === "Media Centre") return "How this resource will be used";
   if (eyebrow === "Our Work & Impact") return "How impact is documented";
@@ -510,12 +539,32 @@ function cardsTitleFor(eyebrow: string) {
   return "How this programme is structured";
 }
 
-function cardsDescriptionFor(eyebrow: string) {
+function cardsDescriptionFor(eyebrow: string, title: string) {
   if (eyebrow === "AADA") {
     return "Each AADA page focuses on training, mentorship, learner progress, and the employment pathway behind the academy.";
   }
   if (eyebrow === "Support Our Work") {
-    return "Support pages explain the purpose of each giving route and how the Foundation can report impact back to donors.";
+    const supportDescriptions: Record<string, string> = {
+      "Sponsor a Child":
+        "Child sponsorship can fund school access, learning materials, welfare support, nutrition, mentoring, and other verified needs that help a child stay safe and keep learning.",
+      "Sponsor a Mother":
+        "Mother sponsorship can support maternal care, newborn essentials, family relief, health referrals, and practical assistance that strengthens household stability.",
+      "Support Education":
+        "Education support can provide scholarships, books, uniforms, digital learning access, tutoring, mentorship, and school-based interventions for children and young people.",
+      "Support AADA":
+        "AADA support can fund digital courses, instructors, devices, internet access, mentorship, career preparation, and entrepreneurship pathways for learners.",
+      "Corporate Giving":
+        "Corporate giving can align company resources with community projects, skills programmes, outreach work, sponsorship commitments, and transparent impact reporting.",
+      "Monthly Giving":
+        "Monthly giving provides predictable support that helps the Foundation plan programmes, respond to verified needs, and sustain beneficiary follow-up.",
+      "Legacy Giving":
+        "Legacy giving allows long-term gifts to support future community programmes, education access, family stability, and responsible humanitarian service.",
+    };
+
+    return (
+      supportDescriptions[title] ??
+      "This support route explains the specific need, how assistance is applied, and how the Foundation can document outcomes responsibly."
+    );
   }
   if (eyebrow === "Legal") {
     return "Legal and policy pages make governance standards visible while keeping formal wording subject to appropriate review.";
@@ -572,8 +621,8 @@ function makePage({
     theme: themeFor(eyebrow),
     overviewKicker: "Overview",
     overviewTitle: focus,
-    cardsTitle: cardsTitleFor(eyebrow),
-    cardsDescription: cardsDescriptionFor(eyebrow),
+    cardsTitle: cardsTitleFor(eyebrow, title),
+    cardsDescription: cardsDescriptionFor(eyebrow, title),
     sections: sections ?? sectionsFor({ title, eyebrow }),
     cards: cards ?? cardsFor(eyebrow, title),
     ctaLabel,

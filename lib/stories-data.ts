@@ -32,7 +32,7 @@ export const allStories: Story[] = [
     author: "Emeka Okafor",
     date: "28 May 2026",
     category: "Volunteer reflections",
-    image: "/images/new/de27638f019a31c8b293f7ccc96dce4e.jpg.jpeg",
+    image: "/images/generated/foundation-education-branded.png",
   },
   {
     slug: "building-healthier-communities-together",
@@ -44,7 +44,7 @@ export const allStories: Story[] = [
     author: "Achebe Hope Foundation",
     date: "15 May 2026",
     category: "Partner perspectives",
-    image: "/images/new/baf129cb71ea45fab3ff3b664f9f42d5.jpg.jpeg",
+    image: "/images/generated/foundation-healthcare-branded.png",
   },
   {
     slug: "bringing-the-classroom-to-the-village",

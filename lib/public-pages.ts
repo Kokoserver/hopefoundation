@@ -55,7 +55,7 @@ export const publicPages: Record<string, PublicPageData> = {
     title: "Projects that respond to real community needs",
     description:
       "From classroom supplies to family welfare packages and community health campaigns — every project we run is designed to meet pressing needs with practical, dignified support.",
-    image: "/images/new/baf129cb71ea45fab3ff3b664f9f42d5.jpg.jpeg",
+    image: "/images/generated/foundation-outreach-branded.png",
     imageAlt: "Community gathering",
     overviewKicker: "Project Focus",
     overviewTitle: "Short-term action connected to long-term outcomes.",
@@ -101,7 +101,7 @@ export const publicPages: Record<string, PublicPageData> = {
     title: "Structured programmes for education, women, and children",
     description:
       "Our programmes are built around three core pillars: education access, women empowerment, and child welfare — each designed to create lasting, measurable change.",
-    image: "/images/new/de27638f019a31c8b293f7ccc96dce4e.jpg.jpeg",
+    image: "/images/generated/foundation-education-branded.png",
     imageAlt: "Children learning together",
     overviewKicker: "Programme Pillars",
     overviewTitle: "Clear focus areas make support easier to organise.",

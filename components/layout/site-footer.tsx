@@ -1,152 +1,108 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import {
-  footerLinks,
-  contactInfo,
-  socialLinks,
-  supportLinks,
-} from "@/lib/site-config";
-import { NewsletterForm } from "@/components/common/newsletter-form";
-import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
-import * as Icons from "lucide-react";
+import { PlatformLogo } from "@/components/common/platform-logo";
+
+const columns = [
+  {
+    title: "Quick Links",
+    links: [
+      { label: "Home", href: "/" },
+      { label: "About Us", href: "/about" },
+      { label: "Services", href: "/services" },
+      { label: "Blog", href: "/blog" },
+      { label: "Partners", href: "/partners" },
+      { label: "Contact Us", href: "/contact" },
+      { label: "FAQ", href: "/faq" },
+    ],
+  },
+  {
+    title: "Our Services",
+    links: [
+      { label: "Education Support Programs", href: "/services/education-support-programs" },
+      { label: "Community Healthcare Services", href: "/services/community-healthcare-services" },
+      { label: "Food & Nutrition Assistance", href: "/services/food-and-nutrition-assistance" },
+      { label: "Shelter & Housing Support", href: "/services/shelter-and-housing-support" },
+      { label: "Emergency & Disaster Relief", href: "/services/emergency-and-disaster-relief" },
+    ],
+  },
+  {
+    title: "Support",
+    links: [
+      { label: "Help Center", href: "/faq" },
+      { label: "Terms & Conditions", href: "/terms" },
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Disclaimer", href: "/terms" },
+    ],
+  },
+];
 
 export function SiteFooter() {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="bg-[#111111] text-footer-foreground">
-      <div className="mx-auto max-w-7xl px-6 py-10 sm:px-8 lg:px-12">
-        <div className="flex flex-col gap-6 border-b border-white/10 pb-10 sm:flex-row sm:items-center sm:justify-between">
-          <h3 className="max-w-sm text-[22px] font-semibold leading-tight text-white sm:text-2xl">
-            Subscribe to our mailing list for updates
-          </h3>
-          <NewsletterForm className="w-full sm:w-[320px]" />
+    <footer className="brand-dark-pattern text-white">
+      <div className="mx-auto max-w-[1300px] px-6 py-24 sm:px-10">
+        <div className="relative mb-20 overflow-hidden rounded-[16px] border border-white/10 bg-white/12 p-7 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur md:flex md:items-center md:justify-between md:gap-10 md:p-10">
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-1 bg-primary" />
+          <h2 className="text-[32px] font-semibold leading-tight tracking-[-0.045em] md:text-[42px]">
+            Subscribe to our newsletter
+          </h2>
+          <form className="mt-6 flex overflow-hidden rounded-[8px] border border-white/10 bg-white/12 p-1.5 md:mt-0 md:w-[500px]">
+            <input
+              aria-label="Email Address"
+              className="min-w-0 flex-1 bg-transparent px-5 text-[15px] text-white outline-none placeholder:text-white/82"
+              placeholder="Enter Email Address"
+            />
+            <button
+              type="button"
+              className="rounded-[5px] bg-primary px-7 py-3 text-[14px] font-semibold text-white shadow-[0_10px_24px_rgba(188,113,8,0.24)] transition hover:bg-primary/90"
+            >
+              Subscribe
+            </button>
+          </form>
         </div>
 
-        <div className="grid gap-8 py-10 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4 xl:grid-cols-5">
-          <div className="sm:col-span-2 lg:col-span-1">
-            <Link href="/" className="inline-flex flex-col items-start gap-4">
-              <Image
-                src="/logo.svg"
-                alt="Achebe Hope Foundation Logo"
-                width={160}
-                height={160}
-                className="h-24 w-24 object-contain sm:h-32 sm:w-32"
-              />
+        <div className="grid gap-10 border-b border-white/10 pb-20 md:grid-cols-2 lg:grid-cols-[1.25fr_1fr_1.35fr_1fr]">
+          <div>
+            <Link href="/" className="flex items-center">
+              <PlatformLogo imageClassName="h-20 w-20" />
             </Link>
-            <p className="mt-4 max-w-xs text-[12px] leading-relaxed text-footer-foreground/70">
-              Achebe Hope Foundation is a registered nonprofit committed to
-              restoring dignity, strengthening families, and creating lasting
-              opportunity across underserved communities.
+            <p className="mt-7 max-w-[350px] text-[16px] leading-7 text-white/82">
+              We are dedicated to making a difference by supporting empowering lives.
             </p>
-            <Button
-              asChild
-              className="mt-5 h-10 rounded-full bg-gold px-5 text-[12px] font-bold text-white hover:bg-gold/90"
-            >
-              <Link href="/donate">Support Our Work</Link>
-            </Button>
+            <div className="mt-9 border-t border-white/10 pt-8">
+              <div className="flex items-center gap-4">
+                {["p", "𝕏", "f", "◎"].map((item) => (
+                  <span
+                    key={item}
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/16 bg-white/6 text-[16px] font-semibold text-white/82 transition hover:border-primary hover:bg-primary hover:text-white"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
 
-          {footerLinks.map((group) => (
-            <div key={group.title}>
-              <h4 className="mb-3 text-[13px] font-semibold text-white">
-                {group.title}
-              </h4>
-              <ul className="space-y-2">
-                {group.items.map((item) => (
-                  <li key={`${group.title}-${item.label}-${item.href}`}>
-                    <Link
-                      href={item.href}
-                      className="text-[12px] text-footer-foreground/70 transition hover:text-primary"
-                    >
-                      {item.label}
+          {columns.map((column) => (
+            <div key={column.title}>
+              <h3 className="mb-7 text-[19px] font-semibold text-white">{column.title}</h3>
+              <ul className="space-y-4">
+                {column.links.map((link) => (
+                  <li key={`${column.title}-${link.label}-${link.href}`}>
+                    <span className="mr-3 text-primary">•</span>
+                    <Link href={link.href} className="text-[16px] text-white/82 transition hover:text-primary">
+                      {link.label}
                     </Link>
                   </li>
                 ))}
               </ul>
             </div>
           ))}
-
-          <div>
-            <h4 className="mb-3 text-[13px] font-semibold text-white">
-              Support Our Work
-            </h4>
-            <ul className="space-y-2">
-              {supportLinks.map((item) => (
-                <li key={`footer-support-${item.label}-${item.href}`}>
-                  <Link
-                    href={item.href}
-                    className="text-[12px] text-footer-foreground/70 transition hover:text-primary"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="mb-3 text-[13px] font-semibold text-white">
-              Contact Us
-            </h4>
-            <ul className="space-y-2 text-[12px] text-footer-foreground/70">
-              <li>
-                <a
-                  href={`tel:${contactInfo.phoneHref}`}
-                  className="transition hover:text-primary"
-                >
-                  {contactInfo.phone}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`mailto:${contactInfo.email}`}
-                  className="transition hover:text-primary"
-                >
-                  {contactInfo.email}
-                </a>
-              </li>
-              <li>{contactInfo.address}</li>
-              <li>
-                <Link href="/contact" className="transition hover:text-primary">
-                  Newsletter Subscription
-                </Link>
-              </li>
-            </ul>
-          </div>
         </div>
 
-        <Separator className="mb-4 bg-white/10" />
-
-        <div className="flex flex-col gap-4 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
-          <p className="text-[12px] text-footer-foreground/55">
-            All Rights Reserved © {currentYear} Achebe Hope Foundation
-          </p>
-          {socialLinks.length > 0 ? (
-            <div className="flex justify-center gap-2 sm:justify-start">
-              {socialLinks.map((social) => {
-                const Icon = Icons[
-                  social.icon as keyof typeof Icons
-                ] as React.ComponentType<{ className?: string }>;
-                return (
-                  <a
-                    key={social.href}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex h-7 w-7 items-center justify-center rounded-full border border-white/15 text-footer-foreground/70 transition hover:border-primary hover:text-primary"
-                    aria-label={social.label}
-                  >
-                    {Icon && <Icon className="h-3.5 w-3.5" />}
-                  </a>
-                );
-              })}
-            </div>
-          ) : null}
-        </div>
+        <p className="pt-14 text-center text-[16px] text-white/78">
+          Copyright © 2026 Giveon. All Rights Reserved.
+        </p>
       </div>
     </footer>
   );

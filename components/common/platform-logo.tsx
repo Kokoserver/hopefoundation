@@ -24,8 +24,8 @@ export function PlatformLogo({
       />
       {showName && (
         <div className="leading-tight">
-          <p className="text-sm font-semibold">Achebe Hope Foundation</p>
-          <p className="text-xs opacity-70">Administration</p>
+          <p className="text-[13px] font-bold text-[#1e2635]">Achebe Hope</p>
+          <p className="text-[10px] font-medium text-muted-foreground">Foundation</p>
         </div>
       )}
     </div>

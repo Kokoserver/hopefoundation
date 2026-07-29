@@ -1,11 +1,24 @@
 import Link from "next/link";
+import type { LucideIcon } from "lucide-react";
 import {
+  Activity,
   ArrowRight,
+  BookOpen,
+  BriefcaseBusiness,
   Download,
   FileText,
+  GraduationCap,
+  HandHeart,
+  HeartPulse,
+  Laptop,
   PlayCircle,
+  ShieldCheck,
+  Stethoscope,
+  Utensils,
+  Users,
 } from "lucide-react";
 import type { PublicPageData } from "@/components/common/public-page";
+import { WhatWeDoPageTemplate } from "@/components/common/what-we-do-page-template";
 import { Button } from "@/components/ui/button";
 import { OptimizedImage } from "@/components/common/optimized-image";
 
@@ -16,14 +29,16 @@ type RelatedLink = {
 };
 
 const submenuTileImages = [
-  "/images/new/de27638f019a31c8b293f7ccc96dce4e.jpg.jpeg",
-  "/images/new/c07c29641a2d90d19da14525b548a863.jpg.jpeg",
-  "/images/new/18d3102e58527d82295a9d108a101405.jpg.jpeg",
+  "/images/generated/foundation-education-branded.png",
+  "/images/generated/foundation-healthcare-branded.png",
+  "/images/generated/foundation-volunteers-branded.png",
   "/images/new/chief.a.u.achebe_20260722_p_3946737021547120023_1_3946737021547120023.webp",
-  "/images/new/cd7684054ec5036b88f97615ab12d5a2.jpg.jpeg",
-  "/images/new/8c7e6f87be07cbf3341a2cdd6184c25d.jpg.jpeg",
-  "/images/new/19092f3ac4376805a624bbdad23eb895.jpg.jpeg",
-  "/images/new/baf129cb71ea45fab3ff3b664f9f42d5.jpg.jpeg",
+  "/images/generated/foundation-food-relief-branded.png",
+  "/images/generated/foundation-women-skills-branded.png",
+  "/images/generated/foundation-child-welfare-branded.png",
+  "/images/generated/foundation-outreach-branded.png",
+  "/images/generated/foundation-digital-academy-branded.png",
+  "/images/generated/foundation-partners-branded.png",
 ];
 
 const submenuCategoryThemes: Record<
@@ -65,15 +80,15 @@ const submenuCategoryThemes: Record<
 
 const defaultSubmenuCategoryTheme = submenuCategoryThemes["Who We Are"];
 const submenuBrand = {
-  accent: "bg-[#c77a05]",
-  accentText: "text-[#c77a05]",
-  dark: "text-[#3a1600]",
-  darkBg: "bg-[#3a1600]",
-  soft: "bg-[#fff8ec]",
-  border: "border-[#ead7b8]",
-  muted: "text-[#6d5542]",
-  body: "text-[#4a3425]",
-  relatedHover: "group-hover:bg-[#3a1600]/80",
+  accent: "bg-primary",
+  accentText: "text-primary",
+  dark: "text-[#1e2635]",
+  darkBg: "bg-[#381800]",
+  soft: "bg-[#f4f4f4]",
+  border: "border-border",
+  muted: "text-muted-foreground",
+  body: "text-[#697084]",
+  relatedHover: "group-hover:bg-[#381800]/80",
 };
 
 export function SubmenuArticlePage({
@@ -83,6 +98,10 @@ export function SubmenuArticlePage({
   page: PublicPageData;
   relatedLinks: RelatedLink[];
 }) {
+  if (page.eyebrow === "What We Do") {
+    return <WhatWeDoSubmenuTemplate page={page} />;
+  }
+
   if (page.layout === "downloads") {
     return <DownloadsTemplate page={page} relatedLinks={relatedLinks} />;
   }
@@ -92,6 +111,246 @@ export function SubmenuArticlePage({
   }
 
   return <ClassicSubmenuTemplate page={page} relatedLinks={relatedLinks} />;
+}
+
+type WhatWeDoPreset = {
+  imageBadgeLines: readonly [string, string];
+  stats: readonly (readonly [string, string])[];
+  pillarsKicker: string;
+  pillarsHeading: string;
+  pillarsDescription: string;
+  pillars: readonly {
+    title: string;
+    description: string;
+    icon: LucideIcon;
+  }[];
+  featureIcon: LucideIcon;
+  featureStatement: string;
+  checklist: readonly string[];
+};
+
+const whatWeDoPresetImages = {
+  education: "/images/generated/foundation-education-branded.png",
+  healthcare: "/images/generated/foundation-healthcare-branded.png",
+  digital: "/images/generated/foundation-digital-academy-branded.png",
+  classroom: "/images/generated/foundation-education-branded.png",
+  children: "/images/generated/foundation-child-welfare-branded.png",
+  outreach: "/images/generated/foundation-food-relief-branded.png",
+  support: "/images/generated/foundation-partners-branded.png",
+};
+const whatWeDoDefaultVideoEmbedUrl = "https://www.youtube.com/embed/Y-x0efG1seA?rel=0";
+const educationTemplateVariant = Math.random() < 0.5 ? "alternate" : "standard";
+
+const defaultWhatWeDoPreset: WhatWeDoPreset = {
+  imageBadgeLines: ["Service", "With dignity"],
+  stats: [
+    ["35+", "Communities reached"],
+    ["3", "Core service areas"],
+    ["1", "Clear delivery model"],
+  ],
+  pillarsKicker: "Services",
+  pillarsHeading: "Practical support shaped around community needs",
+  pillarsDescription:
+    "Each What We Do page can present service-specific priorities while reusing the same approved page design.",
+  pillars: [
+    {
+      title: "Focused Need",
+      description: "Identifies the specific barrier, audience, and service gap this programme is designed to address.",
+      icon: Activity,
+    },
+    {
+      title: "Practical Support",
+      description: "Matches support to verified needs through field coordination, partners, supplies, and follow-up.",
+      icon: ShieldCheck,
+    },
+    {
+      title: "Visible Impact",
+      description: "Documents reach, activities, feedback, and outcomes so the work remains accountable.",
+      icon: Users,
+    },
+  ],
+  featureIcon: Activity,
+  featureStatement: "Practical service works best when support is clear, local, and accountable.",
+  checklist: ["Needs review", "Field support", "Follow-up"],
+};
+
+const whatWeDoPresets: Record<string, WhatWeDoPreset> = {
+  education: {
+    imageBadgeLines: ["Learning", "With dignity"],
+    stats: [
+      ["1,200+", "Children supported"],
+      ["35+", "Communities reached"],
+      ["3", "Core learning pathways"],
+    ],
+    pillarsKicker: "How We Help",
+    pillarsHeading: "Support that keeps learners moving forward",
+    pillarsDescription:
+      "The programme combines immediate school support with mentorship and long-term learning pathways.",
+    pillars: [
+      {
+        title: "School Access",
+        description: "Books, uniforms, fees, transport support, and basic materials that help learners stay enrolled.",
+        icon: BookOpen,
+      },
+      {
+        title: "Mentorship",
+        description: "Guidance, encouragement, and learner follow-up so students receive support beyond supplies.",
+        icon: Users,
+      },
+      {
+        title: "Digital Readiness",
+        description: "Pathways into digital learning, AADA, and practical skills that prepare young people for opportunity.",
+        icon: Laptop,
+      },
+    ],
+    featureIcon: GraduationCap,
+    featureStatement: "Education is a bridge from immediate need to lasting opportunity.",
+    checklist: ["School materials", "Mentorship", "Digital access"],
+  },
+  "community-health-outreach": {
+    imageBadgeLines: ["Care", "Closer to home"],
+    stats: [
+      ["500+", "Residents reached"],
+      ["5+", "Outreach points"],
+      ["4", "Core health services"],
+    ],
+    pillarsKicker: "Services",
+    pillarsHeading: "Health services shaped around community access",
+    pillarsDescription:
+      "This page can render health-specific services while preserving the shared What We Do design template.",
+    pillars: [
+      {
+        title: "Preventive Screening",
+        description: "Basic checks, early detection support, and community health awareness for families with limited access.",
+        icon: Stethoscope,
+      },
+      {
+        title: "Hygiene Support",
+        description: "Practical hygiene education, prevention guidance, and essential supplies where families need them most.",
+        icon: ShieldCheck,
+      },
+      {
+        title: "Referral Pathways",
+        description: "Guidance and follow-up that helps residents connect to clinics, partners, or continued care.",
+        icon: HeartPulse,
+      },
+    ],
+    featureIcon: Activity,
+    featureStatement: "Early awareness and basic screening can prevent small health issues from becoming severe.",
+    checklist: ["Screening support", "Hygiene supplies", "Health referrals"],
+  },
+  "food-humanitarian-relief": {
+    imageBadgeLines: ["Relief", "With dignity"],
+    stats: [
+      ["18K+", "Lives impacted"],
+      ["35+", "Communities reached"],
+      ["3", "Relief priorities"],
+    ],
+    pillarsKicker: "Services",
+    pillarsHeading: "Relief support for urgent household needs",
+    pillarsDescription:
+      "Food and humanitarian support focuses on immediate needs while protecting dignity, safety, and accountable distribution.",
+    pillars: [
+      {
+        title: "Food Packs",
+        description: "Nutritious food support for families facing hunger, hardship, or emergency household pressure.",
+        icon: Utensils,
+      },
+      {
+        title: "Care Essentials",
+        description: "Practical household, hygiene, and emergency items matched to verified needs.",
+        icon: HandHeart,
+      },
+      {
+        title: "Follow-up Support",
+        description: "Connections to education, health, skills, or family-support programmes after immediate relief.",
+        icon: ShieldCheck,
+      },
+    ],
+    featureIcon: HandHeart,
+    featureStatement: "Relief is most effective when urgent support is delivered with dignity and follow-up.",
+    checklist: ["Food support", "Care packs", "Family follow-up"],
+  },
+  "skills-development": {
+    imageBadgeLines: ["Skills", "For opportunity"],
+    stats: [
+      ["3", "Training pathways"],
+      ["1,200+", "Learners supported"],
+      ["35+", "Communities reached"],
+    ],
+    pillarsKicker: "Services",
+    pillarsHeading: "Practical skills that support self-reliance",
+    pillarsDescription:
+      "Skills development can cover vocational, digital, enterprise, and career-readiness support for young people and caregivers.",
+    pillars: [
+      {
+        title: "Vocational Training",
+        description: "Hands-on livelihood skills that can support income, enterprise, or employability.",
+        icon: BriefcaseBusiness,
+      },
+      {
+        title: "Digital Pathways",
+        description: "Practical digital exposure connected to AADA, learning communities, and future work.",
+        icon: Laptop,
+      },
+      {
+        title: "Mentor Support",
+        description: "Guidance that helps learners build confidence, discipline, portfolios, and opportunity readiness.",
+        icon: Users,
+      },
+    ],
+    featureIcon: BriefcaseBusiness,
+    featureStatement: "Skills training turns support into practical tools people can use to rebuild stability.",
+    checklist: ["Training", "Mentorship", "Work pathways"],
+  },
+};
+
+function WhatWeDoSubmenuTemplate({ page }: { page: PublicPageData }) {
+  const slug = page.title.toLowerCase().replaceAll("&", "").replaceAll(/\s+/g, "-").replaceAll("--", "-");
+  const preset = whatWeDoPresets[slug] ?? defaultWhatWeDoPreset;
+  const templateVariant = slug === "education" ? educationTemplateVariant : "standard";
+
+  return (
+    <WhatWeDoPageTemplate
+      variant={templateVariant}
+      title={page.title}
+      crumb={`${page.eyebrow} / ${page.title}`}
+      heroKicker={page.title}
+      heroHeading={page.overviewTitle || page.title}
+      heroDescription={page.description}
+      heroImageAlt={page.imageAlt}
+      primaryImage={page.image}
+      secondaryImage={whatWeDoPresetImages.outreach}
+      tertiaryImage={whatWeDoPresetImages.children}
+      supportImage={whatWeDoPresetImages.support}
+      imageBadgeLines={preset.imageBadgeLines}
+      stats={preset.stats}
+      primaryCtaLabel={page.ctaLabel || `Support ${page.title}`}
+      primaryCtaHref={page.ctaHref || "/contact"}
+      pillarsKicker={preset.pillarsKicker}
+      pillarsHeading={preset.pillarsHeading}
+      pillarsDescription={preset.pillarsDescription}
+      pillars={preset.pillars}
+      deliveryKicker="Delivery Model"
+      deliveryHeading="Clear steps, practical support, accountable follow-up"
+      deliverySteps={page.sections.map((section) => section.body).slice(0, 4)}
+      featureImage={whatWeDoPresetImages.children}
+      featureImageAlt={`${page.title} programme highlight`}
+      featureIcon={preset.featureIcon}
+      featureStatement={preset.featureStatement}
+      videoBackgroundImage={whatWeDoPresetImages.outreach}
+      videoBackgroundAlt={`${page.title} video background`}
+      videoKicker="Featured Video"
+      videoHeading={`See how ${page.title.toLowerCase()} creates hope`}
+      videoDescription="Watch how practical support, community service, and consistent follow-up create visible hope for families and learners."
+      videoTitle={`${page.title} video`}
+      videoEmbedUrl={whatWeDoDefaultVideoEmbedUrl}
+      finalKicker="Get Involved"
+      finalHeading={`Help expand ${page.title.toLowerCase()} support`}
+      finalDescription={`Partners, donors, volunteers, and community members can support ${page.title.toLowerCase()} through practical resources, service delivery, referrals, and programme sponsorship.`}
+      checklist={preset.checklist}
+    />
+  );
 }
 
 function ClassicSubmenuTemplate({
@@ -534,8 +793,8 @@ function RelatedLinksBlock({ links }: { links: RelatedLink[] }) {
   if (links.length === 0) return null;
 
   return (
-    <div className="bg-white p-5 shadow-[0_4px_20px_rgba(105,77,32,0.08)]">
-      <h2 className="mb-4 text-[18px] font-bold text-[#17191f]">
+    <div className="bg-white p-5 shadow-[0_12px_38px_rgba(30,38,53,0.06)] border border-border rounded-[14px]">
+      <h2 className="mb-4 text-[18px] font-bold text-[#1e2635]">
         Related Links
       </h2>
       <div className="grid gap-2">
@@ -543,7 +802,7 @@ function RelatedLinksBlock({ links }: { links: RelatedLink[] }) {
           <Link
             key={link.href}
             href={link.href}
-            className="group flex items-center justify-between gap-3 border-b border-[#eadfcd] py-3 text-[13px] font-semibold text-[#241E18] transition last:border-b-0 hover:text-primary"
+            className="group flex items-center justify-between gap-3 border-b border-border py-3 text-[13px] font-semibold text-[#1e2635] transition last:border-b-0 hover:text-primary"
           >
             {link.title}
             <ArrowRight className="h-3.5 w-3.5 shrink-0 transition group-hover:translate-x-0.5" />
@@ -564,15 +823,15 @@ function DownloadsTemplate({
   const downloads = page.downloads ?? [];
 
   return (
-    <div className="bg-[#f7f3ec] pt-28 sm:pt-32">
+    <div className="bg-background pt-28 sm:pt-32">
       <section className="mx-auto max-w-[1120px] px-6 py-10 sm:px-10">
         <p className="text-[12px] font-bold uppercase tracking-[0.22em] text-primary">
           {page.eyebrow}
         </p>
-        <h1 className="mt-4 text-[38px] font-bold leading-tight text-[#17191f] sm:text-[56px]">
+        <h1 className="mt-4 text-[38px] font-bold leading-tight text-[#1e2635] sm:text-[56px]">
           {page.title}
         </h1>
-        <p className="mt-5 max-w-2xl text-[15px] leading-[1.8] text-[#4f4a43]">
+        <p className="mt-5 max-w-2xl text-[15px] leading-[1.8] text-[#697084]">
           {page.description}
         </p>
       </section>
@@ -582,31 +841,31 @@ function DownloadsTemplate({
           {downloads.map((item) => (
             <div
               key={item.title}
-              className="grid gap-4 rounded-[12px] border border-[#eadfcd] bg-white p-5 shadow-[0_8px_26px_rgba(105,77,32,0.06)] sm:grid-cols-[48px_1fr_auto] sm:items-center"
+              className="grid gap-4 rounded-[12px] border border-border bg-white p-5 shadow-[0_12px_38px_rgba(30,38,53,0.06)] sm:grid-cols-[48px_1fr_auto] sm:items-center"
             >
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
                 <FileText className="h-5 w-5" />
               </div>
               <div>
                 <div className="mb-2 flex flex-wrap gap-2">
-                  <span className="rounded-full bg-gold/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-gold">
+                  <span className="rounded-full bg-primary/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-primary">
                     {item.category}
                   </span>
-                  <span className="rounded-full bg-[#f7f3ec] px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-muted-foreground">
+                  <span className="rounded-full bg-[#f4f4f4] px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-muted-foreground">
                     {item.fileType}
                   </span>
                 </div>
-                <h2 className="text-[18px] font-bold text-[#17191f]">
+                <h2 className="text-[18px] font-bold text-[#1e2635]">
                   {item.title}
                 </h2>
-                <p className="mt-1 text-[13px] leading-[1.6] text-[#4f4a43]">
+                <p className="mt-1 text-[13px] leading-[1.6] text-[#697084]">
                   {item.description}
                 </p>
               </div>
               {item.href ? (
                 <Button
                   asChild
-                  className="h-10 rounded-full bg-gold px-5 text-[12px] font-bold text-white hover:bg-gold/90"
+                  className="h-10 rounded-[8px] bg-primary px-5 text-[12px] font-semibold text-white hover:bg-accent"
                 >
                   <Link href={item.href}>
                     Download
@@ -614,7 +873,7 @@ function DownloadsTemplate({
                   </Link>
                 </Button>
               ) : (
-                <span className="rounded-full border border-[#eadfcd] px-4 py-2 text-center text-[11px] font-bold uppercase tracking-wide text-muted-foreground">
+                <span className="rounded-full border border-border px-4 py-2 text-center text-[11px] font-bold uppercase tracking-wide text-muted-foreground bg-[#f4f4f4]">
                   Not yet published
                 </span>
               )}
