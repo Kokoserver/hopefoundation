@@ -7,7 +7,7 @@ export function HopeGrowsSection() {
     <section className="relative overflow-hidden bg-olive text-olive-foreground xl:min-h-[640px]">
       <div className="absolute inset-y-0 right-0 hidden w-[36.5vw] min-w-[526px] border-l-[6px] border-white xl:block">
         <OptimizedImage
-          src="/images/new/c07c29641a2d90d19da14525b548a863.jpg.jpeg"
+          src="/images/generated/foundation-food-relief-branded.png"
           alt="Children in the community supported by Achebe Hope Foundation"
           fill
           priority
@@ -75,7 +75,7 @@ export function HopeGrowsSection() {
         </div>
         <div className="relative mx-auto mt-10 h-[300px] max-w-md overflow-hidden rounded-3xl sm:h-90">
           <OptimizedImage
-            src="/images/new/c07c29641a2d90d19da14525b548a863.jpg.jpeg"
+            src="/images/generated/foundation-food-relief-branded.png"
             alt="Children in the community supported by Achebe Hope Foundation"
             fill
             loading="eager"

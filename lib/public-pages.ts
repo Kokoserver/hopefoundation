@@ -9,7 +9,7 @@ export const publicPages: Record<string, PublicPageData> = {
     title: "A mission shaped by compassion and service",
     description:
       "Achebe Hope Foundation exists to strengthen families, create opportunity, and support underserved communities with practical programmes rooted in dignity.",
-    image: "/images/new/chief.a.u.achebe_20220403_p_2808307974990542593_8_2808307969093477935.webp.jpeg",
+    image: "/images/generated/foundation-partners-branded.png",
     imageAlt: "Foundation representative with community members",
     overviewKicker: "Who We Are",
     overviewTitle: "A people-first foundation built around family stability.",
@@ -55,7 +55,7 @@ export const publicPages: Record<string, PublicPageData> = {
     title: "Projects that respond to real community needs",
     description:
       "From classroom supplies to family welfare packages and community health campaigns — every project we run is designed to meet pressing needs with practical, dignified support.",
-    image: "/images/generated/foundation-outreach-branded.png",
+    image: "/images/generated/foundation-food-relief-branded.png",
     imageAlt: "Community gathering",
     overviewKicker: "Project Focus",
     overviewTitle: "Short-term action connected to long-term outcomes.",
@@ -101,7 +101,7 @@ export const publicPages: Record<string, PublicPageData> = {
     title: "Structured programmes for education, women, and children",
     description:
       "Our programmes are built around three core pillars: education access, women empowerment, and child welfare — each designed to create lasting, measurable change.",
-    image: "/images/generated/foundation-education-branded.png",
+    image: "/images/generated/foundation-child-welfare-branded.png",
     imageAlt: "Children learning together",
     overviewKicker: "Programme Pillars",
     overviewTitle: "Clear focus areas make support easier to organise.",
@@ -147,7 +147,7 @@ export const publicPages: Record<string, PublicPageData> = {
     title: "Human stories behind every act of support",
     description:
       "Beneficiary stories, volunteer reflections, and partner perspectives show how practical support becomes lasting change in communities.",
-    image: "/images/new/cd7684054ec5036b88f97615ab12d5a2.jpg.jpeg",
+    image: "/images/generated/foundation-volunteers-branded.png",
     imageAlt: "Children and community story",
     overviewKicker: "Stories",
     overviewTitle: "Impact is clearest when people can tell it themselves.",
@@ -193,7 +193,7 @@ export const publicPages: Record<string, PublicPageData> = {
     title: "Volunteer your time, skills, and care",
     description:
       "Volunteer your time, skills, and networks to support education, welfare, outreach, communications, and community programme delivery.",
-    image: "/images/new/19092f3ac4376805a624bbdad23eb895.jpg.jpeg",
+    image: "/images/generated/foundation-volunteers-branded.png",
     imageAlt: "Volunteers and children celebrating",
     overviewKicker: "Volunteer Path",
     overviewTitle: "Give support in ways that match your availability.",
@@ -239,7 +239,7 @@ export const publicPages: Record<string, PublicPageData> = {
     title: "Start a conversation with the foundation",
     description:
       "We’d love to hear from you. Whether you have questions about our programmes, want to partner with us, or are interested in volunteering, reach out and our team will respond promptly.",
-    image: "/images/new/400ca5bd72399daefb3ba1ed0da11072.jpg.jpeg",
+    image: "/images/generated/foundation-partners-branded.png",
     imageAlt: "Children supported by the foundation",
     overviewKicker: "Reach Us",
     overviewTitle: "Choose the right channel for your inquiry.",
@@ -276,7 +276,7 @@ export const publicPages: Record<string, PublicPageData> = {
     title: "Moments from programmes, outreach, and community life",
     description:
       "Photos from outreach, learning activities, community gatherings, and partner moments document the Foundation’s work in action.",
-    image: "/images/new/c07c29641a2d90d19da14525b548a863.jpg.jpeg",
+    image: "/images/generated/foundation-food-relief-branded.png",
     imageAlt: "Children in the community",
     overviewKicker: "Albums",
     overviewTitle: "Visual documentation of care, service, and community.",
@@ -320,7 +320,7 @@ export const publicPages: Record<string, PublicPageData> = {
     title: "Give toward practical hope and lasting support",
     description:
       "Your generosity makes every programme, outreach, and welfare package possible. Every contribution — no matter the size — goes directly toward strengthening families and building brighter futures.",
-    image: "/images/new/cd7684054ec5036b88f97615ab12d5a2.jpg.jpeg",
+    image: "/images/generated/foundation-food-relief-branded.png",
     imageAlt: "Children celebrating",
     overviewKicker: "Giving",
     overviewTitle: "Every gift creates real, measurable impact.",
@@ -366,7 +366,7 @@ export const publicPages: Record<string, PublicPageData> = {
     title: "Gatherings that connect people to purpose",
     description:
       "Upcoming outreach events, volunteer sessions, fundraising activities, and community gatherings connect supporters to practical service.",
-    image: "/images/new/18d3102e58527d82295a9d108a101405.jpg.jpeg",
+    image: "/images/generated/foundation-volunteers-branded.png",
     imageAlt: "Community outreach event",
     overviewKicker: "Event Calendar",
     overviewTitle: "Planned moments for service, learning, and partnership.",

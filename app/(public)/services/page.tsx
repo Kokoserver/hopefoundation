@@ -23,11 +23,11 @@ import { Button } from "@/components/ui/button";
 
 const images = {
   collageA: "/images/generated/foundation-outreach-branded.png",
-  collageC: "/images/new/400ca5bd72399daefb3ba1ed0da11072.jpg.jpeg",
-  child: "/images/new/8c7e6f87be07cbf3341a2cdd6184c25d.jpg.jpeg",
+  collageC: "/images/generated/foundation-partners-branded.png",
+  child: "/images/generated/foundation-child-welfare-branded.png",
   children: "/images/generated/foundation-education-branded.png",
   founder: "/images/new/chief.a.u.achebe_20260722_p_3946737021547120023_1_3946737021547120023.webp",
-  outreach: "/images/new/c07c29641a2d90d19da14525b548a863.jpg.jpeg",
+  outreach: "/images/generated/foundation-food-relief-branded.png",
   relief: "/images/generated/foundation-healthcare-branded.png",
 };
 

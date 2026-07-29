@@ -16,8 +16,8 @@ const profile = {
   name: "Brooklyn Simmons",
   role: "Dedicated Program Manager",
   portrait: "/images/94e1204421b9dc987ed980d38d79ae0374fc1c72.jpg",
-  supportImage: "/images/new/400ca5bd72399daefb3ba1ed0da11072.jpg.jpeg",
-  skillsImage: "/images/new/c07c29641a2d90d19da14525b548a863.jpg.jpeg",
+  supportImage: "/images/generated/foundation-volunteers-branded.png",
+  skillsImage: "/images/generated/foundation-women-skills-branded.png",
 };
 
 const contactCards = [

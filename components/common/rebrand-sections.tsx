@@ -108,7 +108,7 @@ export function RebrandIntro({
           </div>
           <div className="space-y-3">
             <div className="relative h-[160px] overflow-hidden rounded-[16px]">
-              <OptimizedImage src="/images/new/19092f3ac4376805a624bbdad23eb895.jpg.jpeg" alt="Children smiling" fill quality={90} />
+              <OptimizedImage src="/images/generated/foundation-child-welfare-branded.png" alt="Children smiling" fill quality={90} />
             </div>
             <div className="relative h-[190px] overflow-hidden rounded-[16px]">
               <OptimizedImage src="/images/generated/foundation-outreach-branded.png" alt="Community outreach" fill quality={90} />

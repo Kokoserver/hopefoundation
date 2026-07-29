@@ -60,7 +60,7 @@ export default function ServiceDetailPage() {
             </div>
 
             <div className="relative overflow-hidden rounded-[10px] p-6 text-white">
-              <OptimizedImage src="/images/new/400ca5bd72399daefb3ba1ed0da11072.jpg.jpeg" alt="" fill quality={90} />
+              <OptimizedImage src="/images/generated/foundation-partners-branded.png" alt="" fill quality={90} />
               <div className="absolute inset-0 bg-[#120800]/72" />
               <div className="relative">
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary">
@@ -105,7 +105,7 @@ export default function ServiceDetailPage() {
             </div>
 
             <div className="relative mt-8 grid overflow-hidden rounded-[10px] sm:grid-cols-2">
-              <OptimizedImage src="/images/new/cd7684054ec5036b88f97615ab12d5a2.jpg.jpeg" alt="Hands holding donations" fill quality={90} />
+              <OptimizedImage src="/images/generated/foundation-food-relief-branded.png" alt="Hands holding donations" fill quality={90} />
               <div className="absolute inset-0 bg-gradient-to-t from-[#120800]/90 via-[#120800]/30 to-transparent" />
               {["Emergency & Disaster Relief", "Emergency & Disaster Relief"].map((item, index) => (
                 <div key={`${item}-${index}`} className="relative min-h-[210px] p-7 text-white">

@@ -7,7 +7,7 @@ import { PageHero } from "@/components/common/static-design";
 const posts = [
   {
     title: "Empowering Women Through Skill Development",
-    image: "/images/new/400ca5bd72399daefb3ba1ed0da11072.jpg.jpeg",
+    image: "/images/generated/foundation-women-skills-branded.png",
   },
   {
     title: "Building Safe Homes for Families in Need",
@@ -15,19 +15,19 @@ const posts = [
   },
   {
     title: "Partnering with Local Businesses for Greater Impact",
-    image: "/images/new/18d3102e58527d82295a9d108a101405.jpg.jpeg",
+    image: "/images/generated/foundation-partners-branded.png",
   },
   {
     title: "Annual Fundraising Gala: Making a Difference Together",
-    image: "/images/new/c07c29641a2d90d19da14525b548a863.jpg.jpeg",
+    image: "/images/generated/foundation-volunteers-branded.png",
   },
   {
     title: "Healthcare Camps: Reaching Those in Need",
-    image: "/images/new/cd7684054ec5036b88f97615ab12d5a2.jpg.jpeg",
+    image: "/images/generated/foundation-healthcare-branded.png",
   },
   {
     title: "Volunteer Stories: Creating Impact Together",
-    image: "/images/generated/foundation-education-branded.png",
+    image: "/images/generated/foundation-volunteers-branded.png",
   },
 ];
 

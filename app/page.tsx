@@ -26,11 +26,16 @@ const images = {
   hero: "/images/generated/foundation-outreach-branded.png",
   collageA: "/images/generated/foundation-outreach-branded.png",
   collageB: "/images/generated/foundation-healthcare-branded.png",
-  collageC: "/images/new/400ca5bd72399daefb3ba1ed0da11072.jpg.jpeg",
-  child: "/images/new/8c7e6f87be07cbf3341a2cdd6184c25d.jpg.jpeg",
+  collageC: "/images/generated/foundation-partners-branded.png",
+  child: "/images/generated/foundation-child-welfare-branded.png",
   children: "/images/generated/foundation-education-branded.png",
+  childWelfare: "/images/generated/foundation-child-welfare-branded.png",
+  foodRelief: "/images/generated/foundation-food-relief-branded.png",
+  partners: "/images/generated/foundation-partners-branded.png",
+  volunteers: "/images/generated/foundation-volunteers-branded.png",
+  womenSkills: "/images/generated/foundation-women-skills-branded.png",
   founder: "/images/new/chief.a.u.achebe_20260722_p_3946737021547120023_1_3946737021547120023.webp",
-  outreach: "/images/new/c07c29641a2d90d19da14525b548a863.jpg.jpeg",
+  outreach: "/images/generated/foundation-food-relief-branded.png",
   relief: "/images/generated/foundation-healthcare-branded.png",
 };
 
@@ -66,12 +71,12 @@ const causes = [
   {
     title: "Hunger Relief and Food Security",
     description: "Nutritious food distribution and family support for underserved communities.",
-    image: images.outreach,
+    image: images.foodRelief,
   },
   {
     title: "Community Health and Medical Aid",
     description: "Health screenings, medical outreach, and care coordination for families.",
-    image: images.child,
+    image: images.relief,
   },
 ];
 
@@ -104,12 +109,12 @@ const programs = [
   {
     category: "Hope Kids",
     title: "Hope for All Mega Fundraising Drive for Underprivileged Families",
-    image: images.collageA,
+    image: images.childWelfare,
   },
   {
     category: "Food Relief",
     title: "Monthly Food Distribution & Nutrition Support Program",
-    image: images.collageB,
+    image: images.foodRelief,
   },
   {
     category: "Healthcare",
@@ -119,12 +124,12 @@ const programs = [
   {
     category: "Hunger Relief",
     title: "Monthly Food Distribution & Nutrition Support Program",
-    image: images.collageC,
+    image: images.foodRelief,
   },
   {
     category: "Healthcare",
     title: "Rural Outreach Medical Camp & Free Health Screening Initiative",
-    image: images.children,
+    image: images.relief,
   },
   {
     category: "Disaster Relief",
@@ -145,17 +150,17 @@ const blogPosts = [
   {
     title: "Empowering Women Through Skill Development",
     date: "April 22, 2026",
-    image: "/images/b146d95d118b6f0b23c31c4d91959f1e86ca36fc.jpg",
+    image: images.womenSkills,
   },
   {
     title: "Building Safe Homes for Families in Need",
     date: "April 22, 2026",
-    image: "/images/new/cd7684054ec5036b88f97615ab12d5a2.jpg.jpeg",
+    image: images.childWelfare,
   },
   {
     title: "Partnering with Local Businesses for Greater Impact",
     date: "April 22, 2026",
-    image: images.children,
+    image: images.partners,
   },
 ];
 
@@ -234,7 +239,7 @@ export default function Home() {
             <div className="max-w-[430px]">
               <div className="inline-flex items-center rounded-full bg-white/12 py-1 pl-1 pr-4 text-[13px] font-medium text-white/82 backdrop-blur">
                 <span className="mr-3 flex -space-x-2">
-                  {[images.child, images.collageA, images.outreach, images.children].map((image) => (
+                  {[images.childWelfare, images.foodRelief, images.volunteers, images.children].map((image) => (
                     <span key={image} className="relative h-7 w-7 overflow-hidden rounded-full border border-white">
                       <OptimizedImage src={image} alt="" fill quality={80} />
                     </span>
@@ -387,7 +392,7 @@ export default function Home() {
             </div>
             <div className="rounded-[14px] bg-[#381800] px-8 pb-0 pt-9 text-center text-white">
               <div className="flex justify-center -space-x-3">
-                {[images.founder, images.collageA, images.child, images.children, images.outreach].map((image) => (
+                {[images.founder, images.foodRelief, images.childWelfare, images.children, images.volunteers].map((image) => (
                   <span key={image} className="relative h-11 w-11 overflow-hidden rounded-full border-2 border-[#381800]">
                     <OptimizedImage src={image} alt="" fill quality={80} />
                   </span>
@@ -446,7 +451,7 @@ export default function Home() {
               <p className="text-[18px] font-semibold leading-tight text-[#2A1708]">3,500+ Active</p>
               <p className="text-[18px] font-semibold leading-tight text-[#2A1708]">Volunteers</p>
               <div className="mt-7 flex -space-x-2">
-                {[images.founder, images.collageA, images.outreach, images.children].map((image) => (
+                {[images.founder, images.foodRelief, images.volunteers, images.children].map((image) => (
                   <span key={image} className="relative h-8 w-8 overflow-hidden rounded-full border-2 border-white">
                     <OptimizedImage src={image} alt="" fill quality={80} />
                   </span>
@@ -454,7 +459,7 @@ export default function Home() {
               </div>
             </div>
             <div className="absolute bottom-10 right-0 h-[160px] w-[220px] overflow-hidden rounded-[12px] border-[6px] border-white shadow-[0_14px_40px_rgba(15,23,42,.16)]">
-              <OptimizedImage src={images.relief} alt="Child receiving food support" fill quality={90} />
+              <OptimizedImage src={images.foodRelief} alt="Family receiving food support" fill quality={90} />
             </div>
           </div>
           <div className="max-w-[580px]">
@@ -500,7 +505,7 @@ export default function Home() {
 
       <section className="sticky top-0 z-0 bg-[#381800]">
         <div className="relative h-[660px] min-h-[78vh] overflow-hidden text-center text-white">
-          <OptimizedImage src="/images/video-banner.png" alt="Volunteers sharing relief supplies with children" fill quality={90} className="object-cover object-center" showPlaceholder={false} />
+          <OptimizedImage src="/images/generated/foundation-volunteers-branded.png" alt="Volunteers sharing relief supplies with children" fill quality={90} className="object-cover object-center" showPlaceholder={false} />
           <div className="absolute inset-0 bg-[#120800]/34" />
           <div className="absolute inset-0 bg-radial-[circle_at_center] from-transparent via-[#120800]/16 to-[#120800]/42" />
           <div className="relative z-10 mx-auto flex h-full max-w-[930px] -translate-y-8 flex-col items-center justify-center px-6">
@@ -659,7 +664,7 @@ export default function Home() {
         <div className="mx-auto grid max-w-[930px] items-center gap-8 px-6 md:grid-cols-[0.8fr_1.2fr]" data-reveal-child="left">
           <div className="relative h-[330px]">
             <div className="absolute inset-0 overflow-hidden rounded-[10px]">
-              <OptimizedImage src={images.collageC} alt="Food support" fill quality={90} />
+              <OptimizedImage src={images.partners} alt="Foundation partners reviewing support plans" fill quality={90} />
             </div>
             <div className="absolute -right-4 top-10 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-white shadow-xl">
               <Heart className="h-7 w-7 fill-current" />
@@ -690,7 +695,7 @@ export default function Home() {
 
       <section className="relative z-10 min-h-[720px] overflow-hidden bg-[#381800] py-20 text-white md:py-0" data-scroll-reveal="fade-right">
         <div className="testimonial-image-wrap absolute inset-0 overflow-hidden">
-          <OptimizedImage src={images.children} alt="Testimonials from community supporters" fill quality={90} />
+          <OptimizedImage src={images.volunteers} alt="Testimonials from community supporters" fill quality={90} />
           <div className="absolute inset-0 bg-gradient-to-r from-[#120800]/38 via-[#120800]/20 to-[#120800]/54" />
           <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#120800]/86 to-transparent" />
         </div>
@@ -698,7 +703,7 @@ export default function Home() {
           <div className="self-end pb-16 md:pb-28">
             <div className="inline-flex items-center rounded-full bg-white/12 py-1 pl-1 pr-4 text-[13px] font-medium text-white/86 backdrop-blur">
               <span className="mr-3 flex -space-x-2">
-                {[images.founder, images.collageA, images.outreach, images.children].map((image) => (
+                {[images.founder, images.foodRelief, images.volunteers, images.children].map((image) => (
                   <span key={image} className="relative h-7 w-7 overflow-hidden rounded-full border border-white">
                     <OptimizedImage src={image} alt="" fill quality={80} />
                   </span>

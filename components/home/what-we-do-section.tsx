@@ -5,23 +5,23 @@ import { OptimizedImage } from "@/components/common/optimized-image";
 
 const galleryImages = [
   {
-    src: "/images/new/cd7684054ec5036b88f97615ab12d5a2.jpg.jpeg",
+    src: "/images/generated/foundation-child-welfare-branded.png",
     alt: "Children learning in the classroom",
   },
   {
-    src: "/images/generated/foundation-education-branded.png",
+    src: "/images/generated/foundation-women-skills-branded.png",
     alt: "Women empowerment programme",
   },
   {
-    src: "/images/new/18d3102e58527d82295a9d108a101405.jpg.jpeg",
+    src: "/images/generated/foundation-partners-branded.png",
     alt: "Community development programme",
   },
   {
-    src: "/images/new/8c7e6f87be07cbf3341a2cdd6184c25d.jpg.jpeg",
+    src: "/images/generated/foundation-women-skills-branded.png",
     alt: "Women's vocational skills training",
   },
   {
-    src: "/images/new/c07c29641a2d90d19da14525b548a863.jpg.jpeg",
+    src: "/images/generated/foundation-food-relief-branded.png",
     alt: "Children in the community supported by Achebe Hope Foundation",
   },
   {

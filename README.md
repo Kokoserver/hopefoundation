@@ -4,7 +4,7 @@
 
 The official website for Achebe Hope Foundation - a nonprofit organization dedicated to improving lives through strategic programs, community projects, and volunteer engagement. This repository contains the frontend and content management system for the foundation's web presence..
 
-## About the Project
+## About the Project.
 
 The Achebe Hope Foundation website serves as both a public-facing platform for donors and supporters, and an internal dashboard for managing foundation operations. The platform includes:
 

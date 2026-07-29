@@ -18,12 +18,12 @@ const programs = [
   {
     category: "Disaster Relief",
     title: "Hope for All Mega Fundraising Drive for Underprivileged Families",
-    image: "/images/generated/foundation-outreach-branded.png",
+    image: "/images/generated/foundation-child-welfare-branded.png",
   },
   {
     category: "Hunger Relief",
     title: "Monthly Food Distribution & Nutrition Support Program",
-    image: "/images/new/c07c29641a2d90d19da14525b548a863.jpg.jpeg",
+    image: "/images/generated/foundation-food-relief-branded.png",
   },
   {
     category: "Healthcare",
@@ -33,7 +33,7 @@ const programs = [
   {
     category: "Disaster Relief",
     title: "Emergency Shelter Support & Disaster Relief Assistance Program",
-    image: "/images/new/400ca5bd72399daefb3ba1ed0da11072.jpg.jpeg",
+    image: "/images/generated/foundation-outreach-branded.png",
   },
 ];
 

@@ -14,13 +14,13 @@ import { OptimizedImage } from "@/components/common/optimized-image";
 
 export const designImages = [
   "/images/generated/foundation-outreach-branded.png",
-  "/images/new/19092f3ac4376805a624bbdad23eb895.jpg.jpeg",
-  "/images/new/cd7684054ec5036b88f97615ab12d5a2.jpg.jpeg",
+  "/images/generated/foundation-child-welfare-branded.png",
+  "/images/generated/foundation-food-relief-branded.png",
   "/images/generated/foundation-healthcare-branded.png",
-  "/images/new/18d3102e58527d82295a9d108a101405.jpg.jpeg",
+  "/images/generated/foundation-volunteers-branded.png",
   "/images/generated/foundation-education-branded.png",
-  "/images/new/400ca5bd72399daefb3ba1ed0da11072.jpg.jpeg",
-  "/images/new/8c7e6f87be07cbf3341a2cdd6184c25d.jpg.jpeg",
+  "/images/generated/foundation-partners-branded.png",
+  "/images/generated/foundation-women-skills-branded.png",
   "/images/new/chief.a.u.achebe_20260722_p_3946737021547120023_1_3946737021547120023.webp",
   "/images/generated/foundation-digital-academy-branded.png",
 ];
@@ -93,7 +93,7 @@ export function PageHero({
       {!plain ? (
         <div className="absolute inset-0">
           <OptimizedImage
-            src="/images/new/19092f3ac4376805a624bbdad23eb895.jpg.jpeg"
+            src="/images/generated/foundation-outreach-branded.png"
             alt=""
             fill
             priority
@@ -277,7 +277,7 @@ export function DetailLayout({ title = "Education Support Programs" }: { title?:
             ))}
           </div>
           <div className="relative overflow-hidden rounded-[12px] p-7 text-white">
-            <OptimizedImage src="/images/new/400ca5bd72399daefb3ba1ed0da11072.jpg.jpeg" alt="" fill quality={90} className="object-cover" />
+            <OptimizedImage src="/images/generated/foundation-partners-branded.png" alt="" fill quality={90} className="object-cover" />
             <div className="absolute inset-0 bg-[#120800]/70" />
             <div className="relative">
               <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary">
@@ -310,7 +310,7 @@ export function DetailLayout({ title = "Education Support Programs" }: { title?:
             Your support can make a lasting difference. Together, we can make a meaningful opportunity for those in need.
           </p>
           <div className="relative mt-8 grid overflow-hidden rounded-[12px] sm:grid-cols-2">
-            <OptimizedImage src="/images/new/cd7684054ec5036b88f97615ab12d5a2.jpg.jpeg" alt="" fill quality={90} className="object-cover" />
+            <OptimizedImage src="/images/generated/foundation-food-relief-branded.png" alt="" fill quality={90} className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#120800]/88 to-[#120800]/10" />
             {["Emergency & Disaster Relief", "Emergency & Disaster Relief"].map((item, index) => (
               <div key={`${item}-${index}`} className="relative min-h-[220px] p-8 text-white">

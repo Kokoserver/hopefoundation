@@ -21,7 +21,7 @@ const testimonials = [
       "Through community support, vocational training, and mentorship, she rebuilt her confidence, started a small business, and today supports not only her own family but mentors other women in her community.",
       "Hope spreads when opportunity is shared.",
     ],
-    image: "/images/new/cd7684054ec5036b88f97615ab12d5a2.jpg.jpeg",
+    image: "/images/generated/foundation-women-skills-branded.png",
   },
   {
     name: "Dreams Come True",
@@ -39,7 +39,7 @@ const testimonials = [
       "The foundation truly cares about sustainable change and long-term dignity.",
       "Real change grows through people.",
     ],
-    image: "/images/new/chief.a.u.achebe_20220403_p_2808307974990542593_8_2808307969093477935.webp.jpeg",
+    image: "/images/generated/foundation-partners-branded.png",
   },
 ];
 

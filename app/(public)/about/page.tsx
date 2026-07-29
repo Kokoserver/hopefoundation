@@ -24,11 +24,11 @@ const images = {
   hero: "/images/generated/foundation-outreach-branded.png",
   collageA: "/images/generated/foundation-outreach-branded.png",
   collageB: "/images/generated/foundation-healthcare-branded.png",
-  collageC: "/images/new/400ca5bd72399daefb3ba1ed0da11072.jpg.jpeg",
-  child: "/images/new/8c7e6f87be07cbf3341a2cdd6184c25d.jpg.jpeg",
+  collageC: "/images/generated/foundation-partners-branded.png",
+  child: "/images/generated/foundation-child-welfare-branded.png",
   children: "/images/generated/foundation-education-branded.png",
   founder: "/images/new/chief.a.u.achebe_20260722_p_3946737021547120023_1_3946737021547120023.webp",
-  outreach: "/images/new/c07c29641a2d90d19da14525b548a863.jpg.jpeg",
+  outreach: "/images/generated/foundation-food-relief-branded.png",
   relief: "/images/generated/foundation-healthcare-branded.png",
 };
 
@@ -490,7 +490,7 @@ export default function AboutPage() {
 
       <section className="sticky top-0 z-0 bg-[#381800]">
         <div className="relative h-[660px] min-h-[78vh] overflow-hidden text-center text-white">
-          <OptimizedImage src="/images/video-banner.png" alt="Volunteers sharing relief supplies with children" fill quality={90} className="object-cover object-center" showPlaceholder={false} />
+          <OptimizedImage src="/images/generated/foundation-volunteers-branded.png" alt="Volunteers sharing relief supplies with children" fill quality={90} className="object-cover object-center" showPlaceholder={false} />
           <div className="absolute inset-0 bg-[#120800]/34" />
           <div className="absolute inset-0 bg-radial-[circle_at_center] from-transparent via-[#120800]/16 to-[#120800]/42" />
           <div className="relative z-10 mx-auto flex h-full max-w-[930px] -translate-y-8 flex-col items-center justify-center px-6">

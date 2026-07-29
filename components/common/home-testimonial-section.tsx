@@ -2,10 +2,10 @@ import { OptimizedImage } from "@/components/common/optimized-image";
 import { TestimonialCardCarousel } from "@/components/common/testimonial-card-carousel";
 
 const testimonialImages = {
-  children: "/images/new/18d3102e58527d82295a9d108a101405.jpg.jpeg",
+  children: "/images/generated/foundation-child-welfare-branded.png",
   founder: "/images/new/chief.a.u.achebe_20260722_p_3946737021547120023_1_3946737021547120023.webp",
   collageA: "/images/generated/foundation-outreach-branded.png",
-  outreach: "/images/new/c07c29641a2d90d19da14525b548a863.jpg.jpeg",
+  outreach: "/images/generated/foundation-food-relief-branded.png",
 };
 
 export function HomeTestimonialSection() {

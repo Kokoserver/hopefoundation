@@ -13,7 +13,7 @@ const featuredPartners = [
     category: "Flagship Education Partner",
     description:
       "AADA is the Foundation's biggest partnership pathway for digital skills, mentorship, scholarships, and career access.",
-    image: "/images/generated/foundation-education-branded.png",
+    image: "/images/generated/foundation-digital-academy-branded.png",
     href: aadaUrl,
     cta: "Visit AADA Campus",
     primary: true,
@@ -22,7 +22,7 @@ const featuredPartners = [
     name: "Corporate Impact Partners",
     category: "CSR & Sponsorship",
     description: "Companies can sponsor cohorts, fund projects, provide equipment, or create career opportunities.",
-    image: "/images/new/400ca5bd72399daefb3ba1ed0da11072.jpg.jpeg",
+    image: "/images/generated/foundation-partners-branded.png",
     href: "/contact",
     cta: "Become a Partner",
     primary: false,
@@ -31,7 +31,7 @@ const featuredPartners = [
     name: "Community Delivery Partners",
     category: "Local Implementation",
     description: "Community institutions help coordinate field delivery, identify verified needs, and sustain local trust.",
-    image: "/images/generated/foundation-outreach-branded.png",
+    image: "/images/generated/foundation-volunteers-branded.png",
     href: "/contact",
     cta: "Partner With Us",
     primary: false,
@@ -107,7 +107,7 @@ export default function PartnersPage() {
           <div className="relative" data-scroll-reveal="fade-left">
             <div className="relative h-[480px] overflow-hidden rounded-[18px]">
               <OptimizedImage
-                src="/images/generated/foundation-education-branded.png"
+                src="/images/generated/foundation-partners-branded.png"
                 alt="AADA learners and community partners"
                 fill
                 quality={90}

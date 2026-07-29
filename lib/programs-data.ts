@@ -45,7 +45,7 @@ export const allPrograms: Program[] = [
       "The Women Skills Bootcamp is an intensive 6-week vocational training programme designed to equip women with practical, income-generating skills. Participants choose from three tracks: tailoring, bead-making, or pastry production. Each track combines hands-on training with basic business management, pricing, and customer relations. Graduates receive a startup kit with the tools they need to begin earning immediately. The programme also provides post-training mentorship and access to a peer support network.",
     beneficiaries: "50 women",
     location: "Enugu North",
-    image: "/images/new/8c7e6f87be07cbf3341a2cdd6184c25d.jpg.jpeg",
+    image: "/images/generated/foundation-women-skills-branded.png",
     goals: [
       "Equip women with marketable vocational skills",
       "Provide startup resources for immediate income generation",
@@ -68,7 +68,7 @@ export const allPrograms: Program[] = [
       "Our Orphanage Welfare Visit programme ensures that children in partner orphanages receive consistent material and emotional support. Our team visits monthly, delivering food supplies, hygiene products, educational materials, and organising recreational activities. Beyond material support, we spend quality time with the children, offering mentorship, tutoring, and psychosocial encouragement. We currently partner with six orphanages across Enugu State, reaching over 120 children on a regular basis.",
     beneficiaries: "120 children",
     location: "Enugu South",
-    image: "/images/new/cd7684054ec5036b88f97615ab12d5a2.jpg.jpeg",
+    image: "/images/generated/foundation-child-welfare-branded.png",
     goals: [
       "Provide consistent material support to partner orphanages",
       "Improve educational outcomes through tutoring and supplies",
@@ -91,7 +91,7 @@ export const allPrograms: Program[] = [
       "Our Scholarship Programme identifies academically promising students from underserved communities and sponsors their secondary education. Each scholar receives full coverage of school fees, textbooks, uniforms, writing materials, and transportation. Beyond financial support, we provide mentorship, academic monitoring, and career guidance. Scholars are selected through a rigorous process involving community referrals, academic assessments, and home visits to verify need.",
     beneficiaries: "30 students",
     location: "Enugu State",
-    image: "/images/new/chief.a.u.achebe_20220403_p_2808307974990542593_8_2808307969093477935.webp.jpeg",
+    image: "/images/generated/foundation-education-branded.png",
     goals: [
       "Remove financial barriers to secondary education",
       "Support academically promising students from low-income families",
@@ -137,7 +137,7 @@ export const allPrograms: Program[] = [
       "Youth Mentorship Day is a flagship event that brings together young people from underserved communities with professionals from various fields. Participants attend career talks, interactive mentoring sessions, and skills workshops. Topics include career planning, interview skills, personal branding, financial literacy, and goal setting. The event aims to broaden horizons, build confidence, and provide young people with the guidance they need to make informed decisions about their futures.",
     beneficiaries: "100 youths",
     location: "Enugu Urban",
-    image: "/images/new/18d3102e58527d82295a9d108a101405.jpg.jpeg",
+    image: "/images/generated/foundation-volunteers-branded.png",
     goals: [
       "Connect young people with positive role models",
       "Provide practical career guidance and life skills training",
