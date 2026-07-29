@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { NewsletterForm } from "@/components/common/newsletter-form";
 import { Card, CardContent } from "@/components/ui/card";
 import { OptimizedImage } from "@/components/common/optimized-image";
+import { ScrollRevealController } from "@/components/common/scroll-reveal-controller";
 import { publicPages } from "@/lib/public-pages";
 import { allStories, storyCategories } from "@/lib/stories-data";
 
@@ -24,6 +25,7 @@ export default function StoriesPage() {
 
   return (
     <div className="bg-background">
+      <ScrollRevealController />
       {/* Hero */}
       <section className="relative overflow-hidden bg-footer pt-28 text-white sm:pt-32">
         <div className="absolute inset-0">
@@ -57,7 +59,7 @@ export default function StoriesPage() {
       </section>
 
       {/* Stories Grid */}
-      <section className="py-16 sm:py-20 lg:py-24">
+      <section className="bg-white py-16 sm:py-20 lg:py-24" data-scroll-reveal="fade-left">
         <div className="mx-auto max-w-[1180px] px-6 sm:px-10 lg:px-12">
           <div className="grid gap-10 lg:grid-cols-[1fr_280px]">
             {/* Main */}
@@ -79,8 +81,13 @@ export default function StoriesPage() {
                 </p>
               ) : (
                 <div className="grid gap-[20px] sm:grid-cols-2">
-                  {filtered.map((story) => (
-                    <Link key={story.slug} href={`/stories/${story.slug}`}>
+                  {filtered.map((story, index) => (
+                    <Link
+                      key={story.slug}
+                      href={`/stories/${story.slug}`}
+                      data-reveal-child="zoom"
+                      style={{ "--reveal-index": index } as React.CSSProperties}
+                    >
                       <Card className="group hover-lift flex cursor-pointer flex-col overflow-hidden rounded-[12px] border border-[#efdcc4] bg-[#fffaf2] shadow-[0_4px_16px_rgba(105,77,32,0.08)]">
                       <CardContent className="flex h-full flex-col p-0">
                         <div className="relative h-[180px] overflow-hidden">
@@ -124,7 +131,7 @@ export default function StoriesPage() {
             </div>
 
             {/* Sidebar */}
-            <aside>
+            <aside data-reveal-child="right" style={{ "--reveal-index": 1 } as React.CSSProperties}>
               <div className="sticky top-24 space-y-6">
                 <div className="rounded-[20px] border border-[#efdcc4] bg-[#fffaf2] p-6">
                   <h3 className="mb-4 text-[15px] font-bold text-[#17191f]">
@@ -174,7 +181,7 @@ export default function StoriesPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-footer py-16 text-white sm:py-20">
+      <section className="bg-footer py-16 text-white sm:py-20" data-scroll-reveal="soft-rise">
         <div className="mx-auto max-w-[800px] px-6 text-center sm:px-10 lg:px-12">
           <h2 className="text-[30px] font-bold leading-tight sm:text-[40px]">
             {page.ctaLabel || "Become Part of a Story"}

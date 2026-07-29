@@ -1,32 +1,29 @@
-import { Camera } from "lucide-react";
-import { getCachedPublicGalleryImagesPage } from "@/db/cached-queries";
-import { InfiniteGallery } from "@/components/gallery/infinite-gallery";
+import { MediaModalGrid } from "@/components/common/media-modal-grid";
+import { ScrollRevealController } from "@/components/common/scroll-reveal-controller";
+import { PageHero } from "@/components/common/static-design";
 
-const GALLERY_PAGE_SIZE = 9;
+const galleryItems = [
+  { title: "gallery-1", image: "/images/new/8c7e6f87be07cbf3341a2cdd6184c25d.jpg.jpeg" },
+  { title: "gallery-2", image: "/images/generated/foundation-education-branded.png" },
+  { title: "gallery-3", image: "/images/generated/foundation-outreach-branded.png" },
+  { title: "gallery-4", image: "/images/new/19092f3ac4376805a624bbdad23eb895.jpg.jpeg" },
+  { title: "gallery-5", image: "/images/new/cd7684054ec5036b88f97615ab12d5a2.jpg.jpeg" },
+  { title: "gallery-6", image: "/images/new/400ca5bd72399daefb3ba1ed0da11072.jpg.jpeg" },
+  { title: "gallery-7", image: "/images/new/18d3102e58527d82295a9d108a101405.jpg.jpeg" },
+  { title: "gallery-8", image: "/images/generated/foundation-outreach-branded.png" },
+  { title: "gallery-9", image: "/images/new/c07c29641a2d90d19da14525b548a863.jpg.jpeg" },
+];
 
-export default async function GalleryPage() {
-  const initialPage = await getCachedPublicGalleryImagesPage({
-    limit: GALLERY_PAGE_SIZE,
-    offset: 0,
-  });
-
+export default function GalleryPage() {
   return (
-    <div className="bg-background">
-      <section className="bg-footer px-6 pb-16 pt-28 text-center text-white sm:pb-20 sm:pt-36">
-        <Camera className="mx-auto mb-5 h-9 w-9 text-gold" />
-        <h1 className="text-[38px] font-bold sm:text-[56px]">Our Gallery</h1>
-        <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-white/75">
-          Moments from our programmes, outreach activities, and community partnerships.
-        </p>
+    <>
+      <ScrollRevealController />
+      <PageHero title="Our gallery" crumb="Image Gallery" />
+      <section className="bg-white py-24" data-scroll-reveal="fade-left">
+        <div className="mx-auto max-w-[930px] px-6">
+          <MediaModalGrid items={galleryItems} mode="gallery" />
+        </div>
       </section>
-
-      <section className="mx-auto max-w-[1180px] px-6 py-16 sm:px-10 sm:py-20">
-        <InfiniteGallery
-          initialImages={initialPage.images}
-          initialHasMore={initialPage.hasMore}
-          pageSize={GALLERY_PAGE_SIZE}
-        />
-      </section>
-    </div>
+    </>
   );
 }

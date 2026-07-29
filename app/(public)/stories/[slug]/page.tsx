@@ -4,6 +4,7 @@ import { ArrowLeft, Calendar, User, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { OptimizedImage } from "@/components/common/optimized-image";
+import { ScrollRevealController } from "@/components/common/scroll-reveal-controller";
 import { allStories, getStoryBySlug, getRelatedStories } from "@/lib/stories-data";
 
 export function generateStaticParams() {
@@ -19,6 +20,7 @@ export default async function StoryPage({ params }: { params: Promise<{ slug: st
 
   return (
     <div className="bg-background">
+      <ScrollRevealController />
       {/* Hero */}
       <section className="relative overflow-hidden bg-footer pt-28 text-white sm:pt-32">
         <div className="absolute inset-0">
@@ -64,7 +66,7 @@ export default async function StoryPage({ params }: { params: Promise<{ slug: st
       </section>
 
       {/* Content */}
-      <section className="py-12 sm:py-16 lg:py-20">
+      <section className="bg-white py-12 sm:py-16 lg:py-20" data-scroll-reveal="fade-left">
         <div className="mx-auto max-w-[800px] px-6 sm:px-10 lg:px-[72px]">
           <div className="prose prose-sm max-w-none">
             {story.content.split("\n\n").map((paragraph, i) => (
@@ -81,14 +83,19 @@ export default async function StoryPage({ params }: { params: Promise<{ slug: st
 
       {/* Related Stories */}
       {related.length > 0 && (
-        <section className="bg-[#f8e4e1] py-16 sm:py-20">
+        <section className="bg-[#f8e4e1] py-16 sm:py-20" data-scroll-reveal="soft-rise">
           <div className="mx-auto max-w-[1180px] px-6 sm:px-10 lg:px-12">
             <h2 className="mb-8 text-[26px] font-bold leading-tight text-[#17191f] sm:text-[32px]">
               Related stories
             </h2>
             <div className="grid gap-[20px] sm:grid-cols-2 lg:grid-cols-3">
-              {related.map((relatedStory) => (
-                <Link key={relatedStory.slug} href={`/stories/${relatedStory.slug}`}>
+              {related.map((relatedStory, index) => (
+                <Link
+                  key={relatedStory.slug}
+                  href={`/stories/${relatedStory.slug}`}
+                  data-reveal-child="zoom"
+                  style={{ "--reveal-index": index } as React.CSSProperties}
+                >
                   <Card className="group hover-lift overflow-hidden rounded-[12px] border border-[#efdcc4] bg-[#fffaf2] shadow-[0_4px_16px_rgba(105,77,32,0.08)]">
                     <CardContent className="flex h-full flex-col p-0">
                       <div className="relative h-[160px]">
@@ -121,7 +128,7 @@ export default async function StoryPage({ params }: { params: Promise<{ slug: st
       )}
 
       {/* CTA */}
-      <section className="bg-footer py-16 text-white sm:py-20">
+      <section className="bg-footer py-16 text-white sm:py-20" data-scroll-reveal="fade-right">
         <div className="mx-auto max-w-[800px] px-6 text-center sm:px-10 lg:px-12">
           <h2 className="text-[28px] font-bold leading-tight sm:text-[36px]">
             Want to be part of stories like this?

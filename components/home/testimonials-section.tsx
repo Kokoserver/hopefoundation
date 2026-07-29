@@ -30,7 +30,7 @@ const testimonials = [
       "I now have the skills to support my family and contribute to my community.",
       "Every story begins with a chance.",
     ],
-    image: "/images/new/de27638f019a31c8b293f7ccc96dce4e.jpg.jpeg",
+    image: "/images/generated/foundation-education-branded.png",
   },
   {
     name: "Real Change",

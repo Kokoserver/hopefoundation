@@ -9,7 +9,7 @@ export function TrustBadgesSection() {
         <div className="grid gap-5 md:grid-cols-[1.7fr_0.9fr_0.9fr]">
           <Card className="group hover-lift relative min-h-[150px] overflow-hidden rounded-[24px] border-0 shadow-none sm:min-h-[176px]">
             <OptimizedImage
-              src="/images/new/baf129cb71ea45fab3ff3b664f9f42d5.jpg.jpeg"
+              src="/images/generated/foundation-outreach-branded.png"
               alt="Community gathering — founding year 2026"
               fill
               className="image-soft-zoom"

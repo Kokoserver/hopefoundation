@@ -8,8 +8,8 @@ export const defaultHomepageContent = {
     secondaryButton: { label: "Support Our Work", href: "/donate" },
     slides: [
       {
-        src: "/images/new/chief.a.u.achebe_20260722_p_3946737021547120023_1_3946737021547120023.webp",
-        alt: "Adult teaching child",
+        src: "/images/generated/foundation-outreach-branded.png",
+        alt: "Achebe Hope Foundation volunteers distributing food and school supplies",
         title: "Turning Heritage Into Hope",
         description:
           "Empowering communities, strengthening families, and creating opportunities for lasting change across Africa.\n\nThrough compassion, education, healthcare, and sustainable development, we are restoring dignity and creating pathways to a brighter future for underserved families across Africa.",
@@ -17,8 +17,8 @@ export const defaultHomepageContent = {
         secondaryButton: { label: "Support Our Work", href: "/donate" },
       },
       {
-        src: "/images/new/19092f3ac4376805a624bbdad23eb895.jpg.jpeg",
-        alt: "Children celebrating together",
+        src: "/images/generated/foundation-education-branded.png",
+        alt: "Achebe Hope Foundation volunteers supporting children in class",
         title: "Every Child Deserves a Chance",
         description:
           "Supporting education, maternal care, orphanages, and vulnerable families. Every child deserves safety, quality education, proper nutrition, and the opportunity to dream beyond their circumstances.\n\nFrom orphanage support and school interventions to maternal care and family empowerment, we are helping children and young adults build brighter futures.",
@@ -29,7 +29,7 @@ export const defaultHomepageContent = {
         secondaryButton: { label: "Sponsor a Child", href: "/donate" },
       },
       {
-        src: "/images/new/baf129cb71ea45fab3ff3b664f9f42d5.jpg.jpeg",
+        src: "/images/generated/foundation-outreach-branded.png",
         alt: "Community gathering",
         title: "Hope Begins With Opportunity",
         description:
@@ -38,7 +38,7 @@ export const defaultHomepageContent = {
         secondaryButton: { label: "Partner With Us", href: "/contact" },
       },
       {
-        src: "/images/new/de27638f019a31c8b293f7ccc96dce4e.jpg.jpeg",
+        src: "/images/generated/foundation-digital-academy-branded.png",
         alt: "Young Africans learning digital and practical skills",
         title:
           "Ending Unemployment Through Digital and Practical Skills Training",
@@ -91,12 +91,12 @@ export const defaultHomepageContent = {
   },
   video: {
     label: "Watch Video",
-    poster: "/images/new/19092f3ac4376805a624bbdad23eb895.jpg.jpeg",
+    poster: "/images/generated/foundation-outreach-branded.png",
     url: "/videos/hope-story.mp4",
   },
   message: {
     title: "A message from Achebe Hope Foundation",
-    image: "/images/new/400ca5bd72399daefb3ba1ed0da11072.jpg.jpeg",
+    image: "/images/generated/foundation-education-branded.png",
     paragraphs: [
       "Every community carries untapped strength, every family deserves opportunity, and every child deserves the chance to dream without limitation.",
       "Our work is rooted in a belief that meaningful change happens when compassion is paired with action, and when communities become active partners in shaping their own future.",
@@ -106,7 +106,7 @@ export const defaultHomepageContent = {
   closing: {
     title: "Hope begins with one decision",
     description: "Whether you choose to volunteer, donate, partner, or simply share our mission, your support helps create opportunities that last for generations.",
-    image: "/images/new/cd7684054ec5036b88f97615ab12d5a2.jpg.jpeg",
+    image: "/images/generated/foundation-outreach-branded.png",
     primaryButton: { label: "Donate Today", href: "/donate" },
     secondaryButton: { label: "Become a Volunteer", href: "/volunteer" },
   },

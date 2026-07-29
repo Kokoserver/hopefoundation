@@ -1,6 +1,6 @@
-import { PublicPage } from "@/components/common/public-page";
-import { publicPages } from "@/lib/public-pages";
+import { ScrollRevealController } from "@/components/common/scroll-reveal-controller";
+import { PageHero, StaticProgramGrid } from "@/components/common/static-design";
 
 export default function VolunteerPage() {
-  return <PublicPage page={publicPages.volunteer} />;
+  return <><ScrollRevealController /><PageHero title="Our volunteers" crumb="Our Volunteers" /><StaticProgramGrid variant="volunteers" /></>;
 }

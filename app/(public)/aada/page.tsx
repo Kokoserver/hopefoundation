@@ -1,6 +1,6 @@
 import Link from "next/link";
 import {
-  ArrowRight,
+  ArrowUpRight,
   BriefcaseBusiness,
   CheckCircle2,
   GraduationCap,
@@ -9,9 +9,12 @@ import {
   Network,
   Users,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { OptimizedImage } from "@/components/common/optimized-image";
+import { ScrollRevealController } from "@/components/common/scroll-reveal-controller";
+import { PageHero, SectionKicker } from "@/components/common/static-design";
+import { Button } from "@/components/ui/button";
+
+const aadaUrl = "https://achebecampus.com/";
 
 const courses = [
   "Digital Literacy",
@@ -26,170 +29,129 @@ const courses = [
 
 const pillars = [
   {
-    id: "digital-courses",
     title: "Practical Digital Courses",
-    description:
-      "Hands-on training focused on job-ready digital skills, portfolio building, and real-world project delivery.",
-    icon: <GraduationCap className="h-6 w-6 text-primary" />,
+    description: "Hands-on training focused on job-ready digital skills, portfolio building, and real-world project delivery.",
+    icon: GraduationCap,
   },
   {
-    id: "mentorship",
     title: "Mentorship & Mentors",
-    description:
-      "Learners receive guidance from experienced professionals who support learning, confidence, and career direction.",
-    icon: <Users className="h-6 w-6 text-primary" />,
+    description: "Learners receive guidance from experienced professionals who support confidence, discipline, and career direction.",
+    icon: Users,
   },
   {
-    id: "scholarships",
     title: "Scholarships",
-    description:
-      "Scholarship pathways help underserved learners join cohorts without financial barriers limiting their access.",
-    icon: <CheckCircle2 className="h-6 w-6 text-primary" />,
+    description: "Scholarship pathways help underserved learners join cohorts without financial barriers limiting their access.",
+    icon: CheckCircle2,
   },
   {
-    id: "career-opportunities",
     title: "Career Opportunities",
-    description:
-      "AADA connects learners to internships, freelance pathways, employment readiness, and professional networks.",
-    icon: <BriefcaseBusiness className="h-6 w-6 text-primary" />,
+    description: "AADA connects learners to internships, freelance pathways, employment readiness, and professional networks.",
+    icon: BriefcaseBusiness,
   },
   {
-    id: "entrepreneurship",
     title: "Entrepreneurship Support",
-    description:
-      "Participants learn how to turn skills into income through business basics, client acquisition, and service packaging.",
-    icon: <Lightbulb className="h-6 w-6 text-primary" />,
+    description: "Participants learn how to turn practical skills into income through service packaging and client acquisition.",
+    icon: Lightbulb,
   },
   {
-    id: "learning-communities",
     title: "Learning Communities",
-    description:
-      "Peer-led learning circles help students stay accountable, collaborate, share resources, and keep growing.",
-    icon: <Network className="h-6 w-6 text-primary" />,
-  },
-  {
-    id: "success-stories",
-    title: "Success Stories",
-    description:
-      "AADA will document learner journeys, portfolio growth, business launches, and employment outcomes as cohorts progress.",
-    icon: <CheckCircle2 className="h-6 w-6 text-primary" />,
-  },
-  {
-    id: "partner",
-    title: "Partner With AADA",
-    description:
-      "Companies, mentors, schools, and donors can sponsor cohorts, provide instructors, or create career pipelines.",
-    icon: <Handshake className="h-6 w-6 text-primary" />,
+    description: "Peer-led learning circles help students stay accountable, collaborate, share resources, and keep growing.",
+    icon: Network,
   },
 ];
 
 export default function AadaPage() {
   return (
-    <div className="bg-background">
-      <section className="relative overflow-hidden bg-footer pt-28 text-white sm:pt-32">
-        <div className="absolute inset-0">
-          <OptimizedImage
-            src="/images/new/de27638f019a31c8b293f7ccc96dce4e.jpg.jpeg"
-            alt="Young Africans learning digital skills"
-            fill
-            priority
-            quality={90}
-            className="object-cover object-center opacity-50"
-            showPlaceholder={false}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-footer" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent" />
-        </div>
+    <>
+      <ScrollRevealController />
+      <PageHero title="Achebe Africa Digital Academy" crumb="AADA" />
 
-        <div className="relative mx-auto max-w-[1280px] px-6 pb-16 pt-16 sm:px-10 sm:pb-24 sm:pt-20 lg:px-[72px]">
-          <div className="max-w-4xl animate-fade-up">
-            <p className="mb-4 text-[12px] font-bold uppercase tracking-[0.22em] text-gold">
-              Flagship Initiative
+      <section className="bg-[#f4f4f4] py-24">
+        <div className="mx-auto grid max-w-[1180px] items-center gap-12 px-6 lg:grid-cols-[0.95fr_1.05fr]">
+          <div data-scroll-reveal="fade-right">
+            <SectionKicker>Flagship Initiative</SectionKicker>
+            <h2 className="mt-5 text-[44px] font-black leading-[1.04] tracking-[-0.045em] text-[#2A1708]">
+              Solving unemployment through digital education
+            </h2>
+            <p className="mt-6 text-[15px] leading-7 text-[#697084]">
+              Achebe Africa Digital Academy (AADA) equips young Africans with practical digital skills, mentorship,
+              entrepreneurship support, and pathways to meaningful work.
             </p>
-            <h1 className="max-w-5xl text-[38px] font-bold leading-[1.08] sm:text-[56px] lg:text-[64px]">
-              Achebe Africa Digital Academy (AADA)
-            </h1>
-            <p className="mt-6 max-w-3xl text-[15px] leading-[1.7] text-white/88 sm:text-[17px]">
-              AADA tackles unemployment by equipping young Africans with
-              practical digital skills, mentorship, entrepreneurship support,
-              and pathways to meaningful work.
+            <p className="mt-4 text-[15px] leading-7 text-[#697084]">
+              It is Achebe Hope Foundation&apos;s biggest long-term empowerment initiative, combining humanitarian
+              support with education that helps learners build sustainable careers.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <Button
-                asChild
-                className="h-11 rounded-full bg-gold px-7 text-[12px] font-bold text-white hover:bg-gold/90"
-              >
-                <Link href="https://achebecampus.com/">
-                  Join the Academy
-                  <ArrowRight className="ml-2 h-4 w-4" />
+              <Button asChild className="primary-cta h-12 rounded-[6px] bg-primary px-6 text-[14px] font-black text-white hover:bg-accent">
+                <Link href={aadaUrl} target="_blank" rel="noopener noreferrer">
+                  Visit AADA Campus <ArrowUpRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button
                 asChild
-                className="h-11 rounded-full border border-white/30 bg-transparent px-7 text-[12px] font-bold text-white hover:bg-white/10"
+                className="h-12 rounded-[6px] border border-[#d9d9d9] bg-white px-6 text-[14px] font-black text-[#2A1708] hover:bg-[#f4f4f4]"
               >
-                <Link href="/contact">Partner With AADA</Link>
+                <Link href="/partners">Partner With AADA</Link>
               </Button>
             </div>
           </div>
+
+          <div className="relative" data-scroll-reveal="fade-left">
+            <div className="relative h-[500px] overflow-hidden rounded-[18px]">
+              <OptimizedImage
+                src="/images/generated/foundation-digital-academy-branded.png"
+                alt="AADA digital academy learners"
+                fill
+                quality={90}
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#120800]/86 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6 rounded-[14px] bg-white p-6 shadow-xl">
+                <div className="flex items-center gap-4">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white">
+                    <GraduationCap className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <p className="text-[22px] font-black tracking-[-0.04em] text-[#2A1708]">AADA</p>
+                    <p className="text-[12px] font-semibold text-[#697084]">
+                      Digital skills, mentorship, scholarships, and career access.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="absolute -left-6 top-8 hidden rounded-[14px] bg-white p-5 shadow-xl sm:block">
+              <p className="text-[28px] font-black text-[#2A1708]">8+</p>
+              <p className="text-[12px] font-semibold text-[#697084]">Course Tracks</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto grid max-w-[1180px] gap-10 px-6 sm:px-10 lg:grid-cols-[0.9fr_1.1fr] lg:px-12">
-          <div>
-            <span className="inline-flex rounded-full bg-gold px-4 py-1.5 text-[12px] font-semibold text-white">
-              About AADA
-            </span>
-            <h2 className="mt-5 text-[30px] font-bold leading-tight text-[#17191f] sm:text-[42px]">
-              Solving unemployment through education and digital transformation.
-            </h2>
-          </div>
-          <div className="space-y-5 text-[15px] leading-[1.75] text-[#4f4a43]">
-            <p>
-              Rather than simply addressing the symptoms of poverty, Achebe
-              Africa Digital Academy addresses one of its root causes: limited
-              access to market-relevant education and employable skills.
-            </p>
-            <p>
-              As the flagship initiative of Achebe Hope Foundation, AADA
-              represents the Foundation&apos;s long-term commitment to solving
-              unemployment through practical training, innovation, mentorship,
-              and career pathways.
-            </p>
-            <p>
-              By combining humanitarian intervention with digital education,
-              the Foundation is restoring hope for today while creating durable
-              opportunities for tomorrow.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="courses" className="bg-white py-16 sm:py-20">
-        <div className="mx-auto max-w-[1180px] px-6 sm:px-10 lg:px-12">
-          <div className="mb-10 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+      <section className="bg-white py-24" data-scroll-reveal="soft-rise">
+        <div className="mx-auto max-w-[1180px] px-6">
+          <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <span className="inline-flex rounded-full bg-gold px-4 py-1.5 text-[12px] font-semibold text-white">
-                Digital Courses
-              </span>
-              <h2 className="mt-5 text-[30px] font-bold leading-tight text-[#17191f] sm:text-[40px]">
-                Practical skills for modern work.
+              <SectionKicker>Digital Courses</SectionKicker>
+              <h2 className="mt-5 max-w-[600px] text-[40px] font-black leading-[1.06] tracking-[-0.045em] text-[#2A1708]">
+                Practical skills for modern work
               </h2>
             </div>
-            <p className="max-w-md text-[13px] leading-[1.6] text-muted-foreground">
-              Course tracks are reviewed with instructors, partners, and cohort
-              capacity so learners receive practical, relevant training.
+            <p className="max-w-[430px] text-[14px] leading-7 text-[#697084]">
+              Course tracks are designed around practical outcomes, portfolio projects, and learner readiness for work,
+              freelancing, or entrepreneurship.
             </p>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {courses.map((course) => (
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {courses.map((course, index) => (
               <div
                 key={course}
-                className="flex items-center gap-3 rounded-2xl border border-[#eadfcd] bg-[#fffaf2] px-4 py-4 text-[13px] font-semibold text-[#241E18]"
+                className="flex items-center gap-3 rounded-[12px] bg-[#f4f4f4] px-5 py-5 text-[13px] font-black text-[#2A1708]"
+                data-reveal-child="zoom"
+                style={{ "--reveal-index": index } as React.CSSProperties}
               >
-                <CheckCircle2 className="h-4 w-4 shrink-0 text-gold" />
+                <CheckCircle2 className="h-4 w-4 shrink-0 text-primary" />
                 {course}
               </div>
             ))}
@@ -197,67 +159,66 @@ export default function AadaPage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-[1180px] px-6 sm:px-10 lg:px-12">
-          <div className="mb-10">
-            <span className="inline-flex rounded-full bg-gold px-4 py-1.5 text-[12px] font-semibold text-white">
-              Inside AADA
-            </span>
-            <h2 className="mt-5 max-w-2xl text-[30px] font-bold leading-tight text-[#17191f] sm:text-[40px]">
-              Training, mentorship, scholarships, and career support in one
-              academy.
+      <section className="bg-[#f4f4f4] py-24">
+        <div className="mx-auto max-w-[1180px] px-6">
+          <div className="mx-auto max-w-[650px] text-center" data-scroll-reveal="fade-up">
+            <SectionKicker>Inside AADA</SectionKicker>
+            <h2 className="mt-5 text-[40px] font-black leading-[1.06] tracking-[-0.045em] text-[#2A1708]">
+              Training, mentorship, scholarships, and career support in one academy
             </h2>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {pillars.map((pillar) => (
-              <Card
-                key={pillar.title}
-                id={pillar.id}
-                className="hover-lift rounded-[22px] border border-[#eadfcd] bg-white shadow-[0_10px_30px_rgba(105,77,32,0.06)]"
-              >
-                <CardContent className="p-6">
-                  <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-full bg-gold/10">
-                    {pillar.icon}
-                  </div>
-                  <h3 className="mb-3 text-[18px] font-bold text-[#17191f]">
-                    {pillar.title}
-                  </h3>
-                  <p className="text-[13px] leading-[1.65] text-[#4f4a43]">
-                    {pillar.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3" data-scroll-reveal="fade-left">
+            {pillars.map((pillar, index) => {
+              const Icon = pillar.icon;
+              return (
+                <div
+                  key={pillar.title}
+                  className="rounded-[16px] bg-white p-8"
+                  data-reveal-child={index % 2 === 0 ? "left" : "right"}
+                  style={{ "--reveal-index": index } as React.CSSProperties}
+                >
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white">
+                    <Icon className="h-5 w-5" />
+                  </span>
+                  <h3 className="mt-7 text-[20px] font-black tracking-[-0.035em] text-[#2A1708]">{pillar.title}</h3>
+                  <p className="mt-4 text-[14px] leading-7 text-[#697084]">{pillar.description}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section className="bg-footer py-16 text-white sm:py-20">
-        <div className="mx-auto max-w-[820px] px-6 text-center sm:px-10 lg:px-12">
-          <h2 className="text-[30px] font-bold leading-tight sm:text-[40px]">
-            Reserve your slot or support an AADA cohort.
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-[15px] leading-[1.7] text-white/72">
-            Learners, mentors, donors, schools, and corporate partners can help
-            AADA expand access to practical digital education across Africa.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Button
-              asChild
-              className="h-11 rounded-full bg-gold px-7 text-[12px] font-bold text-white hover:bg-gold/90"
-            >
-              <Link href="https://achebecampus.com/">Join the Academy</Link>
+      <section className="brand-dark-pattern py-20 text-white">
+        <div className="mx-auto grid max-w-[1180px] items-center gap-10 px-6 lg:grid-cols-[1fr_0.8fr]">
+          <div data-scroll-reveal="fade-right">
+            <SectionKicker>Join Or Support AADA</SectionKicker>
+            <h2 className="mt-5 text-[42px] font-black leading-[1.06] tracking-[-0.045em]">
+              Reserve your slot or help expand access to an AADA cohort.
+            </h2>
+            <p className="mt-5 max-w-[620px] text-[15px] leading-7 text-white/72">
+              Learners, mentors, schools, donors, and corporate partners can help AADA expand access to practical
+              digital education across Africa.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-4 lg:justify-end" data-scroll-reveal="fade-left">
+            <Button asChild className="primary-cta h-12 rounded-[6px] bg-primary px-7 text-[14px] font-black text-white hover:bg-accent">
+              <Link href={aadaUrl} target="_blank" rel="noopener noreferrer">
+                Visit AADA Campus <ArrowUpRight className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
             <Button
               asChild
-              className="h-11 rounded-full border border-white/30 bg-transparent px-7 text-[12px] font-bold text-white hover:bg-white/10"
+              className="h-12 rounded-[6px] border border-white/20 bg-white/8 px-7 text-[14px] font-black text-white hover:bg-white/12"
             >
-              <Link href="/donate#aada">Support AADA</Link>
+              <Link href="/partners">
+                Partner With AADA <Handshake className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }
